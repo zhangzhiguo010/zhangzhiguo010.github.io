@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS-对象（升级） | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：MDN、《JS高程》、《JS权威指南》、方应杭-知乎 #一、构造函数、原型及原型链 ###1. 构造函数是什么？  构造函数是特殊的函数，它返回一个对象， JS引擎会帮我们创建了对象this，并把属性和方法绑定到了this上，最后返回该this， JS引擎还帮我们绑定原型对象，所有new出来的实例对象会从原型对象上继承属性和方法， 我们用new去调用构造函数  ###2. 原型是什么？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-对象（升级）">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/JS-对象（升级）/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：MDN、《JS高程》、《JS权威指南》、方应杭-知乎 #一、构造函数、原型及原型链 ###1. 构造函数是什么？  构造函数是特殊的函数，它返回一个对象， JS引擎会帮我们创建了对象this，并把属性和方法绑定到了this上，最后返回该this， JS引擎还帮我们绑定原型对象，所有new出来的实例对象会从原型对象上继承属性和方法， 我们用new去调用构造函数  ###2. 原型是什么？">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%9B%BE.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8.png">
+<meta property="og:updated_time" content="2018-11-22T08:40:35.539Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-对象（升级）">
+<meta name="twitter:description" content="#参考资料：MDN、《JS高程》、《JS权威指南》、方应杭-知乎 #一、构造函数、原型及原型链 ###1. 构造函数是什么？  构造函数是特殊的函数，它返回一个对象， JS引擎会帮我们创建了对象this，并把属性和方法绑定到了this上，最后返回该this， JS引擎还帮我们绑定原型对象，所有new出来的实例对象会从原型对象上继承属性和方法， 我们用new去调用构造函数  ###2. 原型是什么？">
+<meta name="twitter:image" content="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%9B%BE.png">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS-对象（升级）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-对象（升级）/" class="article-date">
+  <time datetime="2018-11-22T08:08:43.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS-对象（升级）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN、《JS高程》、《JS权威指南》、<a href="https://zhuanlan.zhihu.com/p/23987456?refer=study-fe" target="_blank" rel="noopener">方应杭-知乎</a></p>
+<p>#一、构造函数、原型及原型链</p>
+<p>###1. 构造函数是什么？</p>
+<ul>
+<li>构造函数是特殊的函数，它返回一个对象，</li>
+<li>JS引擎会帮我们创建了对象this，并把属性和方法绑定到了this上，最后返回该this，</li>
+<li>JS引擎还帮我们绑定原型对象，所有new出来的实例对象会从原型对象上继承属性和方法，</li>
+<li>我们用new去调用构造函数</li>
+</ul>
+<p>###2. 原型是什么？</p>
+<ul>
+<li>构造函数的prototype属性指向一个对象，该对象内保存着构造函数创造出的所有实例对象共享的属性和方法，该对象就是原型对象，简称原型，原型有个constructor属性，指向构造函数。</li>
+</ul>
+<p>###3.原型链是什么？</p>
+<ul>
+<li>基本思想是让一个对象从另一个对象继承属性和方法</li>
+<li>属性查找时，先在对象实例上找，找到结束</li>
+<li>找不到时，在原型上找，找到结束</li>
+<li>找不到时，在原型的原型上找，找到结束</li>
+<li>一直找到Object.prototype上，找到结束，没找到则返回undefined </li>
+</ul>
+<p>###4. 知识补充：</p>
+<ul>
+<li>原型链的数据结构是树;</li>
+<li>Object.prototype对象没有原型，它不继承任何属性；</li>
+<li>通过对象字面量创建的对象，原型都是Object.prototype；</li>
+<li>通过new+构造函数创建的对象，原型都是构造函数.prototype；</li>
+<li>所有内置构造函数都有一个继承自Object.prototype的原型；</li>
+</ul>
+<p>#二、如何实现继承？<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%9B%BE.png" alt=""></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%20%E6%B3%A8%E6%84%8F%E7%82%B9.png" target="_blank" rel="noopener">写继承的时候注意点</a></p>
+<p>###1. ES5中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设A向B继承属性和方法*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">options</span>)</span>&#123;&#125;</span><br><span class="line">B.prototype.sayCountryName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	B.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">A.prototype = <span class="built_in">Object</span>.create(B.prototype)</span><br><span class="line">A.prototype.sayCapitalName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> A()</span><br></pre></td></tr></table></figure></p>
+<p>###2. ES6中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设A向B继承属性和方法*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">this</span>.countryName = <span class="string">'中国'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">		<span class="keyword">super</span>(props)</span><br><span class="line">		<span class="keyword">this</span>.capitalName = <span class="string">'北京'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> A()</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/ES6%20%E7%B1%BB%20%E7%BB%A7%E6%89%BF.png" target="_blank" rel="noopener">ES6类示例</a></p>
+<p>#三、类公有、私有和静态的属性和方法</p>
+<p>###1. 自有的属性和方法：<br>定义：属性值随着实例的不同而不同，即需要创建实例时所传的参数<br>创建：构造函数里this对象上、ES6的class的constructor函数里</p>
+<p>###2. 公有的属性和方法：<br>定义：属性值不随着实例的不同而不同，即不需要创建实例时所传的参数<br>创建：构造函数.prototype对象上、ES6的class的constructor函数外</p>
+<p>###3. 静态的属性和方法：<br>定义：构造函数或类中自己使用的，不让实例继承到<br>创建：ES5中用下划线加方法名，ES6中用static关键字</p>
+<p>#四、包装对象<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1.png" alt=""></p>
+<p>我们可以通过var nn = new Number(3.14);创建一个数字对象，<br>这个对象nn有很多属性和方法，如保留固定个数小数位、数字转换成字符串等等，<br>但是这种方法太麻烦了！！！</p>
+<p>我们可以通过var mm = 3.14; 创建一个数字基本类型，<br>如果能直接在mm上操作就得到上面的结果，该多美好啊！！！</p>
+<p>当我们执行mm.toFixed( )和mm.toString( )时，<br>浏览器就自动创建了 PV: 3.14 数字对象，这个数字对象就是包装对象，实际上所有操作都是在这个对象上进行的，<br>操作完毕，对象销毁！并且不影响原来mm的值，即mm=3.14。</p>
+<p>数字包装对象、字符串包装对象、布尔值包装对象 原理一样。</p>
+<p>把数字基本类型当成对象去操作时，JS引擎自动帮助创建了一个包装对象，当操作完毕的时候，<br>JS引擎会自动销毁该包装对象，并且不影响原来的值，字符串和布尔值也是一样的道理。<br>包装对象三步走：创建对象、操作对象、销毁对象</p>
+<p>#五、数据存储及内存图<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8.png" alt=""></p>
+<ul>
+<li>变量在代码区，数据在内存区，内存分为Stack栈内存和Heap堆内存；</li>
+<li>基本类型数据，被存在Stack栈内存中，存的是值；（按值访问，按值比较）</li>
+<li>引用类型数据，被存在Heap堆内存中，然后把它的地址存在Stack中；（按地址访问，按地址比较）</li>
+</ul>
+<p>案例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*把字符串的值赋值给s*/</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">"abc"</span></span><br><span class="line"><span class="comment">/*把数组的地址赋值给o*/</span></span><br><span class="line"><span class="keyword">var</span> o = [<span class="string">'a'</span>,<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjoscky10000b2wqreiooxsui" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/JS-对象（基础）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS-对象（基础）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/JS-对象（升级）/">JS-对象（升级）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-对象（基础）/">JS-对象（基础）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-小图标全解/">CSS-小图标全解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-动画/">CSS-动画</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局经验/">CSS-布局经验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
