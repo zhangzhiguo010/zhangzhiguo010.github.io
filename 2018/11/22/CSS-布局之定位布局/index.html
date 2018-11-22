@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS-布局之定位布局 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：《CSS权威指南》page：307页 #一、绝对定位：  相对于包含块移动，偏移属性确定移动的距离； 原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流） 块级元素生成块级框，行内元素也是生成块级框；（形成BFC） 包含块：body元素或position不为static的祖先元素  属性：  top—-“下移” bottom—-“上移” left—-“右移” right—-“左移”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-布局之定位布局">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局之定位布局/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：《CSS权威指南》page：307页 #一、绝对定位：  相对于包含块移动，偏移属性确定移动的距离； 原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流） 块级元素生成块级框，行内元素也是生成块级框；（形成BFC） 包含块：body元素或position不为static的祖先元素  属性：  top—-“下移” bottom—-“上移” left—-“右移” right—-“左移”">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T04:35:23.679Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-布局之定位布局">
+<meta name="twitter:description" content="#参考资料：《CSS权威指南》page：307页 #一、绝对定位：  相对于包含块移动，偏移属性确定移动的距离； 原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流） 块级元素生成块级框，行内元素也是生成块级框；（形成BFC） 包含块：body元素或position不为static的祖先元素  属性：  top—-“下移” bottom—-“上移” left—-“右移” right—-“左移”">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-布局之定位布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之定位布局/" class="article-date">
+  <time datetime="2018-11-22T04:27:08.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS-布局之定位布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：307页</p>
+<p>#一、绝对定位：</p>
+<ul>
+<li>相对于包含块移动，偏移属性确定移动的距离；</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框；（形成BFC）</li>
+<li>包含块：body元素或position不为static的祖先元素</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#二、相对定位：</p>
+<ul>
+<li>相对于原位置移动，原位置保留，偏移属性确定移动的距离；</li>
+<li>块级元素生成块级框，行内元素生成行内框</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#三、固定定位：</p>
+<ul>
+<li>相对于视窗移动，偏移属性确定移动的距离；（与absolute相似）</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框（形成BFC）</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#四、其他知识：</p>
+<ul>
+<li>根元素html的包含块是视窗大小的矩形</li>
+<li>position样式值是relative或static时，包含块由最近的块级框、表单元格或行内块祖先框的内容边界构成</li>
+<li>position样式值是absolute时，包含块由最近的position值不是static的祖先元素构成，<br>  当祖先元素是块级元素时，包含块是元素的内边距边界，<br>  当祖先元素是行内元素时，包含块是元素的内容边界。</li>
+<li>如果没有祖先元素，元素的包含块定义为初始包含块</li>
+<li>元素绝对定位后，会为其后代元素建立一个包含块<br>  （position不为static的都可做包含块）</li>
+<li>绝对定位元素相对于包含块移动，包含块是正常流的一部分，<br>  当文档流滚动时，包含块随之滚动，定位元素也随之滚动</li>
+<li>非替换元素的绝对定位时<ul>
+<li>left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right<br>= 包含块的width<ul>
+<li>top + margin-top + border-top + padding-top +height + padding-bottom + border-bottom + margin-bottom<br>= 包含块的height</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjos3t2500007iwqrq72lcd5z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/CSS-布局之float布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS-布局之float布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

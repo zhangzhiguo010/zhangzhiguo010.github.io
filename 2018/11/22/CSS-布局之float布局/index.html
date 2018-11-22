@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS-布局之float布局 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：《CSS权威指南》page：288页 我的一点总结： 浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。 脱离文档流的意思就是，正常的文档流中丢失了它的位置。 浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。 三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来 父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-布局之float布局">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局之float布局/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：《CSS权威指南》page：288页 我的一点总结： 浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。 脱离文档流的意思就是，正常的文档流中丢失了它的位置。 浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。 三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来 父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T04:34:56.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-布局之float布局">
+<meta name="twitter:description" content="#参考资料：《CSS权威指南》page：288页 我的一点总结： 浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。 脱离文档流的意思就是，正常的文档流中丢失了它的位置。 浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。 三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来 父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-布局之float布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之float布局/" class="article-date">
+  <time datetime="2018-11-22T04:19:57.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS-布局之float布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：288页</p>
+<h1 id="我的一点总结："><a href="#我的一点总结：" class="headerlink" title="我的一点总结："></a>我的一点总结：</h1><ul>
+<li>浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。</li>
+<li>脱离文档流的意思就是，正常的文档流中丢失了它的位置。</li>
+<li>浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。</li>
+<li>三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来</li>
+<li>父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素就无法被撑开（塌陷），所以    导致父元素的背景、边框等属性无法生效，也会使后面的元素顶上来。</li>
+<li>我们使用浮动一般是为了让块级元素实现行级元素的特性（类似inline-block），但也不希望浮动元素影响后面的元素位置</li>
+<li>当浮动失去文档流，使后面的元素顶上来以后，一般有三种方法可以处理：<ul>
+<li>1、为父元素增加height属性，这样父元素就会显示边框、背景等，但这种情况是确定浮动元素    的高度时才这么做，但是实际中，可能不清楚高度哦</li>
+<li>2、为浮动元素后面的元素增加clear:both（clearfix清浮动），清除浮动效果，如果没有后面    元素的话，增加一个元素。</li>
+<li>3、为父元素设置overflow:hidden属性（BFC—–块格式化上下文）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*清除浮动，添加这个类即可*/</span></span><br><span class="line">.clearfix::after&#123; </span><br><span class="line">	content: <span class="string">""</span>;  </span><br><span class="line">	display: bolock;  </span><br><span class="line">	clear: both; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>float属性：</p>
+<ul>
+<li>left—-“左浮动”</li>
+<li>right—-“右浮动”</li>
+<li>none—-“不浮动”</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjos3t24v0002iwqrvw969st8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/22/CSS-布局之定位布局/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS-布局之定位布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/22/CSS-布局之flex布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS-布局之flex布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

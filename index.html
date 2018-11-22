@@ -62,6 +62,159 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-布局之定位布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之定位布局/" class="article-date">
+  <time datetime="2018-11-22T04:27:08.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：307页</p>
+<p>#一、绝对定位：</p>
+<ul>
+<li>相对于包含块移动，偏移属性确定移动的距离；</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框；（形成BFC）</li>
+<li>包含块：body元素或position不为static的祖先元素</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#二、相对定位：</p>
+<ul>
+<li>相对于原位置移动，原位置保留，偏移属性确定移动的距离；</li>
+<li>块级元素生成块级框，行内元素生成行内框</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#三、固定定位：</p>
+<ul>
+<li>相对于视窗移动，偏移属性确定移动的距离；（与absolute相似）</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框（形成BFC）</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#四、其他知识：</p>
+<ul>
+<li>根元素html的包含块是视窗大小的矩形</li>
+<li>position样式值是relative或static时，包含块由最近的块级框、表单元格或行内块祖先框的内容边界构成</li>
+<li>position样式值是absolute时，包含块由最近的position值不是static的祖先元素构成，<br>  当祖先元素是块级元素时，包含块是元素的内边距边界，<br>  当祖先元素是行内元素时，包含块是元素的内容边界。</li>
+<li>如果没有祖先元素，元素的包含块定义为初始包含块</li>
+<li>元素绝对定位后，会为其后代元素建立一个包含块<br>  （position不为static的都可做包含块）</li>
+<li>绝对定位元素相对于包含块移动，包含块是正常流的一部分，<br>  当文档流滚动时，包含块随之滚动，定位元素也随之滚动</li>
+<li>非替换元素的绝对定位时<ul>
+<li>left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right<br>= 包含块的width<ul>
+<li>top + margin-top + border-top + padding-top +height + padding-bottom + border-bottom + margin-bottom<br>= 包含块的height</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjos3t2500007iwqrq72lcd5z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之float布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之float布局/" class="article-date">
+  <time datetime="2018-11-22T04:19:57.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：288页</p>
+<h1 id="我的一点总结："><a href="#我的一点总结：" class="headerlink" title="我的一点总结："></a>我的一点总结：</h1><ul>
+<li>浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。</li>
+<li>脱离文档流的意思就是，正常的文档流中丢失了它的位置。</li>
+<li>浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。</li>
+<li>三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来</li>
+<li>父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素就无法被撑开（塌陷），所以    导致父元素的背景、边框等属性无法生效，也会使后面的元素顶上来。</li>
+<li>我们使用浮动一般是为了让块级元素实现行级元素的特性（类似inline-block），但也不希望浮动元素影响后面的元素位置</li>
+<li>当浮动失去文档流，使后面的元素顶上来以后，一般有三种方法可以处理：<ul>
+<li>1、为父元素增加height属性，这样父元素就会显示边框、背景等，但这种情况是确定浮动元素    的高度时才这么做，但是实际中，可能不清楚高度哦</li>
+<li>2、为浮动元素后面的元素增加clear:both（clearfix清浮动），清除浮动效果，如果没有后面    元素的话，增加一个元素。</li>
+<li>3、为父元素设置overflow:hidden属性（BFC—–块格式化上下文）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*清除浮动，添加这个类即可*/</span></span><br><span class="line">.clearfix::after&#123; </span><br><span class="line">	content: <span class="string">""</span>;  </span><br><span class="line">	display: bolock;  </span><br><span class="line">	clear: both; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>float属性：</p>
+<ul>
+<li>left—-“左浮动”</li>
+<li>right—-“右浮动”</li>
+<li>none—-“不浮动”</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjos3t24v0002iwqrvw969st8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-布局之flex布局" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-布局之flex布局/" class="article-date">
@@ -198,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos35k760003cgqrfaiguxre" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos3t25a0008iwqrvjh54y98" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjos35k730001cgqru87kry3e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjos3t24w0003iwqr068mg93n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjos35k770004cgqrdu7g042d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjos3t24z0006iwqre4lcirfm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -478,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjos35k6z0000cgqr46zbh9ld" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjos3t24p0000iwqrfhsek745" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjos35k750002cgqr9joxc2l8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjos3t24t0001iwqrfxudg4zx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -591,7 +744,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjos35k780005cgqr8eypgrd0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjos3t24y0005iwqrqsg7d2en" class="article-share-link">Share</a>
       
       
     </footer>
@@ -636,7 +789,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjos35k7g0006cgqr5c3jwid0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjos3t24x0004iwqrf2zd0z61" class="article-share-link">Share</a>
       
       
     </footer>
@@ -677,6 +830,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
           </li>
         
@@ -686,14 +847,6 @@
         
           <li>
             <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/CSS-BFC/">CSS-BFC</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
           </li>
         
       </ul>
