@@ -62,6 +62,363 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS-对象（升级）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-对象（升级）/" class="article-date">
+  <time datetime="2018-11-22T08:08:43.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/JS-对象（升级）/">JS-对象（升级）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN、《JS高程》、《JS权威指南》、<a href="https://zhuanlan.zhihu.com/p/23987456?refer=study-fe" target="_blank" rel="noopener">方应杭-知乎</a></p>
+<p>#一、构造函数、原型及原型链</p>
+<p>###1. 构造函数是什么？</p>
+<ul>
+<li>构造函数是特殊的函数，它返回一个对象，</li>
+<li>JS引擎会帮我们创建了对象this，并把属性和方法绑定到了this上，最后返回该this，</li>
+<li>JS引擎还帮我们绑定原型对象，所有new出来的实例对象会从原型对象上继承属性和方法，</li>
+<li>我们用new去调用构造函数</li>
+</ul>
+<p>###2. 原型是什么？</p>
+<ul>
+<li>构造函数的prototype属性指向一个对象，该对象内保存着构造函数创造出的所有实例对象共享的属性和方法，该对象就是原型对象，简称原型，原型有个constructor属性，指向构造函数。</li>
+</ul>
+<p>###3.原型链是什么？</p>
+<ul>
+<li>基本思想是让一个对象从另一个对象继承属性和方法</li>
+<li>属性查找时，先在对象实例上找，找到结束</li>
+<li>找不到时，在原型上找，找到结束</li>
+<li>找不到时，在原型的原型上找，找到结束</li>
+<li>一直找到Object.prototype上，找到结束，没找到则返回undefined </li>
+</ul>
+<p>###4. 知识补充：</p>
+<ul>
+<li>原型链的数据结构是树;</li>
+<li>Object.prototype对象没有原型，它不继承任何属性；</li>
+<li>通过对象字面量创建的对象，原型都是Object.prototype；</li>
+<li>通过new+构造函数创建的对象，原型都是构造函数.prototype；</li>
+<li>所有内置构造函数都有一个继承自Object.prototype的原型；</li>
+</ul>
+<p>#二、如何实现继承？<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%9B%BE.png" alt=""></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%20%E6%B3%A8%E6%84%8F%E7%82%B9.png" target="_blank" rel="noopener">写继承的时候注意点</a></p>
+<p>###1. ES5中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设A向B继承属性和方法*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">options</span>)</span>&#123;&#125;</span><br><span class="line">B.prototype.sayCountryName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	B.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">A.prototype = <span class="built_in">Object</span>.create(B.prototype)</span><br><span class="line">A.prototype.sayCapitalName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> A()</span><br></pre></td></tr></table></figure></p>
+<p>###2. ES6中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设A向B继承属性和方法*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">this</span>.countryName = <span class="string">'中国'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">		<span class="keyword">super</span>(props)</span><br><span class="line">		<span class="keyword">this</span>.capitalName = <span class="string">'北京'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> A()</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/ES6%20%E7%B1%BB%20%E7%BB%A7%E6%89%BF.png" target="_blank" rel="noopener">ES6类示例</a></p>
+<p>#三、类公有、私有和静态的属性和方法</p>
+<p>###1. 自有的属性和方法：<br>定义：属性值随着实例的不同而不同，即需要创建实例时所传的参数<br>创建：构造函数里this对象上、ES6的class的constructor函数里</p>
+<p>###2. 公有的属性和方法：<br>定义：属性值不随着实例的不同而不同，即不需要创建实例时所传的参数<br>创建：构造函数.prototype对象上、ES6的class的constructor函数外</p>
+<p>###3. 静态的属性和方法：<br>定义：构造函数或类中自己使用的，不让实例继承到<br>创建：ES5中用下划线加方法名，ES6中用static关键字</p>
+<p>#四、包装对象<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1.png" alt=""></p>
+<p>我们可以通过var nn = new Number(3.14);创建一个数字对象，<br>这个对象nn有很多属性和方法，如保留固定个数小数位、数字转换成字符串等等，<br>但是这种方法太麻烦了！！！</p>
+<p>我们可以通过var mm = 3.14; 创建一个数字基本类型，<br>如果能直接在mm上操作就得到上面的结果，该多美好啊！！！</p>
+<p>当我们执行mm.toFixed( )和mm.toString( )时，<br>浏览器就自动创建了 PV: 3.14 数字对象，这个数字对象就是包装对象，实际上所有操作都是在这个对象上进行的，<br>操作完毕，对象销毁！并且不影响原来mm的值，即mm=3.14。</p>
+<p>数字包装对象、字符串包装对象、布尔值包装对象 原理一样。</p>
+<p>把数字基本类型当成对象去操作时，JS引擎自动帮助创建了一个包装对象，当操作完毕的时候，<br>JS引擎会自动销毁该包装对象，并且不影响原来的值，字符串和布尔值也是一样的道理。<br>包装对象三步走：创建对象、操作对象、销毁对象</p>
+<p>#五、数据存储及内存图<br><img src="http://piks830x0.bkt.clouddn.com/%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8.png" alt=""></p>
+<ul>
+<li>变量在代码区，数据在内存区，内存分为Stack栈内存和Heap堆内存；</li>
+<li>基本类型数据，被存在Stack栈内存中，存的是值；（按值访问，按值比较）</li>
+<li>引用类型数据，被存在Heap堆内存中，然后把它的地址存在Stack中；（按地址访问，按地址比较）</li>
+</ul>
+<p>案例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*把字符串的值赋值给s*/</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">"abc"</span></span><br><span class="line"><span class="comment">/*把数组的地址赋值给o*/</span></span><br><span class="line"><span class="keyword">var</span> o = [<span class="string">'a'</span>,<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjospacg5000fk4qrx79d2da8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS-对象（基础）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-对象（基础）/" class="article-date">
+  <time datetime="2018-11-22T07:22:06.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/JS-对象（基础）/">JS-对象（基础）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档；《JS高级程序设计》page83页、page138页；《JS权威指南》page118页</p>
+<p>#一、对象创建和调用</p>
+<p>##1、对象定义： </p>
+<ul>
+<li>属性的无序集合，每个属性都是一个名/值对；</li>
+<li>对象是哈希结构，属性名就是哈希的键名，属性值就是哈希的键值。</li>
+<li>除了数字、字符串、布尔值、null和undefined外，JS中的值都是对象</li>
+</ul>
+<p>##2、对象使用：</p>
+<ul>
+<li>将对象赋给变量，实际上是将对象在堆内存区中的内存地址赋值给该变量；</li>
+<li><p>将对象赋给不同变量，当某个变量修改了对象时，比如属性值，也会影响到其他所有变量；</p>
+<ul>
+<li>当取消某个变量对该对象的引用时，不会影响其他变量，</li>
+<li>取消方法包括将基本类型值赋值给它，或是新建一个对象后赋值给它；</li>
+</ul>
+</li>
+</ul>
+<p>##3、对象的创建</p>
+<ol>
+<li>对象直接量、Object.create(）</li>
+<li>工厂模式：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = &#123; &#125;</span><br><span class="line">    obj.name = name</span><br><span class="line">    obj.age = age</span><br><span class="line">    obj.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = createPerson( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = createPerson( <span class="string">'张小凡'</span>, <span class="number">20</span> )</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>构造函数模式：</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>不用显示的创建对象</li>
+<li>自动绑定到原型对象</li>
+<li>直接将属性和方法赋值给了this对象</li>
+<li>没有return语句</li>
+<li>所有实例对象，不共用构造函数内的属性和方法，每次调用，都是在实例对象上重新创建属性和方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">    <span class="keyword">this</span>.friends = [<span class="string">'xxx'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> );</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">/*true: 所有实例对象的constructor属性指向同一个构造函数*/</span></span><br><span class="line">alert(person1.constructor === person2.constructor);   </span><br><span class="line"><span class="comment">/*false: 所有实例对象从构造函数继承的属性和方法不是同一个*/</span></span><br><span class="line">alert(person1.sayName === person2.sayName);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>原型模式</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>原型对象自带constructor属性，实例对象继承该属性及属性值</li>
+<li>所有实例对象，都共用原型对象内的属性和方法</li>
+<li>不能在创建实例之后重写原型，因为会切断实例与新原型之间的联系</li>
+<li>修改实例上从原型继承而来的引用类型数据时，其他实例该属性值也会改变，最大缺点！</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.country = <span class="string">"china"</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment">/*true: 原型和实例的constructor指向同一个构造函数*/</span></span><br><span class="line">alert(person1.constructor === Person.prototype.constructor)</span><br><span class="line"><span class="comment">/*true: 所有实例对象从原型对象继承的属性和方法都是同一个*/</span></span><br><span class="line">alert(person1.sayName === person2.sayName)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>构造函数模式+原型模式</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>实例对象自有的属性，在构造函数内创建，自有可以理解为通过传参赋值的那些属性</li>
+<li>实例对象共有的属性和方法，在原型对象内创建，共有可以理解为不需要传参赋值的那些属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    country: 'china',</span><br><span class="line">    sayName: function( )&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> )</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>ES6的class创建</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Country</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(options)&#123;</span><br><span class="line">		<span class="keyword">this</span>.countryName = options.name</span><br><span class="line">	&#125;</span><br><span class="line">	sayCountryName()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.countryName)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> contry = <span class="keyword">new</span> Country(&#123;<span class="attr">name</span>: <span class="string">'中国'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>#二、对象的属性和方法（偏概念）：</p>
+<p>##1. 属性名相关问题：</p>
+<ul>
+<li>对象的属性名都是字符串，不是字符串的也转成了字符串；</li>
+<li>属性名符合标识符规范或是纯数字时，创建时加不加引号都无所谓；<br>  {name:’张’, ‘age’:18, 0: ‘张’, ‘1’:18}</li>
+<li>属性名不符合标识符时，必须加引号；<br>  {‘2b’:250, ‘a b’:’空格’, ‘c+d’:’加号’}</li>
+<li>标识符规范：以字母、下划线__或美元符$开头，由字母、下划线、美元符或数字组成；</li>
+<li>属性值可以是任意类型，如基本类型的数字、字符串等，引用类型的对象、数组、函数等，<br>  当属性值是函数时，属性名又称为方法；</li>
+</ul>
+<p>##2. 属性查找相关问题：</p>
+<ul>
+<li>读取属性时，可以使用点运算符，也可以使用方括号运算符；</li>
+<li>使用点运算符：属性名必须符合标识符规范，<br>  如person.name、person.age，person.20报错、person.a+b报错；</li>
+<li>使用方括号：除了纯数字外，属性名必须放在引号里面，否则会被当做变量处理，<br>  如obj[1]、obj[‘1’]、obj[‘name’]；</li>
+</ul>
+<p>##3. 属性增改相关问题：</p>
+<ul>
+<li>点运算符或是方括号除了可以读取属性外，还可以创建属性和修改属性；</li>
+</ul>
+<p>##4. 属性删除相关问题：</p>
+<ul>
+<li>使用delete删除对象的属性，删除成功后返回true；</li>
+<li>delete本质是断开属性和对象之间的联系，最终表现的就像是删除一样；</li>
+<li>delete只能删除对象的自有属性，不能删除继承属性，否则会报错，继承属性要在原型上才能删除；</li>
+<li>读取已经删除的属性和读取不存在的属性一样，都返回undefined；</li>
+</ul>
+<p>##5. 种类和特性相关问题</p>
+<ul>
+<li><p>对象种类：</p>
+<ul>
+<li>内置对象：ECMAScript规范定义的对象，如数组、函数、日期和正则表达式；</li>
+<li>宿主对象：JS解释器所嵌入的宿主环境（比如Web浏览器）定义的对象；</li>
+<li>自定义对象：运行中的JS代码创建的对象；</li>
+</ul>
+</li>
+<li><p>对象特性：</p>
+<ul>
+<li>对象的原型：指向另外一个对象，对象的属性从他的原型继承；</li>
+<li>对象的类：对象所属类型；</li>
+<li>对象的扩展标记：是否可以向该对象添加新属性；</li>
+</ul>
+</li>
+<li><p>属性种类：</p>
+<ul>
+<li>自有属性：直接在对象中定义的属性；</li>
+<li>继承属性：在对象的原型对象中定义的属性；</li>
+</ul>
+</li>
+<li><p>属性特性：</p>
+<ul>
+<li>可写：表明是否可以设置该属性的值；</li>
+<li>可枚举：表明是否可以通过for/in循环返回该属性；</li>
+<li>可配置:表明是否可以删除或修改该属性</li>
+</ul>
+</li>
+</ul>
+<p>#三、补充：</p>
+<ol>
+<li>new Function()和Function()，new Array()和Array()，new Object()和Object()<br> 都是两两等价的，创造的都是引用类型，</li>
+<li>new String()和String()，new Number()和Number()<br> 是不一样的，前面创造的是引用类型，后面创造的是基本类型；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（基础）/" data-id="cjospacg3000ek4qr0n5fivo6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-小图标全解" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-小图标全解/" class="article-date">
+  <time datetime="2018-11-22T05:44:56.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-小图标全解/">CSS-小图标全解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">iconfont网站</a></p>
+<p>#一、<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">iconfont网站</a></p>
+<p>###1、Unicode方式：</p>
+<ul>
+<li>选Unicode</li>
+<li>点Click ….. Code生成代码</li>
+<li>复制进Style里面</li>
+<li>引用图标<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&amp;#xeXXX;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-html1.png" target="_blank" rel="noopener">Unicode方式：生成</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-html2.png" target="_blank" rel="noopener">Unicode方式：使用</a></p>
+<p>###2、Font class方式：</p>
+<ul>
+<li>选Font class</li>
+<li>点Click ….. Code生成代码</li>
+<li>复制进link里面</li>
+<li>引用图标<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-XXX"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-css1.png" target="_blank" rel="noopener">Font class方式：生成</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-css2.png" target="_blank" rel="noopener">Font class方式：使用</a></p>
+<p>###4、Symbol方式：</p>
+<ul>
+<li>选Symbol</li>
+<li>点Click…. Code生成代码</li>
+<li><p>复制进html文件head标签里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="comment">//at.alicdn.com/t/font_000000.js&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS代码段复制进样式表里面</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line">	 <span class="selector-class">.icon</span> &#123;</span><br><span class="line">		 <span class="attribute">width</span>: <span class="number">1em</span>; <span class="attribute">height</span>: <span class="number">1em</span>;</span><br><span class="line">		 <span class="attribute">vertical-align</span>: -<span class="number">0.15em</span>;</span><br><span class="line">		 <span class="attribute">fill</span>: currentColor;</span><br><span class="line">		 <span class="attribute">overflow</span>: hidden;</span><br><span class="line">	 &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>html代码段复制进html文档中（最好方式）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-js1.png" target="_blank" rel="noopener">Symbol方式：生成</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/icon-js2.png" target="_blank" rel="noopener">Symbol方式：使用</a></p>
+<p>#二、制作PSD/PNG设计稿：</p>
+<ul>
+<li>PS软件打开</li>
+<li>新建画布</li>
+<li>移入图标</li>
+<li>调整大小摆放位置</li>
+<li>保存文件.PSD或者.PNG</li>
+</ul>
+<p>###1.PSD设计稿：</p>
+<ul>
+<li>PS软件打开</li>
+<li>选中目标icon</li>
+<li>复制图层（新建）</li>
+<li>菜单图像选剪切</li>
+<li>菜单图像选画布大小 100*100</li>
+<li>菜单文件选导出</li>
+<li>快速导出为PNG</li>
+</ul>
+<p>###2.PNG设计稿：</p>
+<ul>
+<li>PS软件打开</li>
+<li>选框工具粗选</li>
+<li>菜单图像裁剪</li>
+<li>魔棒工具选择/反选</li>
+<li>Delete键删除</li>
+<li>菜单图像选剪切</li>
+<li>菜单图像选画布大小 100*100</li>
+<li>菜单文件选导出</li>
+<li>快速导出为PNG</li>
+</ul>
+<p>#三、Sprites雪碧/精灵图：</p>
+<ul>
+<li>打开网站</li>
+<li>选择文件</li>
+<li>设置输出类型、class类前缀、icon间距</li>
+<li>创建雪碧图</li>
+<li>开始使用：图片下载、CSS代码复制粘贴、HTML代码复制粘贴</li>
+</ul>
+<p>#四、纯CSS方法：svg</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-小图标全解/" data-id="cjospacft0003k4qr23y1ykpd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-动画" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-动画/" class="article-date">
@@ -168,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-动画/" data-id="cjosnlq480003ecqr5q1losh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-动画/" data-id="cjospacfs0002k4qree5mmv65" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +655,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjosnlq4d0009ecqr8huwd1fu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjospacfz000ak4qrcxo93e06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +747,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjosnlq4d0008ecqri4vrokfx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjospacfx0008k4qrua8k3e0w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,7 +808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjosnlq4b0006ecqrveqdu8k3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjospacfw0007k4qr3ppxmh48" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,7 +954,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjosnlq4a0005ecqrtoziwu4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjospacfu0004k4qrwxqcf5e0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -681,7 +1038,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjosnlq460001ecqrvrxs43ev" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjospacfv0005k4qr9z8t4par" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,196 +1159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjosnlq4c0007ecqrjcli1fu9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS-BFC" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/CSS-BFC/" class="article-date">
-  <time datetime="2018-11-22T02:00:15.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-BFC/">CSS-BFC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：方应杭的视频</p>
-<p>#一、什么是BFC？<br>块格式化上下文（Block Formating Context, BFC）是web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。</p>
-<p>#二、BFC有什么用？<br>实际开发中遇到的4个问题，都可以用BFC解决</p>
-<pre><code>1. 有两个div元素，是兄弟关系，  
-    都设置了外边距，此时外边距是两者之和吗？当然不是，因为发生了外边距合并。  
-2. 有两个div元素，是父子关系，  
-    如果父元素没有设置border或者padding，子元素设置了margin-top，最终的显示效果是子元素margin超出父元素区域，使父元素移动。
-3. ul中li元素全部浮动后，ul元素会出现塌陷，塌陷的意思是高度没有了。
-4. 如果一个元素浮动脱离了文档流，下面的元素就会跑上去，但是会被浮动的元素遮盖住。
-</code></pre><p>#三、怎么创建BFC？</p>
-<pre><code>1. 根元素或包含根元素的元素
-2. 浮动元素  
-    （元素的 float 不是 none）
-3. 绝对定位元素  
-    （元素的 position 为 absolute 或 fixed）
-4. 行内块元素  
-    （元素的 display 为 inline-block）
-5. overflow 值不为 visible 的块元素
-6. display 值为 flow-root 的元素  
-    （无副作用，好用）
-7. display为 flex 或 inline-flex元素的直接子元素  
-    （flex-items拥有BFC，而不是flex-container）
-8. display为 grid 或 inline-grid 元素的直接子元素  
-    （grid-items拥有BFC，而不是grid-container）
-9. 表格单元格（元素的 display为 table-cell，HTML表格单元格默认为该值）
-10. 表格标题  
-    （元素的 display 为 table-caption，HTML表格标题默认为该值）
-11. 匿名表格单元格元素        
-   （元素的 display为 table、table-row、 table-row-group、table-header-group、table-footer-group
-（分别是HTML table、row、tbody、thead、tfoot的默认属性）或 inline-table）
-12. contain 值为 layout、content或 strict 的元素
-13. 多列容器  
-    （元素的 column-count 或 column-width不为auto，包括column-count为1）
-14. column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。
-</code></pre><p>#四、慎用BFC！</p>
-<ul>
-<li>创建BFC的方法大都有副作用，因为那些方法本身有其自身的设计目的，比如浮动、绝对定位还有超出隐藏等等，</li>
-<li>虽然 display: flow-root; 没有副作用，但是兼容性暂时不好，故而BFC要慎用！</li>
-<li>需要BFC解决的问题，都有其他更好的办法解决！比如浮动塌陷可以用clearfix清浮动解决。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjosnlq420000ecqrdfbycren" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS-元素居中" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/CSS-元素居中/" class="article-date">
-  <time datetime="2018-11-22T01:52:16.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#一、水平居中：</p>
-<ol>
-<li>flex</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>text-align</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是行内/行内块元素时，使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>左右margin为auto</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是块状元素且定宽时，使用*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	margin-left: auto;</span><br><span class="line">	margin-right: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、absolute绝对定位</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       left: <span class="number">50</span>%;</span><br><span class="line">       transform: translateX(<span class="number">-50</span>%);</span><br></pre></td></tr></table></figure>
-<p>#二、垂直居中：</p>
-<ol>
-<li>flex</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>line-height</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*文字的垂直居中*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	heigth: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.child&#123;</span><br><span class="line">	line-height: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>absolute绝对定位</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       top: <span class="number">50</span>%;</span><br><span class="line">       transform: translateY(<span class="number">-50</span>%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>使用padding</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	padding: <span class="comment">/*（父子元素高度差的一半*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjosnlq470002ecqr2zr5bygu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS-选择器优先级" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/CSS-选择器优先级/" class="article-date">
-  <time datetime="2018-11-22T01:50:22.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-选择器优先级/">CSS-选择器优先级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：《CSS权威指南》page：70页</p>
-<p>#一、CSS选择器优先级如何确定？</p>
-<ol>
-<li><p>考虑权重：有!import &gt; 没有!import</p>
-</li>
-<li><p>考虑位置和引入方式：内联样式 &gt; 内部样式块 &gt; 外部样式表<br> 后面出现 &gt; 前面出现</p>
-</li>
-<li><p>考虑特殊性：高特殊性 &gt; 低特殊性 &gt; 没有特殊性</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*特殊性数值大小，特殊性可以累加*/</span></span><br><span class="line">内联样式为：<span class="number">1000</span></span><br><span class="line">id选择器为：<span class="number">0100</span></span><br><span class="line">类选择器，伪类选择器，属性选择器为：<span class="number">0010</span></span><br><span class="line">通配符选择器为：<span class="number">0000</span></span><br><span class="line">特殊性为<span class="number">0000</span>的通配符比没有特殊性的默认样式优先级高</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjosnlq4e000aecqrwndqcr2j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjospacfv0006k4qr6sied27q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1037,23 +1205,23 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-变量/">JS-变量</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/JS-null和undefined/">JS-null和undefined</a>
           </li>
         
           <li>
             <a href="/2018/11/22/JS-Promist对象/">JS-Promist对象</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-JSON对象/">JS-JSON对象</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-数组（基础）/">JS-数组（基础）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-数组（升级）/">JS-数组（升级）</a>
           </li>
         
       </ul>
