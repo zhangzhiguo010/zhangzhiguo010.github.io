@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS-布局之技术篇 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：MDN文档 #1、预备知识：  网格线：分界线组成网格，可以是水平的也可以是垂直的 网格单元：网格单元是网格中最小的单位，类似表格中的单元格 网格轨道：两个相邻网格线之间的空间，可横可竖 网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域 网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系  #2、grid容器（grid container">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-布局之技术篇">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局之grid布局/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：MDN文档 #1、预备知识：  网格线：分界线组成网格，可以是水平的也可以是垂直的 网格单元：网格单元是网格中最小的单位，类似表格中的单元格 网格轨道：两个相邻网格线之间的空间，可横可竖 网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域 网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系  #2、grid容器（grid container">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T03:14:51.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-布局之技术篇">
+<meta name="twitter:description" content="#参考资料：MDN文档 #1、预备知识：  网格线：分界线组成网格，可以是水平的也可以是垂直的 网格单元：网格单元是网格中最小的单位，类似表格中的单元格 网格轨道：两个相邻网格线之间的空间，可横可竖 网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域 网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系  #2、grid容器（grid container">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-布局之grid布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之grid布局/" class="article-date">
+  <time datetime="2018-11-22T02:11:05.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS-布局之技术篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档</p>
+<p>#1、预备知识：</p>
+<ol>
+<li>网格线：分界线组成网格，可以是水平的也可以是垂直的</li>
+<li>网格单元：网格单元是网格中最小的单位，类似表格中的单元格</li>
+<li>网格轨道：两个相邻网格线之间的空间，可横可竖</li>
+<li>网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域</li>
+<li>网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系</li>
+</ol>
+<p>#2、grid容器（grid container）的属性：</p>
+<ol>
+<li><p>grid-template-areas —-“布局可视化”</p>
+</li>
+<li><p>grid—-“简写：先行后列”</p>
+<ul>
+<li>grid-template-rows —-“行高”</li>
+<li>grid-template-columns —-“列宽”</li>
+</ul>
+</li>
+<li><p>grid-gap —-“简写：先行后列”</p>
+<ul>
+<li>grid-column-gap —-“列间距”  </li>
+<li>grid-row-gap       —-“行间距”</li>
+</ul>
+</li>
+<li><p>justify-content  —-“容器里网格 行轴对齐方式”<br> align-content    —-“容器里网格 竖轴对齐方式” </p>
+<p> 属性值：</p>
+<ul>
+<li>start —-“左对齐、上对齐”</li>
+<li>end —-“右对齐、下对齐”</li>
+<li>center —-“居中对齐”</li>
+<li>space-around —-“项目的四周空间”</li>
+<li>space-between —-“项目的相邻空间”</li>
+<li>space-evenly —-“项目的均匀空间”</li>
+</ul>
+</li>
+<li><p>justify-items —-“项目里内容 行轴对齐方式”<br> align-items —-“项目里内容 竖轴对齐方式”</p>
+<p> 属性值：</p>
+<ul>
+<li>start —-“”</li>
+<li>end —-“”</li>
+<li>center —-“”</li>
+<li>stretch —-“”</li>
+</ul>
+</li>
+<li><p>grid-auto-columns —-“隐式网格列宽”<br> grid-auto-rows —-“隐式网格行高”</p>
+</li>
+<li><p>grid-auto-flow —-“项目自动放置”</p>
+</li>
+<li><p>repeat—-“重复宽度”</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去第一列200px和最后一列50px后，剩下的自由宽度按1fr+2fr的模式重复3次*/</span></span><br><span class="line">grid-template-columns: <span class="number">200</span>px repeat(<span class="number">3</span>, <span class="number">1</span>fr <span class="number">2</span>fr) <span class="number">50</span>px;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>fr—-“自由空间比例单位”</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去500px之后，剩下的是自由宽度，1fr占自由宽度的1/3，2fr占自由宽度的2/3*/</span></span><br><span class="line">grid-template-columns: <span class="number">500</span>px  <span class="number">1</span>fr  <span class="number">2</span>fr;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>minmax(min, max) —-“参数：最小值，最大值”</li>
+</ol>
+<p>#3. grid项目（grid item）的属性：</p>
+<ol>
+<li>grid-area —-“项目区域命令”</li>
+<li><p>grid-column —-“简写：start+end”<br> grid-row —-“简写：start+end”</p>
+<ul>
+<li>grid-column-start —-“项目竖轴上起始线”</li>
+<li>grid-column-end —-“项目竖轴上结束线”</li>
+<li>grid-row-start —-“项目行轴上起始线”</li>
+<li>grid-row-end —-“项目行轴上结束线”</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义元素区域为第1列至第5列，第1行到第2行（不写时结束线加1）*/</span></span><br><span class="line">.part&#123; </span><br><span class="line">	grid-column-start: <span class="number">1</span>; </span><br><span class="line">	grid-column-end: <span class="number">5</span>; </span><br><span class="line">	grid-row-start: <span class="number">1</span>;		<span class="comment">//只跨越1行/列时，end可以不写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>justify-self —-“单个儿项目里内容行轴对齐方式”<br> align-self —-“单个儿项目里内容竖轴对齐方式”</li>
+</ol>
+<p>#4. 使用习惯：</p>
+<ol>
+<li>搭配方案1：<br> 容器的grid-template<br> 项目的grid-area</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid-template: </span><br><span class="line">           <span class="string">"header header"</span> <span class="number">100</span>px</span><br><span class="line">           <span class="string">"aside  main"</span>   auto</span><br><span class="line">           <span class="string">"footer footer"</span> <span class="number">100</span>px</span><br><span class="line">           /<span class="number">200</span>px  <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-area: header;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-area: aside;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-area: main;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-area: footer;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>搭配方案2：<br> 容器的grid-template-columns、grid-template-rows，简写属性grid<br> 项目的grid-row、grid-column</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">       width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid: <span class="number">100</span>px auto <span class="number">100</span>px / <span class="number">200</span>px <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-row: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">2</span>/<span class="number">3</span>;;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-row: <span class="number">3</span>/<span class="number">4</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjos12x510003v4qr670wdx0f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/22/CSS-层叠问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS-层叠问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/22/CSS-BFC问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">BFC问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-层叠问题/">CSS-层叠问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之技术篇</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-BFC问题/">BFC问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-元素居中问题/">元素居中问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-选择器优先级问题/">第二篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
