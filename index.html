@@ -62,6 +62,209 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-层叠问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-层叠问题/" class="article-date">
+  <time datetime="2018-11-22T03:12:44.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-层叠问题/">CSS-层叠问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：张鑫旭的文章<br><a href="https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="noopener">张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》</a></p>
+<p>#一、自己写的小诗一首：</p>
+<pre><code>    《位置层叠，谁上谁下》
+不同层叠上下文，寻根问祖祖为主；
+同一层叠上下文，层叠水平是根由；
+层叠水平不同时，七层定律要遵守；
+层叠水平相同时，后来居上登高楼。
+</code></pre><p>#二、判断方法：</p>
+<blockquote>
+<p>如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？<br><img src="file:///C:/Users/Administrator/Desktop/%E7%AE%80%E5%8E%86%E9%A1%B9%E7%9B%AE/zhangZhiGuo_blog/myBlog/img/%E4%BD%8D%E7%BD%AE%E5%B1%82%E5%8F%A0_%E6%A0%91%E7%8A%B6%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt="图片描述"></p>
+</blockquote>
+<ol>
+<li><p>如果两个元素不在同一层叠上下文中，那么寻找各自的祖先元素，直到祖先元素同处一个层叠上下文中，然后比较祖先元素的层叠水平</p>
+<pre><code>ChildA和ChildC，不在同一层叠上下文，但是ParentA和ParentB在同一层叠上下文Root中，比较ParentA和ParentB就好了
+</code></pre></li>
+<li><p>如果两个元素在同一个层叠上下文中，那么直接比较他们的层叠水平就好了</p>
+<pre><code>ChildA和ChildB，在同一个层叠上下文ParentA，比较他们自身的层叠水平就好了；
+</code></pre></li>
+<li><p>当层叠水平不同时，按照七层定律做最终判断，判断谁上谁下</p>
+</li>
+<li><p>当层叠水平相同时，写在后面的元素覆盖写在前面的元素</p>
+</li>
+</ol>
+<p>#三、名词解释：</p>
+<p>##1. 谁会创建层叠上下文？</p>
+<pre><code>/*经常使用*/
+
+1. z-index值不为auto的绝对/相对定位
+</code></pre><p>//</p>
+<pre><code>/*已经验证*/
+
+2. 根元素HTML
+3. z-index值不为auto的flex项目（flex item）  
+    (项目的父元素display: flex|inline-flex)
+4. z-index值不为auto的grid项目（grid item）   
+    (项目的父元素display: grid|inline-grid)
+</code></pre><p>//</p>
+<pre><code>/*还未验证*/
+
+5. opacity值小于1的元素
+6. transform值不是none的元素
+7. mix-blend-mode值不是normal的元素
+8. filter值不是none的元素
+9. solation值是isolate的元素
+10. will-change指定的属性值为上面任意一个
+11. -webkit-overflow-scrolling设为touch的元素
+</code></pre><p>##2. 层叠水平如何判断？<br><img src="file:///C:/Users/Administrator/Desktop/%E7%AE%80%E5%8E%86%E9%A1%B9%E7%9B%AE/zhangZhiGuo_blog/myBlog/img/%E4%BD%8D%E7%BD%AE%E5%B1%82%E5%8F%A0_7%E9%98%B6%E5%B1%82%E5%8F%A0%E6%B0%B4%E5%B9%B3.png" alt="图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-层叠问题/" data-id="cjos0v3hu00030wqrz16eople" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之技术篇" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之技术篇/" class="article-date">
+  <time datetime="2018-11-22T02:11:05.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之技术篇/">CSS-布局之技术篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档</p>
+<p>#1、预备知识：</p>
+<ol>
+<li>网格线：分界线组成网格，可以是水平的也可以是垂直的</li>
+<li>网格单元：网格单元是网格中最小的单位，类似表格中的单元格</li>
+<li>网格轨道：两个相邻网格线之间的空间，可横可竖</li>
+<li>网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域</li>
+<li>网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系</li>
+</ol>
+<p>#2、grid容器（grid container）的属性：</p>
+<ol>
+<li><p>grid-template-areas —-“布局可视化”</p>
+</li>
+<li><p>grid—-“简写：先行后列”</p>
+<ul>
+<li>grid-template-rows —-“行高”</li>
+<li>grid-template-columns —-“列宽”</li>
+</ul>
+</li>
+<li><p>grid-gap —-“简写：先行后列”</p>
+<ul>
+<li>grid-column-gap —-“列间距”  </li>
+<li>grid-row-gap       —-“行间距”</li>
+</ul>
+</li>
+<li><p>justify-content  —-“容器里网格 行轴对齐方式”<br> align-content    —-“容器里网格 竖轴对齐方式” </p>
+<p> 属性值：</p>
+<ul>
+<li>start —-“左对齐、上对齐”</li>
+<li>end —-“右对齐、下对齐”</li>
+<li>center —-“居中对齐”</li>
+<li>space-around —-“项目的四周空间”</li>
+<li>space-between —-“项目的相邻空间”</li>
+<li>space-evenly —-“项目的均匀空间”</li>
+</ul>
+</li>
+<li><p>justify-items —-“项目里内容 行轴对齐方式”<br> align-items —-“项目里内容 竖轴对齐方式”</p>
+<p> 属性值：</p>
+<ul>
+<li>start —-“”</li>
+<li>end —-“”</li>
+<li>center —-“”</li>
+<li>stretch —-“”</li>
+</ul>
+</li>
+<li><p>grid-auto-columns —-“隐式网格列宽”<br> grid-auto-rows —-“隐式网格行高”</p>
+</li>
+<li><p>grid-auto-flow —-“项目自动放置”</p>
+</li>
+<li><p>repeat—-“重复宽度”</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去第一列200px和最后一列50px后，剩下的自由宽度按1fr+2fr的模式重复3次*/</span></span><br><span class="line">grid-template-columns: <span class="number">200</span>px repeat(<span class="number">3</span>, <span class="number">1</span>fr <span class="number">2</span>fr) <span class="number">50</span>px;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>fr—-“自由空间比例单位”</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去500px之后，剩下的是自由宽度，1fr占自由宽度的1/3，2fr占自由宽度的2/3*/</span></span><br><span class="line">grid-template-columns: <span class="number">500</span>px  <span class="number">1</span>fr  <span class="number">2</span>fr;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>minmax(min, max) —-“参数：最小值，最大值”</li>
+</ol>
+<p>#3. grid项目（grid item）的属性：</p>
+<ol>
+<li>grid-area —-“项目区域命令”</li>
+<li><p>grid-column —-“简写：start+end”<br> grid-row —-“简写：start+end”</p>
+<ul>
+<li>grid-column-start —-“项目竖轴上起始线”</li>
+<li>grid-column-end —-“项目竖轴上结束线”</li>
+<li>grid-row-start —-“项目行轴上起始线”</li>
+<li>grid-row-end —-“项目行轴上结束线”</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义元素区域为第1列至第5列，第1行到第2行（不写时结束线加1）*/</span></span><br><span class="line">.part&#123; </span><br><span class="line">	grid-column-start: <span class="number">1</span>; </span><br><span class="line">	grid-column-end: <span class="number">5</span>; </span><br><span class="line">	grid-row-start: <span class="number">1</span>;		<span class="comment">//只跨越1行/列时，end可以不写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>justify-self —-“单个儿项目里内容行轴对齐方式”<br> align-self —-“单个儿项目里内容竖轴对齐方式”</li>
+</ol>
+<p>#4. 使用习惯：</p>
+<ol>
+<li>搭配方案1：<br> 容器的grid-template<br> 项目的grid-area</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid-template: </span><br><span class="line">           <span class="string">"header header"</span> <span class="number">100</span>px</span><br><span class="line">           <span class="string">"aside  main"</span>   auto</span><br><span class="line">           <span class="string">"footer footer"</span> <span class="number">100</span>px</span><br><span class="line">           /<span class="number">200</span>px  <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-area: header;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-area: aside;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-area: main;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-area: footer;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>搭配方案2：<br> 容器的grid-template-columns、grid-template-rows，简写属性grid<br> 项目的grid-row、grid-column</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">       width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid: <span class="number">100</span>px auto <span class="number">100</span>px / <span class="number">200</span>px <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-row: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">2</span>/<span class="number">3</span>;;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-row: <span class="number">3</span>/<span class="number">4</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之技术篇/" data-id="cjos0v3i500050wqr28jjb8e8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-BFC问题" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-BFC问题/" class="article-date">
@@ -128,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC问题/" data-id="cjoryj3sd00002oqr4o1b6prf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC问题/" data-id="cjos0v3hn00000wqru335wmzu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中问题/" data-id="cjoryj3sj00022oqras81q1gv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中问题/" data-id="cjos0v3hr00010wqrtzn70vkj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级问题/" data-id="cjoryj3sh00012oqr90c6g8bu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级问题/" data-id="cjos0v3ht00020wqrfntlpni5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjoryj3sk00032oqrft8jern4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjos0v3hv00040wqrnqxdd9s2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,6 +530,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/CSS-层叠问题/">CSS-层叠问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之技术篇/">CSS-布局之技术篇</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/CSS-BFC问题/">BFC问题</a>
           </li>
         
@@ -336,10 +547,6 @@
         
           <li>
             <a href="/2018/11/22/CSS-选择器优先级问题/">第二篇博客</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/hello-world/">Hello World</a>
           </li>
         
       </ul>
