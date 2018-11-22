@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS-布局经验 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：learnlayout网站 #一、响应式布局： ###1.特点：（元素）位置变化、（元素）尺寸变化、字体（大小）变化 ###2.方法：诸多技术的综合：自适应+弹性布局 ###3.优点：一套代码通用所用设备，所有设备上完美显示！ ###4.缺点：代码量大，考虑的问题多 #二、自适应布局 ###1.特点：（元素）位置变化、（元素）尺寸固定、字体（大小）固定 ###2.方法：@media查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-布局经验">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局经验/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：learnlayout网站 #一、响应式布局： ###1.特点：（元素）位置变化、（元素）尺寸变化、字体（大小）变化 ###2.方法：诸多技术的综合：自适应+弹性布局 ###3.优点：一套代码通用所用设备，所有设备上完美显示！ ###4.缺点：代码量大，考虑的问题多 #二、自适应布局 ###1.特点：（元素）位置变化、（元素）尺寸固定、字体（大小）固定 ###2.方法：@media查询">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T05:12:59.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-布局经验">
+<meta name="twitter:description" content="#参考资料：learnlayout网站 #一、响应式布局： ###1.特点：（元素）位置变化、（元素）尺寸变化、字体（大小）变化 ###2.方法：诸多技术的综合：自适应+弹性布局 ###3.优点：一套代码通用所用设备，所有设备上完美显示！ ###4.缺点：代码量大，考虑的问题多 #二、自适应布局 ###1.特点：（元素）位置变化、（元素）尺寸固定、字体（大小）固定 ###2.方法：@media查询">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-布局经验" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局经验/" class="article-date">
+  <time datetime="2018-11-22T04:40:43.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS-布局经验
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：<a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">learnlayout网站</a></p>
+<p>#一、响应式布局：</p>
+<p>###1.特点：<br>（元素）位置变化、（元素）尺寸变化、字体（大小）变化</p>
+<p>###2.方法：<br>诸多技术的综合：自适应+弹性布局</p>
+<p>###3.优点：<br>一套代码通用所用设备，所有设备上完美显示！</p>
+<p>###4.缺点：<br>代码量大，考虑的问题多</p>
+<p>#二、自适应布局</p>
+<p>###1.特点：<br>（元素）位置变化、（元素）尺寸固定、字体（大小）固定</p>
+<p>###2.方法：<br>@media查询，每个尺寸范围内，对应一套css样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*css文件样式表里的媒体查询技术*/</span></span><br><span class="line">@<span class="keyword">media</span> (min-width: <span class="number">426px</span>) and (max-width: <span class="number">768px</span>)</span><br><span class="line"></span><br><span class="line">/*css样式文件引入时的媒体查询技术*/</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"./376-768.css"</span> media=<span class="string">"only screen and (min-width: 376px) and (max-width: 768px)"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>###3.优点：<br>屏幕改变到临界点时，元素位置改变，做出最佳显示效果</p>
+<p>###4.缺点：</p>
+<ul>
+<li>元素和屏幕之间不能等比例缩放；</li>
+<li>元素本身宽高之间不能等比例缩放；</li>
+<li>为适应多种规格屏幕，需要做多套css样式；</li>
+</ul>
+<p>#三、弹性布局：（动态rem布局、vw布局）</p>
+<p>###1.特点：<br>（元素）位置固定，（元素）尺寸变化，字体（大小）不变/变化    </p>
+<p>###2.方法：</p>
+<ol>
+<li>思路：</li>
+</ol>
+<ul>
+<li>手机尺寸不同，说得是宽度不同，窄手机元素小，宽手机元素大，即让元素尺寸跟随屏幕宽度变化，</li>
+<li>px、em和rem等固定单位都是不行的，vw单位可以，因为vw和手机尺寸直接关联！</li>
+<li>rem和html的font-size有关系，如果让html的font-size和屏幕宽度建立联系，那么rem和屏幕宽度也就关联上了！</li>
+</ul>
+<ol start="2">
+<li>rem布局：</li>
+</ol>
+<ul>
+<li><p>核心：屏幕宽度 = 10rem</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1rem = html的font-size = 0.1屏幕宽度*/</span></span><br><span class="line"><span class="comment">/*除以10而不是100是因为：方便计算、浏览器font-size最小是12px*/</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123; font-size:<span class="subst">$&#123;<span class="built_in">window</span>.innerWidth<span class="regexp">/10&#125;px &#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实战：屏幕宽度为500px，元素1宽度为100px，元素2宽度为300px，如何用rem表示？</p>
+<ul>
+<li>元素1：<br>  px单位：100/500 <em> 500px<br>  rem单位：100/500 </em> 10rem</li>
+<li>元素2：<br>  px单位：300/500 <em> 500px<br>  rem单位：300/500 </em> 10rem</li>
+</ul>
+</li>
+<li>注意：太小的地方就不要用rem了，比如border的宽度，还有，body的font-size设置成16px就好了。</li>
+</ul>
+<ol start="3">
+<li>vw布局：</li>
+</ol>
+<ul>
+<li>核心：屏幕宽度 = 100vw</li>
+<li>实战：屏幕宽度为500px，元素1宽度为100px，元素2宽度为300px，如何用rem表示？<ul>
+<li>元素1：<br>  px单位：100/500 <em> 500px<br>  rem单位：100/500 </em> 100vw</li>
+<li>元素2：<br>  px单位：300/500 <em> 500px<br>  rem单位：300/500 </em> 100vw</li>
+</ul>
+</li>
+</ul>
+<p>###3.优点：<br>元素和屏幕之间等比例缩放，元素本身宽高之间等比例缩放</p>
+<p>###4.缺点：</p>
+<ul>
+<li>动态rem布局每次加载需要刷新才起作用，电脑不行，手机可以，手机是一次性加载！</li>
+<li>rem在电脑端的兼容性还不是太好，不过现在已经得到了很大的改善，查看兼容情况：<br><a href="https://caniuse.com/#" target="_blank" rel="noopener">兼容性查询</a></li>
+</ul>
+<p>#四、流式布局：（百分比布局）</p>
+<p>###1.特点：<br>（元素）位置固定、（元素）尺寸变化、字体（大小）固定</p>
+<p>###2.方法：</p>
+<ol>
+<li>使用百分比宽度（%）、绝对高度（px）</li>
+<li>设置max-width、min-width<br>（设置网页主体宽度为80%，min-width为960px）</li>
+</ol>
+<p>###3.优点：<br>元素和屏幕之间等比例缩放</p>
+<p>###4.缺点：</p>
+<ul>
+<li>元素本身宽高不能等比例缩放，因为宽度无法确定，高度没法跟着宽度走，</li>
+<li>当元素宽度被过度拉长或挤压时高度固定，会设计失真</li>
+</ul>
+<p>#五、固定布局：</p>
+<p>###1.特点：<br>（元素）位置固定、（元素）尺寸固定、字体（大小）固定</p>
+<p>###2.方法：</p>
+<ol>
+<li>使用绝对宽度（px）、绝对高度（px）</li>
+<li>设置max-width、min-width</li>
+</ol>
+<p>###3.优点：<br>简单、没兼容性问题</p>
+<p>###4.缺点：<br>屏幕尺寸改变，网页不能自动缩放</p>
+<p>#六、手机端布局：</p>
+<ul>
+<li>mobile-first（先做手机版：推荐） &amp;&amp; desktop-first（先做电脑版）</li>
+<li>某个元素在同一屏幕显示不同状态，由JavaScript去做，即JS控制元素的类/样式；</li>
+<li>某个元素在不同屏幕显示不同状态，由媒体查询去做，即符合条件时样式起作用，否则不起作用；</li>
+</ul>
+<p>###方案1：响应式：一套样式表，样式表下载，符合查询结果的样式生效！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*禁止手机对页面的缩放：宽度为设备宽度，缩放倍数为1.0*/</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> max-width: <span class="number">320px</span></span><br><span class="line">@media (min-width: <span class="number">321px</span>) and (max-width: <span class="number">375px</span>)</span><br><span class="line">@media (min-width: <span class="number">376px</span>) and (max-width: <span class="number">420px</span>)</span><br></pre></td></tr></table></figure>
+<p>###方案2：响应式：多套样式表，样式表全部下载，符合查询结果的样式表生效！<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*禁止手机对页面的缩放：宽度为设备宽度，缩放倍数为1.0*/</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./0-375.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (max-width: 375px)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./376-768.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (min-width: 376px) and (max-width: 768px)"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###方案3：非响应式：后端判断显示设备是什么，userAgent？<br>是手机就下载手机页面，是电脑就下载电脑页面，这些资源在同一服务器上。</p>
+<p>###方案4：非响应式：后端判断显示设备是什么，userAgent？<br>是手机就从xx服务器下载xx资源，是电脑就从yy服务器下载yy资源。<br>例子：（淘宝手机/电脑版，京东手机/电脑版）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjos55see00064sqre8f6wghp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/CSS-布局之定位布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS-布局之定位布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局经验/">CSS-布局经验</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
