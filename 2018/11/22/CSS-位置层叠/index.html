@@ -7,19 +7,19 @@
   
   <title>CSS-层叠 | 张治国的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？   如果两元素不在同一层叠上下文中，那么寻找各自的祖先元">
+  <meta name="description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？    如果两元素不在同一层叠上下文中，那么寻找各自的祖先">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-层叠">
 <meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-位置层叠/index.html">
 <meta property="og:site_name" content="张治国的博客">
-<meta property="og:description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？   如果两元素不在同一层叠上下文中，那么寻找各自的祖先元">
+<meta property="og:description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？    如果两元素不在同一层叠上下文中，那么寻找各自的祖先">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E6%B0%B4%E5%B9%B3.png">
-<meta property="og:updated_time" content="2018-11-22T03:30:52.250Z">
+<meta property="og:updated_time" content="2018-11-22T04:17:06.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS-层叠">
-<meta name="twitter:description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？   如果两元素不在同一层叠上下文中，那么寻找各自的祖先元">
+<meta name="twitter:description" content="#参考资料：张鑫旭的文章张鑫旭：《深入理解CSS中的层叠上下文和层叠顺序》 #一、自己写的小诗一首：     《位置层叠，谁上谁下》 不同层叠上下文，寻根问祖祖为主； 同一层叠上下文，层叠水平是根由； 层叠水平不同时，七层定律要遵守； 层叠水平相同时，后来居上登高楼。 #二、判断方法：  如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？    如果两元素不在同一层叠上下文中，那么寻找各自的祖先">
 <meta name="twitter:image" content="http://piks830x0.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B.png">
   
     <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
@@ -97,9 +97,10 @@
 层叠水平不同时，七层定律要遵守；
 层叠水平相同时，后来居上登高楼。
 </code></pre><p>#二、判断方法：</p>
-<blockquote>
-<p>如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？<br><img src="http://piks830x0.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B.png" alt=""></p>
-</blockquote>
+<ul>
+<li>如何判断两个位置发生层叠的元素，谁在上面谁在下面呢？</li>
+</ul>
+<p><img src="http://piks830x0.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B.png" alt=""></p>
 <ol>
 <li><p>如果两元素不在同一层叠上下文中，那么寻找各自的祖先元素，直到祖先元素同处一个层叠上下文中，然后比较祖先元素的层叠水平</p>
 <pre><code>ChildA和ChildC，不在同一层叠上下文，但是ParentA和ParentB在同一层叠上下文Root中，比较ParentA和ParentB就好了
@@ -140,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjos2p56n0000a8qruabkfwk1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjos35k730001cgqru87kry3e" class="article-share-link">Share</a>
       
       
     </footer>

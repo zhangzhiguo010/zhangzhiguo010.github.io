@@ -7,17 +7,19 @@
   
   <title>CSS-布局之flex布局 | 张治国的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+  <meta name="description" content="#参考资料：MDN文档，阮一峰的文章阮一峰：Flex 布局教程：语法篇 随心追梦：Flexbox完整指南- A Complete Guide to Flexbox 巩固flex知识的小游戏1 巩固flex知识的小游戏2 #1、预备知识：  flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）； flex容器是flex container，每个项目称为flex i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-布局之flex布局">
 <meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局之flex布局/index.html">
 <meta property="og:site_name" content="张治国的博客">
-<meta property="og:description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+<meta property="og:description" content="#参考资料：MDN文档，阮一峰的文章阮一峰：Flex 布局教程：语法篇 随心追梦：Flexbox完整指南- A Complete Guide to Flexbox 巩固flex知识的小游戏1 巩固flex知识的小游戏2 #1、预备知识：  flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）； flex容器是flex container，每个项目称为flex i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-22T04:04:21.273Z">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/flex.png">
+<meta property="og:updated_time" content="2018-11-22T04:16:51.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS-布局之flex布局">
-<meta name="twitter:description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+<meta name="twitter:description" content="#参考资料：MDN文档，阮一峰的文章阮一峰：Flex 布局教程：语法篇 随心追梦：Flexbox完整指南- A Complete Guide to Flexbox 巩固flex知识的小游戏1 巩固flex知识的小游戏2 #1、预备知识：  flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）； flex容器是flex container，每个项目称为flex i">
+<meta name="twitter:image" content="http://piks830x0.bkt.clouddn.com/flex.png">
   
     <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
   
@@ -86,8 +88,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#参考资料：MDN文档，张鑫旭博客<br><a href="https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/" target="_blank" rel="noopener">张鑫旭：写给自己看的display: grid布局教程</a></p>
-<p>#1、grid容器（grid container）的属性：</p>
+        <p>#参考资料：MDN文档，阮一峰的文章<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰：Flex 布局教程：语法篇</a></p>
+<p><a href="https://www.cnblogs.com/beek/p/A_Complete_Guide_to_Flexbox.html" target="_blank" rel="noopener">随心追梦：Flexbox完整指南- A Complete Guide to Flexbox</a></p>
+<p><a href="http://flexboxfroggy.com/#zh-cn%EF%BC%88flex%E3%80%81grid%EF%BC%89" target="_blank" rel="noopener">巩固flex知识的小游戏1</a></p>
+<p><a href="http://www.flexboxdefense.com/" target="_blank" rel="noopener">巩固flex知识的小游戏2</a></p>
+<p>#1、预备知识：<br><img src="http://piks830x0.bkt.clouddn.com/flex.png" alt=""></p>
+<ul>
+<li>flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）；</li>
+<li>flex容器是flex container，每个项目称为flex item；</li>
+<li>主轴是水平方向时，每个flex item占据的主轴空间为main size，占据的交叉空间为cross size；</li>
+<li>主轴起点是main start，终点是main end；</li>
+<li>交叉轴起点是cross start，终点cross end ；</li>
+<li>制作flex盒子：.container{display: flex/inline-flex}<br>  块状元素用flex，行内元素    用inline-flex；</li>
+<li>设成了flex盒子后，子元素的float、clear、vertical-align属性都会失效！</li>
+</ul>
+<p>#2、flex容器（flex container）的属性</p>
 <ol>
 <li><p>flex-direction —-“主轴的方向”</p>
 <p> 属性：</p>
@@ -140,34 +155,38 @@
 <li><p>flex-flow —-“方向 换行” 简写</p>
 </li>
 </ol>
-<p>#2. grid项目（grid item）的属性：</p>
+<p>#3. flex项目（flex item）的属性：</p>
 <ol>
 <li><p>order —-“排列顺序，值小靠前”</p>
 </li>
 <li><p>align-self —-“单个项目在交叉轴方向上的对齐方式”</p>
-<blockquote>
-<p>默认值auto，表示继承父元素的align-items属性</p>
-</blockquote>
-</li>
-<li><p>flex-basis —-“main-size值”</p>
-<blockquote>
-<p>flext-size未设定值：默认值为auto</p>
-</blockquote>
-</li>
-<li><p>flex-grow —-“增长比例（空间过多时）”</p>
-<blockquote>
-<p>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</p>
-</blockquote>
-</li>
-<li><p>flex-shrink —-“收缩比例（空间不够时）”</p>
-<blockquote>
-<p>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</p>
-</blockquote>
-</li>
-<li><p>flex —-“增长比例 收缩比例 默认值”简写</p>
 </li>
 </ol>
-<p>#3. 图片补充：</p>
+<ul>
+<li>默认值auto，表示继承父元素的align-items属性</li>
+</ul>
+<ol start="3">
+<li>flex-basis —-“main-size值”</li>
+</ol>
+<ul>
+<li>flext-size未设定值：默认值为auto</li>
+</ul>
+<ol start="4">
+<li>flex-grow —-“增长比例（空间过多时）”</li>
+</ol>
+<ul>
+<li>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</li>
+</ul>
+<ol start="5">
+<li>flex-shrink —-“收缩比例（空间不够时）”</li>
+</ol>
+<ul>
+<li>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</li>
+</ul>
+<ol start="6">
+<li>flex —-“增长比例 收缩比例 默认值”简写</li>
+</ol>
+<p>#4. 图片补充：</p>
 <p><a href="http://piks830x0.bkt.clouddn.com/flex-direction.png" target="_blank" rel="noopener">flex-direction</a></p>
 <p><a href="http://piks830x0.bkt.clouddn.com/flex-wrap.png" target="_blank" rel="noopener">flex-wrap</a></p>
 <p><a href="http://piks830x0.bkt.clouddn.com/justify-content.png" target="_blank" rel="noopener">justify-content</a></p>
@@ -183,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos2p56u0003a8qr91cpqufy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos35k760003cgqrfaiguxre" class="article-share-link">Share</a>
       
       
     </footer>
