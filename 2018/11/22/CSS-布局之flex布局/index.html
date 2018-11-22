@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS-布局之flex布局 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-布局之flex布局">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-布局之flex布局/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T04:04:21.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-布局之flex布局">
+<meta name="twitter:description" content="#参考资料：MDN文档，张鑫旭博客张鑫旭：写给自己看的display: grid布局教程 #1、grid容器（grid container）的属性：  flex-direction —-“主轴的方向”  属性：  row—-“水平方向，起点在左” 默认值 row-reverse —-“水平方向，起点在右” column—-“垂直方向，起点在上” column-reverse —-“垂直方向，起点在">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-布局之flex布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之flex布局/" class="article-date">
+  <time datetime="2018-11-22T03:32:59.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS-布局之flex布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档，张鑫旭博客<br><a href="https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/" target="_blank" rel="noopener">张鑫旭：写给自己看的display: grid布局教程</a></p>
+<p>#1、grid容器（grid container）的属性：</p>
+<ol>
+<li><p>flex-direction —-“主轴的方向”</p>
+<p> 属性：</p>
+<ul>
+<li>row—-“水平方向，起点在左” 默认值</li>
+<li>row-reverse —-“水平方向，起点在右”</li>
+<li>column—-“垂直方向，起点在上”</li>
+<li>column-reverse —-“垂直方向，起点在下”</li>
+</ul>
+</li>
+<li><p>flex-wrap —-“是否换行”</p>
+<p> 属性：</p>
+<ul>
+<li>nowrap—-“不换行” 默认值</li>
+<li>wrap—-“换行”</li>
+<li>wrap-reverse —-“换行，首行在下”</li>
+</ul>
+</li>
+<li><p>justify-content —-“容器里项目 主轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>flex-start —-“靠向起点” 默认值</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>space-between —-“两端对齐”</li>
+<li>space-around —-“等间隔对齐”</li>
+</ul>
+</li>
+<li><p>align-items —-“容器里项目 交叉轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>strentch —-“延伸”  默认值</li>
+<li>flex-start —-“靠向起点”</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>baseline —-“项目第一行文字的基线对齐” 不常用</li>
+</ul>
+</li>
+<li><p>align-content —-“项目在多根轴线对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>stretch—-“延伸” 默认值</li>
+<li>flex-start —-“靠向交叉轴起点”</li>
+<li>flex-end —-“靠向交叉轴终点”</li>
+<li>center—-“居中”</li>
+<li>space-between —-“交叉轴两端对齐”</li>
+<li>space-around —-“交叉轴等间隔对齐”</li>
+</ul>
+</li>
+<li><p>flex-flow —-“方向 换行” 简写</p>
+</li>
+</ol>
+<p>#2. grid项目（grid item）的属性：</p>
+<ol>
+<li><p>order —-“排列顺序，值小靠前”</p>
+</li>
+<li><p>align-self —-“单个项目在交叉轴方向上的对齐方式”</p>
+<blockquote>
+<p>默认值auto，表示继承父元素的align-items属性</p>
+</blockquote>
+</li>
+<li><p>flex-basis —-“main-size值”</p>
+<blockquote>
+<p>flext-size未设定值：默认值为auto</p>
+</blockquote>
+</li>
+<li><p>flex-grow —-“增长比例（空间过多时）”</p>
+<blockquote>
+<p>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</p>
+</blockquote>
+</li>
+<li><p>flex-shrink —-“收缩比例（空间不够时）”</p>
+<blockquote>
+<p>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</p>
+</blockquote>
+</li>
+<li><p>flex —-“增长比例 收缩比例 默认值”简写</p>
+</li>
+</ol>
+<p>#3. 图片补充：</p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-direction.png" target="_blank" rel="noopener">flex-direction</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-wrap.png" target="_blank" rel="noopener">flex-wrap</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/justify-content.png" target="_blank" rel="noopener">justify-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-items.png" target="_blank" rel="noopener">align-items</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-content.png" target="_blank" rel="noopener">align-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/order.png" target="_blank" rel="noopener">order</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-self.png" target="_blank" rel="noopener">align-self</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-basic.png" target="_blank" rel="noopener">flex-basis</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-grow.png" target="_blank" rel="noopener">flex-grow</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-shrink.png" target="_blank" rel="noopener">flex-shrink</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%BC%A0%E9%91%AB%E6%97%AD%20flex%E5%B1%9E%E6%80%A7.png" target="_blank" rel="noopener">flex</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos2p56u0003a8qr91cpqufy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/CSS-位置层叠/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS-层叠</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-BFC/">CSS-BFC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

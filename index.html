@@ -62,9 +62,138 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CSS-层叠问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-CSS-布局之flex布局" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/11/22/CSS-层叠问题/" class="article-date">
+    <a href="/2018/11/22/CSS-布局之flex布局/" class="article-date">
+  <time datetime="2018-11-22T03:32:59.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档，张鑫旭博客<br><a href="https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/" target="_blank" rel="noopener">张鑫旭：写给自己看的display: grid布局教程</a></p>
+<p>#1、grid容器（grid container）的属性：</p>
+<ol>
+<li><p>flex-direction —-“主轴的方向”</p>
+<p> 属性：</p>
+<ul>
+<li>row—-“水平方向，起点在左” 默认值</li>
+<li>row-reverse —-“水平方向，起点在右”</li>
+<li>column—-“垂直方向，起点在上”</li>
+<li>column-reverse —-“垂直方向，起点在下”</li>
+</ul>
+</li>
+<li><p>flex-wrap —-“是否换行”</p>
+<p> 属性：</p>
+<ul>
+<li>nowrap—-“不换行” 默认值</li>
+<li>wrap—-“换行”</li>
+<li>wrap-reverse —-“换行，首行在下”</li>
+</ul>
+</li>
+<li><p>justify-content —-“容器里项目 主轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>flex-start —-“靠向起点” 默认值</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>space-between —-“两端对齐”</li>
+<li>space-around —-“等间隔对齐”</li>
+</ul>
+</li>
+<li><p>align-items —-“容器里项目 交叉轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>strentch —-“延伸”  默认值</li>
+<li>flex-start —-“靠向起点”</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>baseline —-“项目第一行文字的基线对齐” 不常用</li>
+</ul>
+</li>
+<li><p>align-content —-“项目在多根轴线对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>stretch—-“延伸” 默认值</li>
+<li>flex-start —-“靠向交叉轴起点”</li>
+<li>flex-end —-“靠向交叉轴终点”</li>
+<li>center—-“居中”</li>
+<li>space-between —-“交叉轴两端对齐”</li>
+<li>space-around —-“交叉轴等间隔对齐”</li>
+</ul>
+</li>
+<li><p>flex-flow —-“方向 换行” 简写</p>
+</li>
+</ol>
+<p>#2. grid项目（grid item）的属性：</p>
+<ol>
+<li><p>order —-“排列顺序，值小靠前”</p>
+</li>
+<li><p>align-self —-“单个项目在交叉轴方向上的对齐方式”</p>
+<blockquote>
+<p>默认值auto，表示继承父元素的align-items属性</p>
+</blockquote>
+</li>
+<li><p>flex-basis —-“main-size值”</p>
+<blockquote>
+<p>flext-size未设定值：默认值为auto</p>
+</blockquote>
+</li>
+<li><p>flex-grow —-“增长比例（空间过多时）”</p>
+<blockquote>
+<p>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</p>
+</blockquote>
+</li>
+<li><p>flex-shrink —-“收缩比例（空间不够时）”</p>
+<blockquote>
+<p>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</p>
+</blockquote>
+</li>
+<li><p>flex —-“增长比例 收缩比例 默认值”简写</p>
+</li>
+</ol>
+<p>#3. 图片补充：</p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-direction.png" target="_blank" rel="noopener">flex-direction</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-wrap.png" target="_blank" rel="noopener">flex-wrap</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/justify-content.png" target="_blank" rel="noopener">justify-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-items.png" target="_blank" rel="noopener">align-items</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-content.png" target="_blank" rel="noopener">align-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/order.png" target="_blank" rel="noopener">order</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-self.png" target="_blank" rel="noopener">align-self</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-basic.png" target="_blank" rel="noopener">flex-basis</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-grow.png" target="_blank" rel="noopener">flex-grow</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-shrink.png" target="_blank" rel="noopener">flex-shrink</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%BC%A0%E9%91%AB%E6%97%AD%20flex%E5%B1%9E%E6%80%A7.png" target="_blank" rel="noopener">flex</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjos2p56u0003a8qr91cpqufy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-位置层叠" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-位置层叠/" class="article-date">
   <time datetime="2018-11-22T03:12:44.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
     
@@ -76,7 +205,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-层叠问题/">CSS-层叠问题</a>
+      <a class="article-title" href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
     </h1>
   
 
@@ -135,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-层叠问题/" data-id="cjos1cz2y0001ugqr5l11nq7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjos2p56n0000a8qruabkfwk1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +288,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之技术篇</a>
+      <a class="article-title" href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
     </h1>
   
 
@@ -255,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjos1cz300003ugqri6cuxvgg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjos2p56w0005a8qrghxm2c7e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,9 +394,9 @@
 
 
   
-    <article id="post-CSS-BFC问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-CSS-BFC" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/11/22/CSS-BFC问题/" class="article-date">
+    <a href="/2018/11/22/CSS-BFC/" class="article-date">
   <time datetime="2018-11-22T02:00:15.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
     
@@ -279,7 +408,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-BFC问题/">BFC问题</a>
+      <a class="article-title" href="/2018/11/22/CSS-BFC/">CSS-BFC</a>
     </h1>
   
 
@@ -331,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC问题/" data-id="cjos1cz2z0002ugqrz7uhf7e5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjos2p56s0001a8qr500pnnyr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,9 +470,9 @@
 
 
   
-    <article id="post-CSS-元素居中问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-CSS-元素居中" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/11/22/CSS-元素居中问题/" class="article-date">
+    <a href="/2018/11/22/CSS-元素居中/" class="article-date">
   <time datetime="2018-11-22T01:52:16.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
     
@@ -355,7 +484,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-元素居中问题/">元素居中问题</a>
+      <a class="article-title" href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
     </h1>
   
 
@@ -398,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中问题/" data-id="cjos1cz2u0000ugqrn6c4ngi1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjos2p56t0002a8qrbc1oqc05" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,9 +537,9 @@
 
 
   
-    <article id="post-CSS-选择器优先级问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-CSS-选择器优先级" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/11/22/CSS-选择器优先级问题/" class="article-date">
+    <a href="/2018/11/22/CSS-选择器优先级/" class="article-date">
   <time datetime="2018-11-22T01:50:22.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
     
@@ -422,7 +551,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-选择器优先级问题/">第二篇博客</a>
+      <a class="article-title" href="/2018/11/22/CSS-选择器优先级/">CSS-选择器优先级</a>
     </h1>
   
 
@@ -444,7 +573,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级问题/" data-id="cjos1cz310004ugqr6uzcy1r8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjos2p56v0004a8qr6rtfakzl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -489,7 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjos1cz3b0005ugqrqq4mcdkv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjos2p5760006a8qrh93cnjao" class="article-share-link">Share</a>
       
       
     </footer>
@@ -530,23 +659,23 @@
       <ul>
         
           <li>
-            <a href="/2018/11/22/CSS-层叠问题/">CSS-层叠问题</a>
+            <a href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之技术篇</a>
+            <a href="/2018/11/22/CSS-位置层叠/">CSS-层叠</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/CSS-BFC问题/">BFC问题</a>
+            <a href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/CSS-元素居中问题/">元素居中问题</a>
+            <a href="/2018/11/22/CSS-BFC/">CSS-BFC</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/CSS-选择器优先级问题/">第二篇博客</a>
+            <a href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
           </li>
         
       </ul>
