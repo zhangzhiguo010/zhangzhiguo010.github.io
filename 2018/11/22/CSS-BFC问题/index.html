@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>BFC问题 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：方应杭的视频 #一、什么是BFC？块格式化上下文（Block Formating Context, BFC）是web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。 #二、BFC有什么用？实际开发中遇到的4个问题，都可以用BFC解决 1. 有两个div元素，是兄弟关系，       都设置了外边距，此时外边距是两者之和吗？当然不是，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BFC问题">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/CSS-BFC问题/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：方应杭的视频 #一、什么是BFC？块格式化上下文（Block Formating Context, BFC）是web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。 #二、BFC有什么用？实际开发中遇到的4个问题，都可以用BFC解决 1. 有两个div元素，是兄弟关系，       都设置了外边距，此时外边距是两者之和吗？当然不是，">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T02:07:34.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BFC问题">
+<meta name="twitter:description" content="#参考资料：方应杭的视频 #一、什么是BFC？块格式化上下文（Block Formating Context, BFC）是web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。 #二、BFC有什么用？实际开发中遇到的4个问题，都可以用BFC解决 1. 有两个div元素，是兄弟关系，       都设置了外边距，此时外边距是两者之和吗？当然不是，">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS-BFC问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-BFC问题/" class="article-date">
+  <time datetime="2018-11-22T02:00:15.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BFC问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：方应杭的视频</p>
+<p>#一、什么是BFC？<br>块格式化上下文（Block Formating Context, BFC）是web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。</p>
+<p>#二、BFC有什么用？<br>实际开发中遇到的4个问题，都可以用BFC解决</p>
+<pre><code>1. 有两个div元素，是兄弟关系，  
+    都设置了外边距，此时外边距是两者之和吗？当然不是，因为发生了外边距合并。  
+2. 有两个div元素，是父子关系，  
+    如果父元素没有设置border或者padding，子元素设置了margin-top，最终的显示效果是子元素margin超出父元素区域，使父元素移动。
+3. ul中li元素全部浮动后，ul元素会出现塌陷，塌陷的意思是高度没有了。
+4. 如果一个元素浮动脱离了文档流，下面的元素就会跑上去，但是会被浮动的元素遮盖住。
+</code></pre><p>#三、怎么创建BFC？</p>
+<pre><code>1. 根元素或包含根元素的元素
+2. 浮动元素  
+    （元素的 float 不是 none）
+3. 绝对定位元素  
+    （元素的 position 为 absolute 或 fixed）
+4. 行内块元素  
+    （元素的 display 为 inline-block）
+5. overflow 值不为 visible 的块元素
+6. display 值为 flow-root 的元素  
+    （无副作用，好用）
+7. display为 flex 或 inline-flex元素的直接子元素  
+    （flex-items拥有BFC，而不是flex-container）
+8. display为 grid 或 inline-grid 元素的直接子元素  
+    （grid-items拥有BFC，而不是grid-container）
+9. 表格单元格（元素的 display为 table-cell，HTML表格单元格默认为该值）
+10. 表格标题  
+    （元素的 display 为 table-caption，HTML表格标题默认为该值）
+11. 匿名表格单元格元素        
+   （元素的 display为 table、table-row、 table-row-group、table-header-group、table-footer-group
+（分别是HTML table、row、tbody、thead、tfoot的默认属性）或 inline-table）
+12. contain 值为 layout、content或 strict 的元素
+13. 多列容器  
+    （元素的 column-count 或 column-width不为auto，包括column-count为1）
+14. column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。
+</code></pre><p>#四、慎用BFC！</p>
+<ul>
+<li>创建BFC的方法大都有副作用，因为那些方法本身有其自身的设计目的，比如浮动、绝对定位还有超出隐藏等等，</li>
+<li>虽然 display: flow-root; 没有副作用，但是兼容性暂时不好，故而BFC要慎用！</li>
+<li>需要BFC解决的问题，都有其他更好的办法解决！比如浮动塌陷可以用clearfix清浮动解决。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC问题/" data-id="cjoryj3sd00002oqr4o1b6prf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/CSS-元素居中问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">元素居中问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/CSS-BFC问题/">BFC问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-元素居中问题/">元素居中问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/CSS-选择器优先级问题/">第二篇博客</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
