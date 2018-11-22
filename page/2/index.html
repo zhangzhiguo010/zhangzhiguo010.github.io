@@ -62,6 +62,213 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-布局之float布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之float布局/" class="article-date">
+  <time datetime="2018-11-22T04:19:57.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：288页</p>
+<h1 id="我的一点总结："><a href="#我的一点总结：" class="headerlink" title="我的一点总结："></a>我的一点总结：</h1><ul>
+<li>浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。</li>
+<li>脱离文档流的意思就是，正常的文档流中丢失了它的位置。</li>
+<li>浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。</li>
+<li>三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来</li>
+<li>父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素就无法被撑开（塌陷），所以    导致父元素的背景、边框等属性无法生效，也会使后面的元素顶上来。</li>
+<li>我们使用浮动一般是为了让块级元素实现行级元素的特性（类似inline-block），但也不希望浮动元素影响后面的元素位置</li>
+<li>当浮动失去文档流，使后面的元素顶上来以后，一般有三种方法可以处理：<ul>
+<li>1、为父元素增加height属性，这样父元素就会显示边框、背景等，但这种情况是确定浮动元素    的高度时才这么做，但是实际中，可能不清楚高度哦</li>
+<li>2、为浮动元素后面的元素增加clear:both（clearfix清浮动），清除浮动效果，如果没有后面    元素的话，增加一个元素。</li>
+<li>3、为父元素设置overflow:hidden属性（BFC—–块格式化上下文）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*清除浮动，添加这个类即可*/</span></span><br><span class="line">.clearfix::after&#123; </span><br><span class="line">	content: <span class="string">""</span>;  </span><br><span class="line">	display: bolock;  </span><br><span class="line">	clear: both; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>float属性：</p>
+<ul>
+<li>left—-“左浮动”</li>
+<li>right—-“右浮动”</li>
+<li>none—-“不浮动”</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjoslz2yb00040cqrzll8qod7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之flex布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之flex布局/" class="article-date">
+  <time datetime="2018-11-22T03:32:59.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档，阮一峰的文章<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰：Flex 布局教程：语法篇</a></p>
+<p><a href="https://www.cnblogs.com/beek/p/A_Complete_Guide_to_Flexbox.html" target="_blank" rel="noopener">随心追梦：Flexbox完整指南- A Complete Guide to Flexbox</a></p>
+<p><a href="http://flexboxfroggy.com/#zh-cn%EF%BC%88flex%E3%80%81grid%EF%BC%89" target="_blank" rel="noopener">巩固flex知识的小游戏1</a></p>
+<p><a href="http://www.flexboxdefense.com/" target="_blank" rel="noopener">巩固flex知识的小游戏2</a></p>
+<p>#1、预备知识：<br><img src="http://piks830x0.bkt.clouddn.com/flex.png" alt=""></p>
+<ul>
+<li>flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）；</li>
+<li>flex容器是flex container，每个项目称为flex item；</li>
+<li>主轴是水平方向时，每个flex item占据的主轴空间为main size，占据的交叉空间为cross size；</li>
+<li>主轴起点是main start，终点是main end；</li>
+<li>交叉轴起点是cross start，终点cross end ；</li>
+<li>制作flex盒子：.container{display: flex/inline-flex}<br>  块状元素用flex，行内元素    用inline-flex；</li>
+<li>设成了flex盒子后，子元素的float、clear、vertical-align属性都会失效！</li>
+</ul>
+<p>#2、flex容器（flex container）的属性</p>
+<ol>
+<li><p>flex-direction —-“主轴的方向”</p>
+<p> 属性：</p>
+<ul>
+<li>row—-“水平方向，起点在左” 默认值</li>
+<li>row-reverse —-“水平方向，起点在右”</li>
+<li>column—-“垂直方向，起点在上”</li>
+<li>column-reverse —-“垂直方向，起点在下”</li>
+</ul>
+</li>
+<li><p>flex-wrap —-“是否换行”</p>
+<p> 属性：</p>
+<ul>
+<li>nowrap—-“不换行” 默认值</li>
+<li>wrap—-“换行”</li>
+<li>wrap-reverse —-“换行，首行在下”</li>
+</ul>
+</li>
+<li><p>justify-content —-“容器里项目 主轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>flex-start —-“靠向起点” 默认值</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>space-between —-“两端对齐”</li>
+<li>space-around —-“等间隔对齐”</li>
+</ul>
+</li>
+<li><p>align-items —-“容器里项目 交叉轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>strentch —-“延伸”  默认值</li>
+<li>flex-start —-“靠向起点”</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>baseline —-“项目第一行文字的基线对齐” 不常用</li>
+</ul>
+</li>
+<li><p>align-content —-“项目在多根轴线对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>stretch—-“延伸” 默认值</li>
+<li>flex-start —-“靠向交叉轴起点”</li>
+<li>flex-end —-“靠向交叉轴终点”</li>
+<li>center—-“居中”</li>
+<li>space-between —-“交叉轴两端对齐”</li>
+<li>space-around —-“交叉轴等间隔对齐”</li>
+</ul>
+</li>
+<li><p>flex-flow —-“方向 换行” 简写</p>
+</li>
+</ol>
+<p>#3. flex项目（flex item）的属性：</p>
+<ol>
+<li><p>order —-“排列顺序，值小靠前”</p>
+</li>
+<li><p>align-self —-“单个项目在交叉轴方向上的对齐方式”</p>
+</li>
+</ol>
+<ul>
+<li>默认值auto，表示继承父元素的align-items属性</li>
+</ul>
+<ol start="3">
+<li>flex-basis —-“main-size值”</li>
+</ol>
+<ul>
+<li>flext-size未设定值：默认值为auto</li>
+</ul>
+<ol start="4">
+<li>flex-grow —-“增长比例（空间过多时）”</li>
+</ol>
+<ul>
+<li>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</li>
+</ul>
+<ol start="5">
+<li>flex-shrink —-“收缩比例（空间不够时）”</li>
+</ol>
+<ul>
+<li>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</li>
+</ul>
+<ol start="6">
+<li>flex —-“增长比例 收缩比例 默认值”简写</li>
+</ol>
+<p>#4. 图片补充：</p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-direction.png" target="_blank" rel="noopener">flex-direction</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-wrap.png" target="_blank" rel="noopener">flex-wrap</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/justify-content.png" target="_blank" rel="noopener">justify-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-items.png" target="_blank" rel="noopener">align-items</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-content.png" target="_blank" rel="noopener">align-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/order.png" target="_blank" rel="noopener">order</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-self.png" target="_blank" rel="noopener">align-self</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-basic.png" target="_blank" rel="noopener">flex-basis</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-grow.png" target="_blank" rel="noopener">flex-grow</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-shrink.png" target="_blank" rel="noopener">flex-shrink</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%BC%A0%E9%91%AB%E6%97%AD%20flex%E5%B1%9E%E6%80%A7.png" target="_blank" rel="noopener">flex</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjoslz2ye00070cqr9bp2hs60" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-位置层叠" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-位置层叠/" class="article-date">
@@ -136,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjosftsfp0001eoqrz4pnssjy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjoslz2y800010cqr854566cm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjosftsfv0006eoqr2telpix4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjoslz2yd00060cqra0vtoerk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjosftsfl0000eoqrcv5igjb1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjoslz2y400000cqrm7v96r70" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjosftsfw0007eoqrdz3891a8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjoslz2ya00030cqrcre0dq01" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjosftsfx0009eoqr7dj155hu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjoslz2yi000b0cqrjj52qel9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjosftsg3000eeoqr87bqgy30" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjoslz2yn000g0cqrg3b0t86q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -537,6 +744,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/JS-数组（基础）/">JS-数组（基础）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-数组（升级）/">JS-数组（升级）</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/JS-函数（升级）/">JS-函数（升级）</a>
           </li>
         
@@ -546,14 +761,6 @@
         
           <li>
             <a href="/2018/11/22/JS-对象（升级）/">JS-对象（升级）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-对象（基础）/">JS-对象（基础）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/CSS-小图标全解/">CSS-小图标全解</a>
           </li>
         
       </ul>

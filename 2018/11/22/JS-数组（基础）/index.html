@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS-数组（基础） | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：MDN、《JS高程》、《JS权威指南》 #一、数组的创建和调用 ##1.数组定义相关问题：  数组是按次序排列的一组值，每个值的位置都有编号（从0开始），整个数组用方括号表示； 数组是特殊的对象，特殊在于他的键名/属性名是按次序排列的一组整数， typeof运算符检测数组，返回object； 数组的原型链上有Array.prototype对象，该对象拥有操控数组的方法和属性；  ##2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-数组（基础）">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/JS-数组（基础）/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：MDN、《JS高程》、《JS权威指南》 #一、数组的创建和调用 ##1.数组定义相关问题：  数组是按次序排列的一组值，每个值的位置都有编号（从0开始），整个数组用方括号表示； 数组是特殊的对象，特殊在于他的键名/属性名是按次序排列的一组整数， typeof运算符检测数组，返回object； 数组的原型链上有Array.prototype对象，该对象拥有操控数组的方法和属性；  ##2">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-22T13:03:52.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-数组（基础）">
+<meta name="twitter:description" content="#参考资料：MDN、《JS高程》、《JS权威指南》 #一、数组的创建和调用 ##1.数组定义相关问题：  数组是按次序排列的一组值，每个值的位置都有编号（从0开始），整个数组用方括号表示； 数组是特殊的对象，特殊在于他的键名/属性名是按次序排列的一组整数， typeof运算符检测数组，返回object； 数组的原型链上有Array.prototype对象，该对象拥有操控数组的方法和属性；  ##2">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS-数组（基础）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-数组（基础）/" class="article-date">
+  <time datetime="2018-11-22T12:43:34.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS-数组（基础）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN、《JS高程》、《JS权威指南》</p>
+<p>#一、数组的创建和调用</p>
+<p>##1.数组定义相关问题：</p>
+<ul>
+<li>数组是按次序排列的一组值，每个值的位置都有编号（从0开始），整个数组用方括号表示；</li>
+<li>数组是特殊的对象，特殊在于他的键名/属性名是按次序排列的一组整数，</li>
+<li>typeof运算符检测数组，返回object；</li>
+<li>数组的原型链上有Array.prototype对象，该对象拥有操控数组的方法和属性；</li>
+</ul>
+<p>##2. 数组创建相关问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*new Array()*/</span></span><br><span class="line"><span class="keyword">var</span> color = <span class="keyword">new</span> <span class="built_in">Array</span>( <span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"blue"</span>);</span><br><span class="line"><span class="comment">/*数组直接量*/</span></span><br><span class="line"><span class="keyword">var</span> color = [<span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"blue"</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>new Array( )方法中：<br>  只有一个参数是就是数组的长度，数组元素都是空元素；<br>  两个及以上参数时，才是数组！</li>
+<li>new Array( )方法中，有没有new都一样，和对象与函数的一样，<br>  但是基本类型的构造函数创建方法有和没有new有着本质的区别。</li>
+</ul>
+<p>##3. 数组元素相关问题：</p>
+<ul>
+<li>和对象一样，数组的属性名也是字符串，写成数字，会转成字符串，arr[0]===arr[‘0’]；</li>
+<li>数组的属性名不符合标识符规范，只能使用方括号操作数组，不能使用点运算符；</li>
+<li>方括号法操作数组包括取元素，修改元素，新增元素</li>
+<li>除了可以定义时赋值，也可以先定义后赋值，任何类型的数据都可以放入数组；<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'22'</span>,<span class="number">33</span>, &#123;<span class="attr">a</span>:<span class="number">44</span>,<span class="attr">b</span>:<span class="string">'cc'</span>&#125;, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="literal">true</span>;&#125;]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#二、其他零散知识</p>
+<p>###1. 数组空位：</p>
+<ul>
+<li>两个逗号之间没有任何值，则是空位，  </li>
+<li>delete删除元素会创建空位，空位也占元素个数；</li>
+<li>空位是可以读取的，返回undefined；</li>
+<li>空位表示数组没有这个元素，所以不会被for/in等方法遍历到，</li>
+<li>undefined表示数组有这个元素，值为undefined；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="string">'abc'</span>, , <span class="literal">undefined</span>, <span class="string">'def'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/*for/in循环会跳过空位*/</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123; <span class="built_in">console</span>.log(arr[i]) &#125;;    	<span class="comment">//'abc' undefined 'def'   </span></span><br><span class="line"></span><br><span class="line">arr.length; 					<span class="comment">//4  			length属性不会跳过空位</span></span><br><span class="line">arr[<span class="number">0</span>]; 						<span class="comment">//'abc'</span></span><br><span class="line"><span class="keyword">delete</span> arr[<span class="number">0</span>];  </span><br><span class="line">arr[<span class="number">0</span>];   						<span class="comment">//undefined  	删除元素形成空位       </span></span><br><span class="line">arr.length;                    	<span class="comment">//4    			删除了元素但不影响元素个数</span></span><br><span class="line">arr[<span class="number">1</span>]; 						<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>###2. in运算符：</p>
+<ul>
+<li>in运算符检查数组是否有某个键名，它适用于对象也适用于数组；</li>
+<li>如果某个位置是空位，in运算符返回false；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'位置0'</span>, <span class="literal">undefined</span>];</span><br><span class="line"><span class="number">0</span> <span class="keyword">in</span> arr; 			<span class="comment">//非空位，返回true</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">in</span> arr; 			<span class="comment">//undefined和空位不一样，返回true</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">in</span> arr; 			<span class="comment">//空位，返回fals</span></span><br></pre></td></tr></table></figure>
+<p>###3. 类/伪数组对象：</p>
+<ul>
+<li>伪数组原型链上没有Array.prototype对象</li>
+<li>如果一个对象的所有键名都是正整数或零，并且有length属性，它就是伪数组。</li>
+<li>类数组对象不是数组，数组特有的方法，它是没有的，比如push等方法；</li>
+<li>类数组对象虽然也有length属性，但它是固定的而数组的length是随着元素变化而变化的；</li>
+<li>典型的类数组对象有字符串，函数的arguments对象，以及大多数的DOM元素集，<br>  如document.genElementsByTagName(‘p’);     </li>
+<li>将类数组对象转成数组对象的方法有：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方法1：推荐*/</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.from(arrayLike)</span><br><span class="line"><span class="comment">/*方法2：slice方法*/</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.prototype.slice.call(arrayLike);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjoslz2yu000h0cqrr55nsvi9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/JS-数组（升级）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS-数组（升级）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/JS-数组（基础）/">JS-数组（基础）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-数组（升级）/">JS-数组（升级）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-函数（升级）/">JS-函数（升级）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-函数（基础）/">JS-函数（基础）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-对象（升级）/">JS-对象（升级）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
