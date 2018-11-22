@@ -62,119 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-元素居中问题" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/元素居中问题/" class="article-date">
-  <time datetime="2018-11-22T01:52:16.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/元素居中问题/">元素居中问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#一、水平居中：</p>
-<ol>
-<li>flex</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>text-align</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是行内/行内块元素时，使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>左右margin为auto</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是块状元素且定宽时，使用*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	margin-left: auto;</span><br><span class="line">	margin-right: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、absolute绝对定位</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       left: <span class="number">50</span>%;</span><br><span class="line">       transform: translateX(<span class="number">-50</span>%);</span><br></pre></td></tr></table></figure>
-<p>#二、垂直居中：</p>
-<ol>
-<li>flex</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>line-height</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*文字的垂直居中*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	heigth: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.child&#123;</span><br><span class="line">	line-height: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>absolute绝对定位</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       top: <span class="number">50</span>%;</span><br><span class="line">       transform: translateY(<span class="number">-50</span>%);</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>使用padding</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	padding: <span class="comment">/*（父子元素高度差的一半*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/元素居中问题/" data-id="cjory02l30001nsqrsz79cgtp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第二篇博客" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/第二篇博客/" class="article-date">
-  <time datetime="2018-11-22T01:50:22.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/第二篇博客/">第二篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：《CSS权威指南》page：70页</p>
-<p>#一、CSS选择器优先级如何确定？</p>
-<ol>
-<li><p>考虑权重：有!import &gt; 没有!import</p>
-</li>
-<li><p>考虑位置和引入方式：内联样式 &gt; 内部样式块 &gt; 外部样式表<br> 后面出现 &gt; 前面出现</p>
-</li>
-<li><p>考虑特殊性：高特殊性 &gt; 低特殊性 &gt; 没有特殊性</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*特殊性数值大小，特殊性可以累加*/</span></span><br><span class="line">内联样式为：<span class="number">1000</span></span><br><span class="line">id选择器为：<span class="number">0100</span></span><br><span class="line">类选择器，伪类选择器，属性选择器为：<span class="number">0010</span></span><br><span class="line">通配符选择器为：<span class="number">0000</span></span><br><span class="line">特殊性为<span class="number">0000</span>的通配符比没有特殊性的默认样式优先级高</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/第二篇博客/" data-id="cjory02l50002nsqrl57idn9h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-开博大吉" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/开博大吉/" class="article-date">
@@ -202,7 +89,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/开博大吉/" data-id="cjory02l60003nsqrsdktpuln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/开博大吉/" data-id="cjory4zdl00013cqr2ximmh0u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjory02ky0000nsqri8qd4vkr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjory4zdh00003cqro4pn4p7a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,14 +173,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2018/11/22/元素居中问题/">元素居中问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/第二篇博客/">第二篇博客</a>
-          </li>
         
           <li>
             <a href="/2018/11/22/开博大吉/">开博大吉</a>
