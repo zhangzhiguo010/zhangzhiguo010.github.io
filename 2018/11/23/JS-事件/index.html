@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS-事件 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：《JS高程》page345页、《JS权威指南》page440页 #一、基础概念： ###1. 事件定义：文档或浏览器中发生的一些特定的交互瞬间 ###2. 事件构成：  事件源：指定事件发生在哪个元素上 事件类型：发生了哪种事件 事件处理程序：事件发生时执行的函数   ###3. 事件流定义：  定义：接收事件的顺序 事件流三阶段： 捕获阶段：从最不具体的元素到最具体的元素  处于目标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-事件">
+<meta property="og:url" content="http://yoursite.com/2018/11/23/JS-事件/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：《JS高程》page345页、《JS权威指南》page440页 #一、基础概念： ###1. 事件定义：文档或浏览器中发生的一些特定的交互瞬间 ###2. 事件构成：  事件源：指定事件发生在哪个元素上 事件类型：发生了哪种事件 事件处理程序：事件发生时执行的函数   ###3. 事件流定义：  定义：接收事件的顺序 事件流三阶段： 捕获阶段：从最不具体的元素到最具体的元素  处于目标">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6%E4%B8%93%E6%9C%89%E5%B1%9E%E6%80%A7.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E9%BC%A0%E6%A0%87%E5%8F%8A%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E7%A4%BA%E4%BE%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97.png">
+<meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E6%B5%81%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-11-23T01:11:38.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-事件">
+<meta name="twitter:description" content="#参考资料：《JS高程》page345页、《JS权威指南》page440页 #一、基础概念： ###1. 事件定义：文档或浏览器中发生的一些特定的交互瞬间 ###2. 事件构成：  事件源：指定事件发生在哪个元素上 事件类型：发生了哪种事件 事件处理程序：事件发生时执行的函数   ###3. 事件流定义：  定义：接收事件的顺序 事件流三阶段： 捕获阶段：从最不具体的元素到最具体的元素  处于目标">
+<meta name="twitter:image" content="http://piks830x0.bkt.clouddn.com/%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6.png">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS-事件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/JS-事件/" class="article-date">
+  <time datetime="2018-11-23T00:19:07.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS-事件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《JS高程》page345页、《JS权威指南》page440页</p>
+<p>#一、基础概念：</p>
+<p>###1. 事件定义：<br>文档或浏览器中发生的一些特定的交互瞬间</p>
+<p>###2. 事件构成：</p>
+<ul>
+<li>事件源：指定事件发生在哪个元素上</li>
+<li>事件类型：发生了哪种事件</li>
+<li>事件处理程序：事件发生时执行的函数 </li>
+</ul>
+<p>###3. 事件流定义：</p>
+<ol>
+<li>定义：接收事件的顺序</li>
+<li>事件流三阶段：<ul>
+<li>捕获阶段：从最不具体的元素到最具体的元素 </li>
+<li>处于目标阶段（冒泡阶段的一部分）</li>
+<li>冒泡阶段：从最具体的元素到最不具体的元素</li>
+</ul>
+</li>
+<li>捕获和冒泡谁先执行？</li>
+</ol>
+<ul>
+<li>绑定事件的元素和触发事件的元素不同时，先执行捕获阶段的，后执行冒泡阶段的；</li>
+<li>绑定事件的元素和触发事件的元素相同时，代码里面谁在前面谁就先执行。</li>
+</ul>
+<ol start="4">
+<li>某个元素上发生某个事件时，都会在左侧从上到下询问一遍，紧接着在右侧从下到上询问一遍，<br>虽然左侧右侧都会询问一遍，但只会在设定的那一侧才执行：</li>
+</ol>
+<p>#二、事件处理函数：</p>
+<p>###1. DOM2级事件处理程序（建议使用）</p>
+<ul>
+<li>增<ul>
+<li>例：<code>btn.addEventListener(&quot;click&quot;, handler, false);</code></li>
+</ul>
+</li>
+<li>删<ul>
+<li>例：<code>btn.removeEventListener(&quot;click&quot;, handler, false);</code></li>
+</ul>
+</li>
+<li>备注<ul>
+<li>false规定只在冒泡阶段发生（包括目标阶段），默认是false，不写也是false</li>
+</ul>
+</li>
+</ul>
+<p>###2. DOM0级事件处理程序（不建议使用）</p>
+<ul>
+<li><p>增</p>
+<ul>
+<li>例：<code>btn.onclick=handler;</code></li>
+</ul>
+</li>
+<li><p>删</p>
+<ul>
+<li>例：<code>btn.onclick=null;</code></li>
+</ul>
+</li>
+<li>DOM0级会覆盖，比如后面添加的onclick会覆盖前面的onclick，不要使用；</li>
+</ul>
+<p>###3. HTML（勿用）事件处理程序</p>
+<ul>
+<li><p>增</p>
+<ul>
+<li>例：<code>&lt;input onclick=&quot;handler&quot;/&gt;</code></li>
+</ul>
+</li>
+<li><p>删</p>
+<ul>
+<li>例：<code>input.onclick=null;</code></li>
+</ul>
+</li>
+</ul>
+<p>###4. IE（勿用）事件处理程序</p>
+<ul>
+<li>增<ul>
+<li>例：<code>btn.attachEvent(&quot;onclick&quot;, handler);</code></li>
+</ul>
+</li>
+<li>删<ul>
+<li>例：<code>btn.detachEvent(&quot;onclick&quot;, handler);</code></li>
+</ul>
+</li>
+</ul>
+<p>#三、事件类型：</p>
+<p>###1. UI事件</p>
+<ul>
+<li>load：内容完全加载后在相应对象上触发，<ul>
+<li>当页面完全加载后在window对象上触发（完全：包括所有图像、JS和CSS等外部资源）</li>
+<li>当图像完全加载后在img元素对应的对象上触发</li>
+</ul>
+</li>
+<li>DOMContentLoaded：形成完整的DOM树之后就会触发，<ul>
+<li>而不必等到所有外部资源都加载完毕后才会被触发</li>
+</ul>
+</li>
+<li>unload：内容被完全卸载后在相应对象上触发</li>
+<li>beforeunload：内容被卸载之前在相应对象上触发，<ul>
+<li>在页面被卸载前起到给用户一个提示的作用</li>
+</ul>
+</li>
+<li>resize：当浏览器窗口大小改变后在window对象上触发</li>
+<li>scroll：当滚动条移动后在相应对象上触发</li>
+<li>error：当发生JS错误时在相应对象上触发</li>
+<li>select：当文本框（input或texterea）字符被选中时在对象上触发</li>
+</ul>
+<p>###2. 焦点事件<br><img src="http://piks830x0.bkt.clouddn.com/%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6.png" alt=""></p>
+<p>###3. 键盘及文本事件<br>还有个input事件，用到过但还没深挖</p>
+<p><img src="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6.png" alt=""></p>
+<p><img src="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6%E4%B8%93%E6%9C%89%E5%B1%9E%E6%80%A7.png" alt=""></p>
+<p>###4. 鼠标及滚轮事件<br><img src="http://piks830x0.bkt.clouddn.com/%E9%BC%A0%E6%A0%87%E5%8F%8A%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.png" alt=""></p>
+<p>补充：</p>
+<ul>
+<li>修改键：键盘上改变鼠标作用的按键<ul>
+<li>shiftKey属性</li>
+<li>ctrlKey属性</li>
+<li>altKey属性</li>
+<li>metaKey属性（windows键盘中是windows键，苹果电脑中是Cmd键）</li>
+</ul>
+</li>
+<li>相关元素：relatedTarget属性，只对mouseover和mouseout才有属性值</li>
+<li>单击次数累加值：detail属性，同一元素同一位置相继发生mousedown和mouseup后算一次单击。</li>
+<li>元素距离页面顶部的距离：xxx.offsetTop </li>
+<li>鼠标位置属性<ul>
+<li>屏幕坐标：screenX、screenY</li>
+<li>视口坐标：clientX、clientY</li>
+<li>页面坐标：pageX、pageY</li>
+<li>滚轮/页面距离：window.scrollX、window.scrollY</li>
+</ul>
+</li>
+</ul>
+<p>#三、事件委托</p>
+<p>###1.定义： </p>
+<ul>
+<li>事件委托是利用了事件冒泡解决了“事件处理程序过多”的问题，目的在于提高网站的性能。</li>
+<li>假设ul元素下边有3个li元素，如果想在li元素上添加click点击事件，我们只需要在ul元素上添加点击事件就可以了</li>
+<li>我们还可以监听暂时不存在的li元素，页面结构: <code>ul&gt;li&gt;div</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyAddEventListener</span>(<span class="params">element, eleType, selector, fn</span>)</span>&#123;</span><br><span class="line">	element.addEventListener(eleType, (ev)=&gt;&#123;</span><br><span class="line">		<span class="keyword">let</span> target = ev.target</span><br><span class="line">		<span class="keyword">while</span>(target !== element)&#123;</span><br><span class="line">			<span class="keyword">if</span>(target.tagName.toLowerCase() === selector)&#123;</span><br><span class="line">               	fn.call(<span class="literal">null</span>, ev)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">			target = target.parentNode</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#四、辅助理解：</p>
+<ul>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E6%B5%81%E5%9B%BE.png" alt=""></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjotbyz9o0009pkqrqbpyhwuu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/JS-相等和全等的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS-相等和全等的区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/23/JS-事件/">JS-事件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-变量/">JS-变量</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-null和undefined/">JS-null和undefined</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

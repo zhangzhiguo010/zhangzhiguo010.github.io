@@ -62,6 +62,117 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS-函数（基础）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-函数（基础）/" class="article-date">
+  <time datetime="2018-11-22T08:48:41.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/JS-函数（基础）/">JS-函数（基础）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN、《JS高程》、《JS权威指南》</p>
+<p>#一、函数创建和调用</p>
+<p>##1. 函数定义相关问题：</p>
+<ul>
+<li>函数就是一种可执行代码组成的对象，是一等公民，</li>
+<li>即使形式上作为对象的方法存在，也不属于该对象，只是把函数的地址赋值给了对象而已。</li>
+</ul>
+<p>##2. 函数创建相关问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*具名函数*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x, y</span>)</span>&#123;<span class="keyword">return</span> x+y&#125;					<span class="comment">/*函数声明语句*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*匿名函数*/</span></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;<span class="keyword">return</span> x+y&#125;				<span class="comment">/*匿名函数表达式*/</span></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span> <span class="title">kk</span>(<span class="params">x ,y</span>)</span>&#123; <span class="keyword">return</span> x+y &#125;      	<span class="comment">/*命名函数表达式*/</span></span><br><span class="line"> 	<span class="keyword">let</span> fn = <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'return x+y'</span>)		<span class="comment">/*构造函数*/</span></span><br><span class="line"> 	</span><br><span class="line"> 	<span class="comment">/*箭头函数*/</span></span><br><span class="line"> 	<span class="keyword">let</span> fn = <span class="function">(<span class="params">x,y</span>)=&gt;</span>&#123;<span class="keyword">return</span> x+y&#125;     	          	<span class="comment">/*箭头函数*/</span></span><br></pre></td></tr></table></figure>
+<p>##3. 函数调用相关问题：</p>
+<ol>
+<li>sum( )，语法糖，不建议使用；</li>
+<li>sum.call(sum, 实参)，高手都这么用！</li>
+</ol>
+<p>##4. 知识补充：</p>
+<ul>
+<li>用return来指定函数的返回值，如果没有指定，则为undefined，<br>  特殊的构造函数不需要return，但通常要绑定原型</li>
+<li>函数创建时为形参，函数调用时为实参，同名参数取后者</li>
+<li>不能在非函数代码块中声明函数，比如在 if/else 语句块中、或 try/catch 语句块中；</li>
+<li>箭头函数，一个形参时小括号可省略，一个表达式时花括号可省略，return也可省略</li>
+<li>参数的值只有在传参的时候确定；this作为call的第一个参数，也是只有传参的时候才确定！</li>
+<li>函数体内的this对象，就是定义时所在的对象。</li>
+</ul>
+<p>#二、函数的属性和方法</p>
+<p>##1. 内部的属性</p>
+<ol>
+<li>this：看难点章节</li>
+<li>arguments—-“实参对象（类数组）”</li>
+</ol>
+<ul>
+<li>argument.length—-“实参数量”</li>
+<li>arguments.callee—-“在函数内部获取函数自身的引用，也可以用函数名，但出现高耦合！”</li>
+<li>caller—-“指向调用当前函数的那个函数”</li>
+</ul>
+<p>##2. 自带的属性：<br>1、name： 函数名字</p>
+<ul>
+<li>函数声明语句：sum;</li>
+<li>匿名函数表达式：sum;</li>
+<li>命名函数表达式：add;</li>
+<li>箭头函数：sum;</li>
+<li>new Function：anonymous  //匿名的意思</li>
+</ul>
+<p>2、length：形参数量，即定义时的参数个数。</p>
+<p>##3. 其他常用方法：<br><a href="http://piks830x0.bkt.clouddn.com/bind%20call%E7%AD%89%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83.png" target="_blank" rel="noopener">bind和call的使用时比较：例1</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/bind%20call%E7%AD%89%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%832.png" target="_blank" rel="noopener">bind和call的使用时比较：例2</a></p>
+<p>1、call(): </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call( obj, arg1, arg2, ……)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数：第一个实参是调用上下文，在函数体内通过this来引用；</li>
+<li>其他参数是实参，在函数体内通过argumens类数组来引用。</li>
+<li>在普通模式下，call( )的第一个实参是基本类型会变成相应的包装对象，null和undefined会变成window全局对象。</li>
+<li>在严格模式下，call( )的第一个实参会变成this的值，即使它是基本类型，甚至是null或undefined，依然如此；</li>
+</ul>
+<p>2、apply(): </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.apply( obj, [arg1, arg2, ……] )</span><br></pre></td></tr></table></figure>
+<p>3、bind(): 创建函数，指定新函数内this是谁</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.bind( obj, arg1, arg2 )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>bind()创建新函数，新函数与fun具有相同函数体，</li>
+<li>新函数的this就是bind的第一个参数obj，</li>
+<li>新函数的参数就是bind的其他参数arg1和arg2</li>
+<li>至此，实现了修改fun内this指向的目的，与call和apply目的一致。</li>
+<li>因为bind()返回一个新函数，加上括号输入实参才能正常使用，<br>  这一点和call()、apply()不一样！！！</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y, z</span>)</span>&#123;<span class="keyword">return</span> <span class="keyword">this</span>.x+y+z&#125;;</span><br><span class="line">  	<span class="keyword">let</span> fn = f.bind(&#123;<span class="attr">x</span>:<span class="number">1</span>&#125;, <span class="number">2</span> , <span class="number">5</span>)()   <span class="comment">/*输出8*/</span></span><br></pre></td></tr></table></figure>
+<p>4、eval()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将字符串当做语句执行*/</span></span><br><span class="line"><span class="built_in">eval</span>( <span class="string">"console.log(123)"</span> );    <span class="comment">//输出123</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>eval没有自己作用域，都在当前作用域内执行。</li>
+<li>普通模式下会修改它所处作用域内变量的值，造成安全问题</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;   </span><br><span class="line"><span class="built_in">eval</span>(<span class="string">"a=3"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>严格模式下，不会影响外部作用域。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-函数（基础）/" data-id="cjotbyza4000apkqr9kyxit6v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS-对象（升级）" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/JS-对象（升级）/" class="article-date">
@@ -139,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjospacg5000fk4qrx79d2da8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjotbyza4000jpkqrrxiqiozj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-对象（基础）/" data-id="cjospacg3000ek4qr0n5fivo6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（基础）/" data-id="cjotbyza4000fpkqrxsy17g33" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-小图标全解/" data-id="cjospacft0003k4qr23y1ykpd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-小图标全解/" data-id="cjotbyz9o0000pkqrkxo1vv6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -525,7 +636,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-动画/" data-id="cjospacfs0002k4qree5mmv65" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-动画/" data-id="cjotbyz9o0003pkqrg8ujwdu6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -655,7 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjospacfz000ak4qrcxo93e06" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjotbyz9o0008pkqrj19sirlf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -747,7 +858,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjospacfx0008k4qrua8k3e0w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjotbyza4000bpkqry4i3rmw9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -808,7 +919,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjospacfw0007k4qr3ppxmh48" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjotbyz9o0006pkqrsnqlo6s2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -954,7 +1065,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjospacfu0004k4qrwxqcf5e0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjotbyz9o0002pkqrzeblo11z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1038,128 +1149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjospacfv0005k4qr9z8t4par" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS-布局之grid布局" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/CSS-布局之grid布局/" class="article-date">
-  <time datetime="2018-11-22T02:11:05.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/CSS-布局之grid布局/">CSS-布局之grid布局</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN文档，知乎-若愚-文章</p>
-<p><a href="https://zhuanlan.zhihu.com/p/33030746" target="_blank" rel="noopener">若愚：CSS Grid 系列(上)-Grid布局完整指南</a></p>
-<p>#1、预备知识：</p>
-<ol>
-<li>网格线：分界线组成网格，可以是水平的也可以是垂直的</li>
-<li>网格单元：网格单元是网格中最小的单位，类似表格中的单元格</li>
-<li>网格轨道：两个相邻网格线之间的空间，可横可竖</li>
-<li>网格区域：网格项目向行或列方向扩展一个或多个单元，并且会创建一个网格区域</li>
-<li>网格嵌套：一个网格项目也可以成为一个网格容器，嵌套的网格和它的父级没有关系</li>
-</ol>
-<p>#2、grid容器（grid container）的属性：</p>
-<ol>
-<li><p>grid-template-areas —-“布局可视化”</p>
-</li>
-<li><p>grid—-“简写：先行后列”</p>
-<ul>
-<li>grid-template-rows —-“行高”</li>
-<li>grid-template-columns —-“列宽”</li>
-</ul>
-</li>
-<li><p>grid-gap —-“简写：先行后列”</p>
-<ul>
-<li>grid-column-gap —-“列间距”  </li>
-<li>grid-row-gap       —-“行间距”</li>
-</ul>
-</li>
-<li><p>justify-content  —-“容器里网格 行轴对齐方式”<br> align-content    —-“容器里网格 竖轴对齐方式” </p>
-<p> 属性值：</p>
-<ul>
-<li>start —-“左对齐、上对齐”</li>
-<li>end —-“右对齐、下对齐”</li>
-<li>center —-“居中对齐”</li>
-<li>space-around —-“项目的四周空间”</li>
-<li>space-between —-“项目的相邻空间”</li>
-<li>space-evenly —-“项目的均匀空间”</li>
-</ul>
-</li>
-<li><p>justify-items —-“项目里内容 行轴对齐方式”<br> align-items —-“项目里内容 竖轴对齐方式”</p>
-<p> 属性值：</p>
-<ul>
-<li>start —-“”</li>
-<li>end —-“”</li>
-<li>center —-“”</li>
-<li>stretch —-“”</li>
-</ul>
-</li>
-<li><p>grid-auto-columns —-“隐式网格列宽”<br> grid-auto-rows —-“隐式网格行高”</p>
-</li>
-<li><p>grid-auto-flow —-“项目自动放置”</p>
-</li>
-<li><p>repeat—-“重复宽度”</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去第一列200px和最后一列50px后，剩下的自由宽度按1fr+2fr的模式重复3次*/</span></span><br><span class="line">grid-template-columns: <span class="number">200</span>px repeat(<span class="number">3</span>, <span class="number">1</span>fr <span class="number">2</span>fr) <span class="number">50</span>px;</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li>fr—-“自由空间比例单位”</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*总宽减去500px之后，剩下的是自由宽度，1fr占自由宽度的1/3，2fr占自由宽度的2/3*/</span></span><br><span class="line">grid-template-columns: <span class="number">500</span>px  <span class="number">1</span>fr  <span class="number">2</span>fr;</span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li>minmax(min, max) —-“参数：最小值，最大值”</li>
-</ol>
-<p>#3. grid项目（grid item）的属性：</p>
-<ol>
-<li>grid-area —-“项目区域命令”</li>
-<li><p>grid-column —-“简写：start+end”<br> grid-row —-“简写：start+end”</p>
-<ul>
-<li>grid-column-start —-“项目竖轴上起始线”</li>
-<li>grid-column-end —-“项目竖轴上结束线”</li>
-<li>grid-row-start —-“项目行轴上起始线”</li>
-<li>grid-row-end —-“项目行轴上结束线”</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义元素区域为第1列至第5列，第1行到第2行（不写时结束线加1）*/</span></span><br><span class="line">.part&#123; </span><br><span class="line">	grid-column-start: <span class="number">1</span>; </span><br><span class="line">	grid-column-end: <span class="number">5</span>; </span><br><span class="line">	grid-row-start: <span class="number">1</span>;		<span class="comment">//只跨越1行/列时，end可以不写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>justify-self —-“单个儿项目里内容行轴对齐方式”<br> align-self —-“单个儿项目里内容竖轴对齐方式”</li>
-</ol>
-<p>#4. 使用习惯：</p>
-<ol>
-<li>搭配方案1：<br> 容器的grid-template<br> 项目的grid-area</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid-template: </span><br><span class="line">           <span class="string">"header header"</span> <span class="number">100</span>px</span><br><span class="line">           <span class="string">"aside  main"</span>   auto</span><br><span class="line">           <span class="string">"footer footer"</span> <span class="number">100</span>px</span><br><span class="line">           /<span class="number">200</span>px  <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-area: header;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-area: aside;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-area: main;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-area: footer;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>搭配方案2：<br> 容器的grid-template-columns、grid-template-rows，简写属性grid<br> 项目的grid-row、grid-column</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*CSS样式：*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">       width: <span class="number">100</span>vw;</span><br><span class="line">       height: <span class="number">100</span>vh;</span><br><span class="line">       </span><br><span class="line">       display: grid;</span><br><span class="line">       grid: <span class="number">100</span>px auto <span class="number">100</span>px / <span class="number">200</span>px <span class="number">1</span>fr;</span><br><span class="line">   &#125;</span><br><span class="line">   header&#123;</span><br><span class="line">       grid-row: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   aside&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   main&#123;</span><br><span class="line">       grid-row: <span class="number">2</span>/<span class="number">3</span>;</span><br><span class="line">       grid-column: <span class="number">2</span>/<span class="number">3</span>;;</span><br><span class="line">   &#125;</span><br><span class="line">   footer&#123;</span><br><span class="line">       grid-row: <span class="number">3</span>/<span class="number">4</span>;</span><br><span class="line">       grid-column: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjospacfv0006k4qr6sied27q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjotbyz9o0005pkqr94ekzqd9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1205,6 +1195,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/23/JS-事件/">JS-事件</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
           </li>
         
@@ -1218,10 +1212,6 @@
         
           <li>
             <a href="/2018/11/22/JS-null和undefined/">JS-null和undefined</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-Promist对象/">JS-Promist对象</a>
           </li>
         
       </ul>
