@@ -62,6 +62,669 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-数据结构和算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/数据结构和算法/" class="article-date">
+  <time datetime="2018-11-23T03:30:20.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/数据结构和算法/">数据结构和算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：其他博客、<a href="http://bubkoo.com/tags/algorithm/" target="_blank" rel="noopener">排序算法可视化</a></p>
+<p>#一、什么是数据结构？</p>
+<ul>
+<li>就是数据的结构。</li>
+<li>一般来说是这样的：<ul>
+<li>我们要解决一个跟数据相关的问题</li>
+<li>分析这个问题，想出对应的数据结构</li>
+<li>分析数据结构，想出算法</li>
+<li>数据结构和算法是互相依存、不可分开的</li>
+</ul>
+</li>
+<li>大分类<ul>
+<li>分治法：把一个问题分区成互相独立的多个部分分别求解的思路。<br>  这种求解思路带来的好处之一是便于进行并行计算。</li>
+<li>动态规划法：当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。</li>
+<li>贪婪算法：常见的近似求解思路。<br>  当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最优性没有要求的时候，可以采用的一种方法。</li>
+<li>线性规划法：见词条。</li>
+<li>简并法：把一个问题通过逻辑或数学推理，简化成与之等价或者近似的、相对简单的模型，进而    求解    的方法。</li>
+<li>前端主要使用分治法——分而治之。</li>
+</ul>
+</li>
+</ul>
+<p>#二、数据结构</p>
+<p>###1. 哈希（hash）</p>
+<ul>
+<li>键值对形式</li>
+<li>举例：对象、数组</li>
+</ul>
+<p>###2. 队列（queue）</p>
+<ul>
+<li>先进先出</li>
+<li>可以用数组实现（push：放进去，放后面。shift：取出排头的元素）</li>
+<li>举例：排队拿票</li>
+</ul>
+<p>###3. 栈（stack）</p>
+<ul>
+<li>先进后出</li>
+<li>可以用数组实现（push：放进去，放后面。pop：弹出最后一个元素）</li>
+<li>举例：向后转，齐步走</li>
+</ul>
+<p>###4. 链表（linked list）<br><img src="http://piks830x0.bkt.clouddn.com/%E9%93%BE%E8%A1%A8.JPG" alt=""></p>
+<p>###5. 树（tree）</p>
+<ul>
+<li>举例：层级结构、DOM树</li>
+</ul>
+<p>#三、什么是算法？</p>
+<ul>
+<li>输入：<ul>
+<li>一个算法必须有零个或以上输入量。</li>
+</ul>
+</li>
+<li>输出：<ul>
+<li>一个算法应有一个或以上输出量，输出量是算法计算的结果。</li>
+</ul>
+</li>
+<li>明确性：<ul>
+<li>算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，</li>
+<li>通常要求实际运行结果是确定的。</li>
+</ul>
+</li>
+<li>有限性：<ul>
+<li>依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状    态、有限个输入符号和有限个转移函数（指令）。</li>
+<li>一些定义更规定算法必须在有限个步骤内完成任务。</li>
+</ul>
+</li>
+<li>有效性：<br>  又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。</li>
+</ul>
+<p>#四、常见排序算法</p>
+<p>###1. bubbleSort—-“冒泡排序”<br><a href="http://piks830x0.bkt.clouddn.com/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.png" target="_blank" rel="noopener">冒泡排序：详细讲解</a></p>
+<p>###2. insertionSort—-“插入排序”<br><a href="http://piks830x0.bkt.clouddn.com/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.png" target="_blank" rel="noopener">插入排序：详细讲解</a></p>
+<p>###3. selectionSort—-“选择排序”<br><a href="http://piks830x0.bkt.clouddn.com/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F.png" target="_blank" rel="noopener">选择排序：详细讲解</a></p>
+<p>###5. bucketSort—-“桶排序”<br><a href="http://piks830x0.bkt.clouddn.com/%E6%A1%B6%E6%8E%92%E5%BA%8F.png" target="_blank" rel="noopener">桶排序：详细讲解</a></p>
+<p>###4. quickSort—-“快速排序”<br><a href="http://piks830x0.bkt.clouddn.com/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.png" target="_blank" rel="noopener">快速排序：详细讲解</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*快速排序*/</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">let</span> len = array.length</span><br><span class="line">       <span class="keyword">if</span>(len &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> array</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="comment">// 确定中间元素位置，让中间元素作为基准元素</span></span><br><span class="line">       <span class="keyword">let</span> middleIndex = <span class="built_in">Math</span>.floor(len/<span class="number">2</span>)</span><br><span class="line">       <span class="comment">// 原数组中删除中间的元素</span></span><br><span class="line">       <span class="keyword">let</span> middleValue = array.splice(middleIndex, <span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">       <span class="comment">// 定义两个空数组</span></span><br><span class="line">       <span class="keyword">let</span> left = [], right = []</span><br><span class="line">       <span class="comment">// 循环遍历，此时数组少了基准元素</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;array.length; i++)&#123;</span><br><span class="line">           array[i] &lt; middleValue ? left.push(array[i]) : right.push(array[i])</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> quickSort(left).concat([middleValue], quickSort(right)) </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>#五、排序算法的性能比较<br><img src="http://piks830x0.bkt.clouddn.com/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/数据结构和算法/" data-id="cjothuzss000um8qr7138a19w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS-Canvas" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/JS-Canvas/" class="article-date">
+  <time datetime="2018-11-23T03:26:04.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/JS-Canvas/">JS-Canvas</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档</p>
+<p>#一、canvas基本用法：</p>
+<p>###1、准备工作：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*html文件中，创建canvas元素*/</span></span><br><span class="line">&lt;canvas width=<span class="string">'300'</span> height=<span class="string">'150'</span> id=<span class="string">'canvas'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span>  <span class="comment">// 注意width和height</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*js文件中，将该元素转化成对象*/</span></span><br><span class="line"><span class="keyword">let</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*调用getContext()方法，得到绘图上下文*/</span></span><br><span class="line"><span class="keyword">let</span> context = canvas.getContext(<span class="string">'2d'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>###2、矩形<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制填充的矩形*/</span></span><br><span class="line">context.fillStyle = <span class="string">'blue'</span></span><br><span class="line">context.fillRect(x, y, width, height)</span><br><span class="line"><span class="comment">// x、y: 分别是起点X轴和y轴坐标</span></span><br><span class="line"><span class="comment">// width、heigth: 分别是矩形的宽度和高度</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制描边的矩形*/</span></span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span></span><br><span class="line">context.lineWidth = <span class="number">10</span>		<span class="comment">// 线宽</span></span><br><span class="line">context.strokeRect(x, y, width, height)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*清除矩形部分内容*/</span></span><br><span class="line">context.clearRect(x, y, width, height)</span><br></pre></td></tr></table></figure>
+<p>###3、三角形<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制填充的三角形*/</span></span><br><span class="line">context.beginPath()			<span class="comment">// 开始画画</span></span><br><span class="line">context.fillStyle = <span class="string">'blue'</span></span><br><span class="line">context.moveTo(x, y)		<span class="comment">// 起始点</span></span><br><span class="line">context.lineTo(x, y)		<span class="comment">// 下一点</span></span><br><span class="line">context.lineTo(x, y)		<span class="comment">// 下一点</span></span><br><span class="line">context.fill()				<span class="comment">// 填充</span></span><br><span class="line">context.closePath()			<span class="comment">// 结束画画</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制描边的三角形*/</span></span><br><span class="line">context.beginPath()			<span class="comment">// 开始画画</span></span><br><span class="line">context.lineWidth = <span class="number">10</span>		<span class="comment">// 线宽</span></span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span></span><br><span class="line">context.moveTo(x, y)		<span class="comment">// 起始点</span></span><br><span class="line">context.lineTo(x, y)		<span class="comment">// 下一点</span></span><br><span class="line">context.lineTo(x, y)		<span class="comment">// 下一点</span></span><br><span class="line">context.lineTo(x, y)		<span class="comment">// 想要闭合，x和y是起始点；不想闭合，不用此lineTo()</span></span><br><span class="line">context.stroke()			<span class="comment">// 描边</span></span><br><span class="line">context.closePath()			<span class="comment">// 结束画画</span></span><br></pre></td></tr></table></figure>
+<p>###4、圆形/圆弧<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制填充的圆形*/</span></span><br><span class="line">context.beginPath()</span><br><span class="line">context.fillStyle = <span class="string">'blue'</span></span><br><span class="line">context.arc(x, y, radius, startAngle, endAngle, anticlockwise)</span><br><span class="line">context.fill()</span><br><span class="line">context.closePath()</span><br><span class="line"><span class="comment">// x、y: 圆心x轴和y轴坐标</span></span><br><span class="line"><span class="comment">// radius: 半径</span></span><br><span class="line"><span class="comment">// startAngle、endAngle: 圆弧的起点和终点，Math.PI是π</span></span><br><span class="line"><span class="comment">// anticlockwise：true为顺时针、false为逆时针</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*绘制描边的圆形*/</span></span><br><span class="line">context.beginPath()</span><br><span class="line">context.lineWidth = <span class="number">10</span>		<span class="comment">// 线宽</span></span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span></span><br><span class="line">context.arc(x, y, radius, startAngle, endAngle, anticlockwise)</span><br><span class="line">context.stroke()</span><br><span class="line">context.closePath()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/JS-Canvas/" data-id="cjothuzsd000km8qrjberytun" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-网络安全" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/网络安全/" class="article-date">
+  <time datetime="2018-11-23T03:16:45.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/网络安全/">网络安全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：网上博客</p>
+<p>#一、什么是XSS攻击？如何预防？</p>
+<p>###1. 解释</p>
+<ul>
+<li>XSS是跨站脚本攻击，是一种安全漏洞，</li>
+<li>攻击者在网站上注入恶意的客户端代码，</li>
+<li>被攻击者登陆网站时就会自动运行这些恶意代码。</li>
+</ul>
+<p>###2. 预防方法：</p>
+<ul>
+<li>innerHTML改成innerText</li>
+<li><p>把所有用户输入的内容中诸如“&lt; &gt; &amp;”等特殊的字符进行转义，不让它作为脚本代码正常运行，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">把 &lt; 替换成 <span class="string">'&amp;lt ;'</span></span><br><span class="line">把 &gt; 替换成 <span class="string">'&amp;gt ;'</span>  </span><br><span class="line">把 &amp; 替换成 <span class="string">'&amp;amp ;'</span></span><br><span class="line">把 <span class="string">' 替换成 '</span>&amp;apos<span class="string">'</span></span><br><span class="line"><span class="string">把 " 替换成 '</span><span class="string">'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户输入的恶意代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*用户输入*/</span></span><br><span class="line">&lt;script type=<span class="string">'text/javascript'</span>&gt;alert(<span class="string">'恶意代码'</span>)&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">/</span>*转换后*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">"&amp;lt;scripttype='text/</span>javascript<span class="string">'&amp;gt;alert('</span>恶意代码<span class="string">')&amp;lt;/script&amp;gt;"</span></span><br><span class="line"><span class="string">/*自定义的函数*/</span></span><br><span class="line"><span class="string">function changeSafe(str)&#123;</span></span><br><span class="line"><span class="string">  	let div = document.createElement('</span>div<span class="string">')</span></span><br><span class="line"><span class="string">  	if(div.innerText)&#123;</span></span><br><span class="line"><span class="string">  		div.innerText = str</span></span><br><span class="line"><span class="string">  	&#125;else&#123;</span></span><br><span class="line"><span class="string">  		div.textContent = str	//支持火狐</span></span><br><span class="line"><span class="string">  	&#125;</span></span><br><span class="line"><span class="string">  	return div.innerHtml</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#二、什么是CSRF攻击？如何预防？</p>
+<p>###1. 解释 </p>
+<ul>
+<li>CSRF是跨站请求伪造</li>
+<li>用户首先登陆一个A网站，并得到cookie,</li>
+<li>在没有退出A网站的情形下，访问黑客网站，</li>
+<li>黑客网站会带着cookie信息自动访问A网站，执行恶意操作。</li>
+</ul>
+<p>###2. 预防方法有：</p>
+<ul>
+<li>除了cookie验证外，还要验证请求报文中的Referer字段，如果不是自己网站的请求就拒绝执行。</li>
+<li>验证cookie以外的信息，如添加手机短信验证或者token验证。</li>
+<li>设置cookie的时候，设置HttpOnly，让JS不能读取到cookie</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/网络安全/" data-id="cjothuzsd000sm8qrvniw6h2x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前后端交互" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/前后端交互/" class="article-date">
+  <time datetime="2018-11-23T02:31:50.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/前后端交互/">前后端交互</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《JS高程》page562页、《JS权威指南》page579页、方应杭视频</p>
+<p>#九、Cookie是什么？Session是什么？二者之间有什么联系？</p>
+<p>###1. cookie：</p>
+<ul>
+<li><ol>
+<li>作用：<ul>
+<li>cookie用来记录用户数据，cookie被保存在浏览器本地</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用过程：<ul>
+<li>用户登录成功以后，</li>
+<li>服务器通过Set-Cookie设置cookie，cookie值就是用户信息，</li>
+<li>之后浏览器每次访问服务器，都会带上cookie，读取cookie就得到了用户的信息</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>有效期：<ul>
+<li>cookie默认是关闭浏览器就消失，但是我们可以在服务器中通过Max-Age设置有效期或者通过Expires设置过期日期。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>###2. session：</p>
+<ul>
+<li><ol>
+<li>作用：<ul>
+<li>session用来记录用户数据，session本质是哈希表，里边是一个个键值对，键名就是随机数sessionId，键值就是用户的信息。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用过程：<ul>
+<li>用户通过浏览器登录服务器成功以后，</li>
+<li>服务器通过Set-Cookie设置cookie，cookie值就是sessionId</li>
+<li>之后浏览器每次访问服务器，都会带上cookie，读取cookie得到sessionId，然后在session哈希表中就得到了用户的信息。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>有效期：<ul>
+<li>session被存在服务器的内存中，服务器重新启动就会消失，所以我们重启服务器的时候都要备份一下session。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>###3. cookie和session有什么联系？</p>
+<ul>
+<li>session基于cookie实现的，</li>
+<li>如果cookie不搭配session使用，那么cookie值就是用户的信息，<br>  该信息被明文暴露在了浏览器上，可以被更改也可以被容易的看到，很不安全，  </li>
+<li>如果搭配session使用，那么cookie值就是sessionId这个随机数，<br>  用户信息是session哈希表中sessionId对应的值，该信息保存在服务器中，不会暴露给浏览器，所以安全。</li>
+</ul>
+<p>#八、LocalStorage 是什么？SessionStorage是什么？二者之间有什么区别？</p>
+<p>###1. LocalStorage：</p>
+<ul>
+<li><ol>
+<li>作用：<ul>
+<li>LocalStorage是本地存储，存储一些不用考虑安全性的信息，如是否提示过用户，像账号、密码等不能存在这里</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'名'</span>, <span class="string">'值'</span>)       	<span class="comment">//存值</span></span><br><span class="line">localStorage.getItem(<span class="string">'名'</span>)             	<span class="comment">//取值</span></span><br><span class="line">localStorage.removeItem(<span class="string">'名'</span>)          	<span class="comment">//删值</span></span><br><span class="line">localStorage.clear( )                 	<span class="comment">//清空</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>有效期：<ul>
+<li>永久有效，除非用户清理缓存</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>补充：<ul>
+<li>只有相同域名的页面才能互相读取localStorage（没有同源那么严重）</li>
+<li>localStorage跟HTTP无关，HTTP不会带上localStorage</li>
+<li>每个域名最大存储量大概是10MB，浏览器不同数值不同</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>###2. SessionStorage：</p>
+<ul>
+<li>大体上和LocalStorage是一样的，只是有效期不一样，</li>
+<li>SessionStorage的有效期是页面关闭后失效，而LocalStorage永久有效，除非用户清理缓存</li>
+</ul>
+<p>###3. indexDB是什么？</p>
+<ul>
+<li>数据存储用的，cookie最大存4kb，localStorage和sessionStorage最大存10MB，都太小了</li>
+<li>储存空间大：不少于250MB</li>
+<li>哈希表结构，键值对存储</li>
+<li>同源限制，网页只能访问自身域名下的数据库，而不能访问跨域的数据库</li>
+</ul>
+<p>#七、Cache-Control是什么？ETag是什么？两者之间有什么区别？</p>
+<p>###1. Cache-Control：</p>
+<ul>
+<li>Cache-Control是缓存控制，是服务器设置，它是为了提高web性能而存在的。</li>
+<li>在有效期内发起请求，浏览器从本地读取资源，</li>
+<li>在有效期外发起请求，浏览器从服务器得到资源，</li>
+<li>如果想在有效期内从服务器下载资源，我们修改路径上的查询参数</li>
+<li>有效期可以通过Max-Age设置成时间段，也可以通过Expires设置成截止日期</li>
+</ul>
+<p>###2. ETag：</p>
+<ul>
+<li>Etag是资源的标识，由服务器设置，浏览器每次请求，服务器都会生成资源的新的Etag值，并且读取    请求报文中的if-none-match中保存的上一次资源的Etag值，将两次的值作比较</li>
+<li>比较结果相同，返回304，浏览器就从缓存中读取资源</li>
+<li>比较结果不同，就把服务器端的资源放到响应体里交给浏览器</li>
+<li>Etag值通常是资源的md5值</li>
+</ul>
+<p>###3. 有什么不同：</p>
+<ul>
+<li>Cache-Control在有效期内，不发送http请求，ETag总是会发送http请求。</li>
+</ul>
+<p>#六、表单加密有什么方式？<br>步骤1：浏览器对传输的数据转成md5值，并且和服务器商量好，在该md5值中混入一些其他数字<br>步骤2：服务器得到数据，去掉混入的数据后得到真正的md5值，将md5值转化成数据即可</p>
+<p>#五、GET和POST的区别是什么？</p>
+<ul>
+<li>1、数据位置：Get的数据放在URL的查询参数里，POST的数据放在请求体里；  </li>
+<li>2、大小限制：GET是1024个字符，POST大概是4~10MB左右；  </li>
+<li>3、安全性：GET没有POST安全，其实两者都不安全；  </li>
+<li>4、缓存：GET可以被缓存，可以被收藏进书签，POST可以被缓存，不能被收藏进书签</li>
+<li>5、作用：GET用来读数据，POST用来写数据，POST不幂等<br>（幂等的意思是不管发送多少次请求，结果都一样）</li>
+</ul>
+<p>#四、同源策略：</p>
+<ul>
+<li>浏览器必须保证：只有协议+域名+端口号保持一模一样才允许发AJAX请求</li>
+<li>判断：AJAX被定义时的IP地址与AJAX中open中定义的IP地址</li>
+<li>情景：A服务器上的页面想要访问B服务器，<br>  需要在js文件中ajax的open中写入B服务器地址，<br>  需要在B服务器上设置下面的首都字段：<br>  `<pre><code>response.setHeader(&apos;Access-Control-Allow-Origin&apos;: &apos;http://192.168.0.103:8080&apos;)，  //后面的是A服务器地址
+</code></pre>  `</li>
+<li>form可以跨域，是因为form方法会刷新页面，导致原页面的脚本无法获取新页面中的内容，<br>  浏览器认为这是安全的。</li>
+<li>如果不是百度页面里面的js，就不能向百度这个域名发起AJAX请求，<br>  但是JSONP方式可以，img、form、script、link等等。</li>
+</ul>
+<p>#三、怎么跨域？</p>
+<p>###1. 利用JSONP实现跨域</p>
+<p>###2. CORS实现跨域<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在请求首部字段中加入Origin: http:<span class="comment">//www.xx.com:8080</span></span><br><span class="line">   在响应首部字段中加入Access-Control-Allow-Origin: http:<span class="comment">//www.xx.com:8080</span></span><br></pre></td></tr></table></figure></p>
+<p>###3. postMessage实现跨域</p>
+<p>#二、AJAX和其他方式的比较：</p>
+<ul>
+<li>用form可以发get或post请求，但是会刷新页面或是新开页面</li>
+<li>用a可以发get请求，但是会刷新页面或是新开页面</li>
+<li>用img可以发get请求，但是只能以图片的形式展示</li>
+<li>用link可以发get请求，但是只能以css的形式展示</li>
+<li>用script可以发get请求，但是只能以脚本的形式运行</li>
+<li>AJAX能以get、post、delete等等方法发送请求，想以什么形式展示就以什么形式展示</li>
+</ul>
+<p>#一、JSONP是什么？Ajax是什么？二者之间有什么区别？</p>
+<p>###1. JSONP：</p>
+<ul>
+<li><ol>
+<li>作用：<ul>
+<li>发送http请求</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>什么是JSONP？<ul>
+<li>JSONP是前端向后端请求数据的一种方式，</li>
+<li>前端动态创建script和回调函数并发起get请求，</li>
+<li>后端构造函数的执行并传入json格式的参数，</li>
+<li>前端接收响应并执行回调函数，</li>
+<li>至此便得到了想要的后端数据</li>
+<li>备注：后端只是构造，并不调用，调用是在前端得到响应的一刹那！</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</span><br><span class="line">script.src = <span class="string">`/abc?callback<span class="subst">$&#123;<span class="keyword">function</span>(responseData)&#123;alert(responseData)&#125;</span>&#125;`</span> </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>###2. Ajax：</p>
+<ul>
+<li><ol>
+<li>作用：<ul>
+<li>发送http请求，实现了页面的局部刷新</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/ajax'</span>)                                  </span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="params">()</span>=&gt;</span>&#123;               </span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState===<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status&gt;=<span class="number">200</span> &amp;&amp; xhr.status&lt;<span class="number">300</span>)&#123;........&#125;         </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(xhr.status&gt;=<span class="number">400</span>)&#123;......&#125;                                </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>3.补充：</p>
+</li>
+<li>设置状态行<ul>
+<li>不跨域：xhr.open(‘GET’, ‘/ajax’)                       </li>
+<li>跨域：xhr.open(‘GET’, ‘<a href="http://zhang.com:8888/ajax&#39;" target="_blank" rel="noopener">http://zhang.com:8888/ajax&#39;</a>) </li>
+</ul>
+</li>
+<li>设置首部字段 <ul>
+<li>xhr.setRequestHeader(‘Content-Type’, ‘x-www-form-urlencoded’)</li>
+</ul>
+</li>
+<li><p>设置请求主体 </p>
+<ul>
+<li>xhr.send(‘a=1&amp;b=2’)                                         </li>
+<li>GET时浏览器认为不发送数据，故不显示</li>
+</ul>
+</li>
+<li><p>获得状态行</p>
+<ul>
+<li>状态码：xhr.status        </li>
+<li>解释信息：xhr.statusText                                                    </li>
+<li>获得所有首部字段：xhr.getAllResponsHeaders()                  </li>
+<li>获得单个首部字段：xhr.getResponseHeader(‘Content-Type’)                </li>
+</ul>
+</li>
+<li>获得响应主体 <ul>
+<li>xhr.responseText                                                     </li>
+<li>数据转化                                         <ul>
+<li>将符合JSON的字符串转化成相对应的JavaScript值<br><code>window.JSON.parse(xhr.responseText)</code></li>
+</ul>
+</li>
+<li>返回响应第一部分时浏览器就知道了状态码，但是我们等响应主体全部被浏览器下载完后，readystate变为4以后再去判断statue，然后操作响应主体</li>
+</ul>
+</li>
+</ul>
+<p>###3. 两者之间有什么区别？</p>
+<ul>
+<li>都是前端向后端请求数据的技术，也都实现了局部刷新，也都对数据类型没有限制</li>
+<li>JSON是动态创建<script>标签，AJAX是创建XMLHttpRquest对象</li>
+<li>JSONP只能GET，AJAX能GET能POST</li>
+<li>JSONP能跨域请求数据，AJAX不能，服务器端CORS(跨站资源共享)技术可以解决跨域问题</li>
+</ul>
+</script></li></ul>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/前后端交互/" data-id="cjothuzss000tm8qrhc5ruzbl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP-基础" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/HTTP-基础/" class="article-date">
+  <time datetime="2018-11-23T01:53:31.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/HTTP-基础/">HTTP-基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《图解HTTP》</p>
+<p>#一、HTTP基础知识</p>
+<ul>
+<li>无状态协议<ul>
+<li>HTTP是无状态协议，即请求和响应的信息它一点都不会保存</li>
+</ul>
+</li>
+<li>持久连接：<ul>
+<li>原来是收到请求马上响应，响应结束立即断开连接，三次握手和四次挥手浪费很多时间，</li>
+<li>现在是只要任意一端没有提出断开连接，就一直保持TCP连接状态。</li>
+<li>HTTP 1.1版本中添加的，自动添加进请求的首部字段中，默认Connection: Keep-Alive</li>
+<li>服务器收到请求后看到该字段，就会自动在响应字段中添加：Connection: Keep-Alive</li>
+</ul>
+</li>
+<li>管线化：<ul>
+<li>建立连接后，同时发送多个请求，而不是一个接一个的等待响应</li>
+</ul>
+</li>
+<li>缓存机制：<ul>
+<li>《JS-前后端交互》章节中有详细介绍，此处不赘述</li>
+</ul>
+</li>
+</ul>
+<p>#二、从输入地址到页面加载，经历了什么？</p>
+<ul>
+<li>1、输入域名：</li>
+<li>2、域名解析：</li>
+<li>3、三次握手：</li>
+<li>4、发送请求：</li>
+<li>5、返回响应：</li>
+<li>6、解析代码和渲染页面：</li>
+<li>7、四次挥手：</li>
+</ul>
+<p>###1. 输入域名</p>
+<ul>
+<li>绝对URL：协议名+登录信息+服务器地址+服务器端口号+文件路径+查询字符串+片段标识符</li>
+<li>相对URL：</li>
+<li>补充：<ul>
+<li>命令行中curl IP地址，也会出现网页，这是最最简单的client（浏览器），</li>
+<li>curl -v IP地址可以得到请求的详细信息</li>
+<li>url中不能有中文，特殊字符需转化，看图片</li>
+</ul>
+</li>
+</ul>
+<p>###2. 域名解析</p>
+<ul>
+<li>搜索浏览器自身的DNS缓存，找到IP地址就使用，没有就继续找；</li>
+<li>搜索系统自身的DNS缓存，找到IP地址就使用，没有就继续找；</li>
+<li>搜索硬盘中的host文件，找到IP地址就使用，没有就继续找；</li>
+<li>向宽带运营商或域名服务器发起DNS解析请求，获得IP地址；</li>
+</ul>
+<p>###3. 三次握手</p>
+<ul>
+<li>浏览器向IP所在的服务器发起TCP连接</li>
+<li>为什么三次呢？因为要确保浏览器和服务器都能收发信息</li>
+</ul>
+<p>###4. 发送请求</p>
+<ul>
+<li>发送请求（请求报文）：浏览器向IP指向的服务器发起HTTP请求</li>
+<li>4种常用请求方法：<ul>
+<li>GET（获取资源）</li>
+<li>POST（发送资源）</li>
+<li>PUT（上传资源）</li>
+<li>DELETE（删除）</li>
+</ul>
+</li>
+</ul>
+<p>###5. 返回响应</p>
+<ul>
+<li>返回响应（响应报文）：服务器收到请求，根据路径参数返回相应的数据，首先是HTML文件</li>
+</ul>
+<p>###6. 解析代码和渲染页面<br><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">浏览器工作原理资料</a></p>
+<ul>
+<li>呈现引擎从网络层获得响应主体（即HTML文档）</li>
+<li>先解析HTML文档head标签，边解析边创建DOM树，<ul>
+<li>遇到link引用style文件和script引用JS文件，就通过http请求和响应来获得它们；</li>
+</ul>
+</li>
+<li>再解析HTML文档body标签，将DOM树和解析css文件获得的style规则相结合创建render树（呈现树）<pre><code>* 遇到诸如img标签时，也是通过http请求和响应来获得它们
+</code></pre></li>
+<li>布局呈现树</li>
+<li>渲染呈现树</li>
+</ul>
+<p>###7. 四次挥手</p>
+<ul>
+<li>如果浏览器没有后续的请求，浏览器就会和服务器发起TCP断开</li>
+</ul>
+<p>#三、TCP/IP分层</p>
+<p>###1. 应用层</p>
+<ul>
+<li>作用：HTTP协议生成请求报文</li>
+<li>FTP—-“文件传输协议”</li>
+<li>DNS—-“域名系统”</li>
+<li>HTTP—-“超文本传输协议”</li>
+</ul>
+<p>###2. 传输层</p>
+<ul>
+<li>作用：报文分割，三次握手</li>
+<li>TCP—-“传输控制协议”</li>
+<li>UDP—-“用户数据报协议”</li>
+</ul>
+<p>###3. 网络层</p>
+<ul>
+<li>作用：确定传输路线，将数据包准确送达</li>
+<li>IP—-“网际协议”</li>
+</ul>
+<p>###4. 链路层</p>
+<ul>
+<li>作用：处理连接网络的硬件部分。</li>
+<li>内容：包括操作系统、设备驱动、网卡和光纤等</li>
+</ul>
+<p>#四、请求报文和响应报文简述：<br><img src="http://piks830x0.bkt.clouddn.com/%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.JPG" alt=""></p>
+<p>#五、辅助理解</p>
+<ul>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/http%E6%95%B4%E4%B8%AA%E6%B5%81%E7%A8%8B.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/http%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.png" alt=""></p>
+</li>
+<li><p><img src="http://piks830x0.bkt.clouddn.com/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B.png" alt=""></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/HTTP-基础/" data-id="cjothuzsd000bm8qrtzwoulbe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS-DOM模型" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/JS-DOM模型/" class="article-date">
@@ -260,7 +923,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/JS-DOM模型/" data-id="cjotdehtj0008bsqr24lojh0m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/JS-DOM模型/" data-id="cjothuzsd000dm8qrz5wc2im6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -441,7 +1104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjotdehtj000dbsqragd64dq0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjothuzsd000fm8qrwghemge3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,7 +1158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-相等和全等的区别/" data-id="cjotdehtz000lbsqr7tr0faye" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-相等和全等的区别/" data-id="cjothuzsd000pm8qrox6dxuu0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -583,7 +1246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数据类型及类型转换/" data-id="cjotdehtz000ibsqrtst4dipy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数据类型及类型转换/" data-id="cjothuzsd000lm8qrjy4egldp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -652,369 +1315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjotdehtj000ebsqr6u2ff3cr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-null和undefined" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-null和undefined/" class="article-date">
-  <time datetime="2018-11-22T13:43:04.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-null和undefined/">JS-null和undefined</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：《JS高程》page24页、《JS权威指南》page44页</p>
-<p>#一、null<br>代表“空值”，可以表示数字、字符串和对象是无值的。</p>
-<p>#二、undefined<br>代表“未定义”，声明了变量但没赋值，那么这个变量的值就是undefined。</p>
-<p>#三、null和undefined不同点</p>
-<ul>
-<li>有一个对象object  定义了但是暂时不想给值，就null，<br>  例子：var obj = nul;</li>
-<li>有一个非对象  定义了但是暂时不想给值，就undefined，<br>  例子：var aa = undefined;</li>
-</ul>
-<p>#四、null和undefined的相同点：</p>
-<ul>
-<li>都表示值得空缺，可以互换使用；</li>
-<li>null==undefined，null===undefined；</li>
-<li>转成布尔值时都为false；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-null和undefined/" data-id="cjotdehtj000cbsqrowjturj4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-Promist对象" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-Promist对象/" class="article-date">
-  <time datetime="2018-11-22T13:23:29.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-Promist对象/">JS-Promist对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN文档</p>
-<p>#一、创建：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*我常用的创建方式*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myPromise</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">     	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function">(<span class="params">resolve, reject </span>)=&gt;</span>&#123;</span><br><span class="line">         	做事（异步任务）</span><br><span class="line">     		如果成功就调用 resolve（）</span><br><span class="line">       	如果失败就调用 reject（）</span><br><span class="line">      	&#125;)</span><br><span class="line">  	&#125;</span><br><span class="line">  myPromise().then(fn1, fn2).then(fn3, fn4)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果成功就调用resolve，也就是执行fn1，fn1的参数就是resolve的参数</p>
-<ul>
-<li>fn1执行成功则fn3被调用，fn3的参数就是fn1的return结果；</li>
-<li>fn1执行出错则fn4被调用，fn4的参数就是fn1的return结果；</li>
-</ul>
-</li>
-<li><p>如果失败就调用reject，也就是执行fn2，参数问题同上</p>
-<ul>
-<li>fn2执行成功则fn3被调用，参数问题同上；</li>
-<li>fn2执行出错则fn4被调用，参数问题同上；</li>
-</ul>
-</li>
-</ul>
-<p>#二、 属性：</p>
-<ul>
-<li>Promise.length: 属性值总是1，表示构造函数的参数个数</li>
-<li>Promise.prototype：表示Promise构造函数的原型，原型的constructor属性是Promise构造函数</li>
-</ul>
-<p>#三、方法：</p>
-<p>###1. Promise.prototype.catch()</p>
-<ul>
-<li>如果成功，就不执行函数参数；</li>
-<li>如果失败，就执行函数参数。</li>
-</ul>
-<p>###2. Promise.prototype.finally()</p>
-<ul>
-<li>无论成功还是失败，都执行函数参数，函数参数不接收参数。</li>
-</ul>
-<p>###3. Promise.prototype.then(）</p>
-<ul>
-<li>如果成功，就执行then的第一个函数参数；</li>
-<li>如果失败，就执行then的第二个函数参数。</li>
-</ul>
-<p>###4. Promise.all()</p>
-<ul>
-<li>输入：数组</li>
-<li>输出：Promise实例</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pro = <span class="built_in">Promise</span>.all([xx, yy, zz]); </span><br><span class="line">pro.then(AA, BB)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>执行AA：迭代器中所有promise调用resolve时</li>
-<li>执行BB：迭代器中至少一个promise调用reject时</li>
-</ul>
-<p>###5. Promise.race()</p>
-<ul>
-<li>输入：数组</li>
-<li>输出：Promise实例</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xx = <span class="keyword">new</span> <span class="built_in">Promise</span>()    </span><br><span class="line"><span class="keyword">let</span> yy = <span class="keyword">new</span> <span class="built_in">Promise</span>()    </span><br><span class="line"><span class="keyword">let</span> zz = <span class="keyword">new</span> <span class="built_in">Promise</span>()</span><br><span class="line"><span class="keyword">let</span> pro = <span class="built_in">Promise</span>.rece([xx, yy, zz])</span><br><span class="line">pro.then(AA, BB)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>执行AA：迭代器中某个（最早的）promise调用resolve时。</li>
-<li>执行BB：迭代器中某个（最早的）promise调用reject时。</li>
-</ul>
-<p>###6. Promise.reject()</p>
-<ul>
-<li>输入：失败原因</li>
-<li>输出：Promise对象</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.reject(<span class="string">'失败的原因'</span>).then(</span><br><span class="line">	()=&gt;&#123; 从不会被调用 &#125;, </span><br><span class="line">	(ev)=&gt;&#123; 会被调用 &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>###7. Promise.resolve()</p>
-<ul>
-<li>输入：成功原因/数据</li>
-<li>输出：Promise对象</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'成功原因/数据'</span>).then( </span><br><span class="line">	(ev)=&gt;&#123; 会被调用 &#125;, </span><br><span class="line">	()=&gt;&#123; 从不会被调用 &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-Promist对象/" data-id="cjotdehtz000mbsqrv0ncfvv7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-JSON对象" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-JSON对象/" class="article-date">
-  <time datetime="2018-11-22T13:05:27.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-JSON对象/">JS-JSON对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-JSON对象/" data-id="cjotdehtj000absqr4w7ipczz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-数组（基础）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-数组（基础）/" class="article-date">
-  <time datetime="2018-11-22T12:43:34.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-数组（基础）/">JS-数组（基础）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN、《JS高程》、《JS权威指南》</p>
-<p>#一、数组的创建和调用</p>
-<p>##1.数组定义相关问题：</p>
-<ul>
-<li>数组是按次序排列的一组值，每个值的位置都有编号（从0开始），整个数组用方括号表示；</li>
-<li>数组是特殊的对象，特殊在于他的键名/属性名是按次序排列的一组整数，</li>
-<li>typeof运算符检测数组，返回object；</li>
-<li>数组的原型链上有Array.prototype对象，该对象拥有操控数组的方法和属性；</li>
-</ul>
-<p>##2. 数组创建相关问题：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*new Array()*/</span></span><br><span class="line"><span class="keyword">var</span> color = <span class="keyword">new</span> <span class="built_in">Array</span>( <span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"blue"</span>);</span><br><span class="line"><span class="comment">/*数组直接量*/</span></span><br><span class="line"><span class="keyword">var</span> color = [<span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"blue"</span>];</span><br></pre></td></tr></table></figure>
-<ul>
-<li>new Array( )方法中：<br>  只有一个参数是就是数组的长度，数组元素都是空元素；<br>  两个及以上参数时，才是数组！</li>
-<li>new Array( )方法中，有没有new都一样，和对象与函数的一样，<br>  但是基本类型的构造函数创建方法有和没有new有着本质的区别。</li>
-</ul>
-<p>##3. 数组元素相关问题：</p>
-<ul>
-<li>和对象一样，数组的属性名也是字符串，写成数字，会转成字符串，arr[0]===arr[‘0’]；</li>
-<li>数组的属性名不符合标识符规范，只能使用方括号操作数组，不能使用点运算符；</li>
-<li>方括号法操作数组包括取元素，修改元素，新增元素</li>
-<li>除了可以定义时赋值，也可以先定义后赋值，任何类型的数据都可以放入数组；<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'22'</span>,<span class="number">33</span>, &#123;<span class="attr">a</span>:<span class="number">44</span>,<span class="attr">b</span>:<span class="string">'cc'</span>&#125;, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="literal">true</span>;&#125;]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>#二、其他零散知识</p>
-<p>###1. 数组空位：</p>
-<ul>
-<li>两个逗号之间没有任何值，则是空位，  </li>
-<li>delete删除元素会创建空位，空位也占元素个数；</li>
-<li>空位是可以读取的，返回undefined；</li>
-<li>空位表示数组没有这个元素，所以不会被for/in等方法遍历到，</li>
-<li>undefined表示数组有这个元素，值为undefined；</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="string">'abc'</span>, , <span class="literal">undefined</span>, <span class="string">'def'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/*for/in循环会跳过空位*/</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123; <span class="built_in">console</span>.log(arr[i]) &#125;;    	<span class="comment">//'abc' undefined 'def'   </span></span><br><span class="line"></span><br><span class="line">arr.length; 					<span class="comment">//4  			length属性不会跳过空位</span></span><br><span class="line">arr[<span class="number">0</span>]; 						<span class="comment">//'abc'</span></span><br><span class="line"><span class="keyword">delete</span> arr[<span class="number">0</span>];  </span><br><span class="line">arr[<span class="number">0</span>];   						<span class="comment">//undefined  	删除元素形成空位       </span></span><br><span class="line">arr.length;                    	<span class="comment">//4    			删除了元素但不影响元素个数</span></span><br><span class="line">arr[<span class="number">1</span>]; 						<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-<p>###2. in运算符：</p>
-<ul>
-<li>in运算符检查数组是否有某个键名，它适用于对象也适用于数组；</li>
-<li>如果某个位置是空位，in运算符返回false；</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'位置0'</span>, <span class="literal">undefined</span>];</span><br><span class="line"><span class="number">0</span> <span class="keyword">in</span> arr; 			<span class="comment">//非空位，返回true</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">in</span> arr; 			<span class="comment">//undefined和空位不一样，返回true</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">in</span> arr; 			<span class="comment">//空位，返回fals</span></span><br></pre></td></tr></table></figure>
-<p>###3. 类/伪数组对象：</p>
-<ul>
-<li>伪数组原型链上没有Array.prototype对象</li>
-<li>如果一个对象的所有键名都是正整数或零，并且有length属性，它就是伪数组。</li>
-<li>类数组对象不是数组，数组特有的方法，它是没有的，比如push等方法；</li>
-<li>类数组对象虽然也有length属性，但它是固定的而数组的length是随着元素变化而变化的；</li>
-<li>典型的类数组对象有字符串，函数的arguments对象，以及大多数的DOM元素集，<br>  如document.genElementsByTagName(‘p’);     </li>
-<li>将类数组对象转成数组对象的方法有：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方法1：推荐*/</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.from(arrayLike)</span><br><span class="line"><span class="comment">/*方法2：slice方法*/</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.prototype.slice.call(arrayLike);</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjotdehtz000obsqrknnc05dx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-数组（升级）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-数组（升级）/" class="article-date">
-  <time datetime="2018-11-22T10:15:18.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-数组（升级）/">JS-数组（升级）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN、Underscore.js库</p>
-<p>#一、数组的属性：</p>
-<p>###1. Array.prototype<br>    表示Array构造函数的原型（对象）</p>
-<p>###2. Array.prototype.constructor<br>    表示创建实例数组的那个构造函数的引用（此处是引用是地址，不是简单的字符串格式的函数名）</p>
-<p>###3. Array.length<br>    返回数组元素个数，它是一个动态值，等于键名中最大整数加上1，故数组是一个动态的数据结构；</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>];  </span><br><span class="line"><span class="comment">/*输出2*/</span></span><br><span class="line">  	arr.length;</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">/*undefined: 当length大于实际个数，则元素会新增，新增的都是undefined；*/</span></span><br><span class="line">  	arr.length=<span class="number">3</span>; arr[<span class="number">3</span>];</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">/*undefined: 当length小于实际个数，则元素会删除，删除后面的不在length以内的元素；*/</span></span><br><span class="line">  	arr.length=<span class="number">1</span>; arr[<span class="number">1</span>]；</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">/**/</span></span><br><span class="line">  	arr[<span class="number">100</span>]=<span class="string">'a'</span>;  arr.length;                     <span class="comment">//101;   length是键名最大整数加1</span></span><br><span class="line">  	arr.abc = <span class="string">'abc'</span>;  arr.length;                 <span class="comment">//101;   length与键名整数有关，和其他无关！</span></span><br><span class="line">  	arr.length=<span class="number">0</span>;   arr[<span class="number">0</span>];                          <span class="comment">//undefined;   清空数组的一个有效方法是：length属性设置为0；</span></span><br></pre></td></tr></table></figure>
-<p>#二、数组的方法：</p>
-<p>###1. Array.isArray(xxx)<br>    参数：xxx是要做判断的对象/数组<br>      返回值：布尔值，判断是数组就返回true，否则是false</p>
-<p>###2. Array.from(arrayLike, fn)<br>    参数：arrayLike是类数组对象或可迭代的对象，fn是新数组中的每个元素都会执行该函数<br>       返回值：类数组转化成新数组，返回该数组</p>
-<p>###3. Array.of(ele0, ele1….elen)<br>    参数：按顺序成为新数组中的元素，哪怕是单个的数字（备注）<br>       返回值：新数组</p>
-<p>###4. array.concat(arr1, arr2…)<br>    参数：被连接的目标数组们（浅拷贝，拷贝的是引用）<br>      返回值：连接多个数组后的新数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> y = [[<span class="number">1</span>,<span class="number">2</span>]];</span><br><span class="line"><span class="keyword">var</span> z = x.concat(y);	<span class="comment">//[0, [1,2]]   z[1]是y的引用，互相影响</span></span><br></pre></td></tr></table></figure>
-<p>###5. array.slice()<br>    参数：起始位置（包含），结束位置（不包含），负数代表从后往前第几个元素<br>      返回值：拆分原数组，返回新数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">x.slice();			<span class="comment">//['a', 'b', 'c']; </span></span><br><span class="line">x.slice(<span class="number">0</span>,<span class="number">1</span>);  		<span class="comment">//['a']</span></span><br><span class="line">x.slice(<span class="number">-2</span>);  		<span class="comment">//['b', 'c'] 倒数第2个开始</span></span><br></pre></td></tr></table></figure>
-<p>###6. array.join()<br>    参数：元素之间的连接符，默认是逗号<br>       返回值：将数组变成字符串，返回的是该字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]    </span><br><span class="line">x.join();  			<span class="comment">// "a,b,c"</span></span><br><span class="line">x.join(<span class="string">''</span>);  		<span class="comment">// "abc"</span></span><br><span class="line">x.join(<span class="string">'加'</span>)			<span class="comment">// "a加b加c"</span></span><br></pre></td></tr></table></figure>
-<p>###7. 字符串.split()<br>    参数：分隔符<br>       返回值：在源字符串以分隔符出现的位置进行分割，分割之后变成新数组，返回该数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line">x.split(<span class="string">'a'</span>); 		<span class="comment">// ['', 'bc']</span></span><br><span class="line">x.split(<span class="string">'b'</span>);  		<span class="comment">// ['a', 'c']</span></span><br><span class="line">x.split();  		<span class="comment">// ['abc']</span></span><br><span class="line">x.split(<span class="string">''</span>);   		<span class="comment">// ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure>
-<p>###8. array.forEach((item,index)=&gt;{ })<br>    参数：为每个元素执行的函数<br>     返回值：遍历之后，没有返回结果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span> ];</span><br><span class="line">x.forEach(<span class="function">(<span class="params">item, index</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<p>###9. array.map((item,index)=&gt;{ })<br>    参数：为每个元素执行的函数<br>      返回值：遍历之后，返回新数组           </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span> ];</span><br><span class="line">x.map(<span class="function">(<span class="params">item, index</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<p>###10. array.filter((item,index)=&gt;{})<br>    参数：函数，用来过滤数组用的<br>     返回值：过滤之后的新数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">x.filter(<span class="function">(<span class="params">item, index</span>)=&gt;</span>&#123; </span><br><span class="line">	<span class="keyword">return</span> value &gt;= <span class="number">2</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>###11. array.reduce(()=&gt;{}, xx)<br>    参数：每个元素都调用的函数<br>     返回值：为数组中的每个元素应用一个函数，将其减少到单个值     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">x.reduce(<span class="function">(<span class="params">add, value</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> add=add+value</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>###12. array.sort((x, y)=&gt;{return x-y})<br>    参数：参数：一个函数（非必须）<br>     返回值：返回排序之后的新数组，原数组被改变了！</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span> ];   </span><br><span class="line">x.sort(<span class="function">(<span class="params">x, y</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x-y</span><br><span class="line">&#125;);		<span class="comment">//[1,2,3];       //可能是升序也可能是降序</span></span><br></pre></td></tr></table></figure>
-<p>###13. array.indexOf()<br>    参数：要查找的那个元素<br>    返回值：第一个被找到的那个元素在数组中的位置，没找到就返回-1。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [ <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span> ]</span><br><span class="line">x.indexof(<span class="string">'a'</span>);	  		<span class="comment">//	0     </span></span><br><span class="line">x.indexof(<span class="string">'c'</span>);  		<span class="comment">//	-1</span></span><br></pre></td></tr></table></figure>
-<p>###14. push()<br>    参数：要添加到数组结尾的元素。<br>    返回值：新数组的长度（新的length值）。   也可用于类数组对象！</p>
-<p>###15. unshift()<br>    参数：要添加到数组开头的元素。<br>    返回值：新数组的长度（新的length值）。  也可用于类数组对象！</p>
-<p>###16. pop()<br>    返回值：数组结尾的已经被删除了的那个元素。</p>
-<p>###17. shift()<br>    返回值：数组开头的已经被删除了的那个元素。</p>
-<p>#二、数组去重：</p>
-<ol>
-<li>借助对象属性名<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">-2</span>,<span class="string">'2'</span>, <span class="number">2</span> ,<span class="number">5</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">3</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">       <span class="keyword">let</span> newArr = []</span><br><span class="line">       arr.map(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</span><br><span class="line">       	<span class="keyword">if</span>(obj[item] !== item)&#123;</span><br><span class="line">   	        obj[item]=item</span><br><span class="line">  	            newArr.push(item)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">       <span class="keyword">return</span> newArr</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="2">
-<li>利用数组的indexof方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">   	<span class="keyword">let</span> newArr = []</span><br><span class="line">   	arr.map(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</span><br><span class="line">       	newArr.indexOf(item) === <span class="number">-1</span> &amp;&amp; newArr.push(item)</span><br><span class="line">   	&#125;)</span><br><span class="line">   	<span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>3、Set去重<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr))</span><br></pre></td></tr></table></figure></p>
-<p>#三、数组方法源代码</p>
-<p>##1. join方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Join = functio</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">this</span>[<span class="number">0</span>] || <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;<span class="keyword">this</span>.length; i</span><br><span class="line">        result = result + char + </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##2. slice方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Slice = <span class="function"><span class="keyword">function</span>(<span class="params">begin,end</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    begin = begin || <span class="number">0</span></span><br><span class="line">    end = end || <span class="keyword">this</span>.length</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=begin; i&lt;end; i++)&#123;</span><br><span class="line">        result.push(<span class="keyword">this</span>[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##3. sort方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Sort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    fn = fn || <span class="function"><span class="keyword">function</span> <span class="title">ff</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.length<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j=i+<span class="number">1</span>; j&lt;<span class="keyword">this</span>.length; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fn.call(<span class="literal">null</span>, <span class="keyword">this</span>[j], <span class="keyword">this</span>[i])&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                [<span class="keyword">this</span>[i], <span class="keyword">this</span>[j]] = [<span class="keyword">this</span>[j], <span class="keyword">this</span>[i]]</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##4. forEach方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_ForEach = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">        fn.call(<span class="literal">null</span>, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##5. map方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Map = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</span><br><span class="line">            result[i] = fn.call(<span class="literal">null</span>, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##6. filter方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Filter = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fn.call(<span class="literal">null</span>, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>))&#123;</span><br><span class="line">               result.push(<span class="keyword">this</span>[i]) </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##7. reduce方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.my_Reduce = <span class="function"><span class="keyword">function</span>(<span class="params">fn, init</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = init</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">        result = fn.call(<span class="literal">null</span>, result, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（升级）/" data-id="cjotdehtz000nbsqrei72nypa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjothuzsd000im8qrampk90os" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1028,7 +1329,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1060,23 +1361,23 @@
       <ul>
         
           <li>
-            <a href="/2018/11/23/JS-DOM模型/">JS-DOM模型</a>
+            <a href="/2018/11/23/数据结构和算法/">数据结构和算法</a>
           </li>
         
           <li>
-            <a href="/2018/11/23/JS-事件/">JS-事件</a>
+            <a href="/2018/11/23/JS-Canvas/">JS-Canvas</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
+            <a href="/2018/11/23/网络安全/">网络安全</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
+            <a href="/2018/11/23/前后端交互/">前后端交互</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-变量/">JS-变量</a>
+            <a href="/2018/11/23/HTTP-基础/">HTTP-基础</a>
           </li>
         
       </ul>

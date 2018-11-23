@@ -62,6 +62,551 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-动画" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-动画/" class="article-date">
+  <time datetime="2018-11-22T05:19:55.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-动画/">CSS-动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档</p>
+<p>#一、好的习惯：</p>
+<ol>
+<li>如果要灵活定制多个帧以及循环，用animation；</li>
+<li>如果要简单的from to 效果，用 transition；</li>
+<li>如果要使用js灵活设定动画属性，用transition.</li>
+</ol>
+<p>#二、两个方案的不同点：</p>
+<ul>
+<li>触发：animation则和gif动态图差不多，立即播放，而transition需要一个事件去触发，如鼠标移    上去、焦点、点击等等，</li>
+<li>循环：animation可以设定循环次数；</li>
+<li>精确：animation可以设定每一帧的样式和时间，而tranistion 只能设定头尾；</li>
+<li>与javascript的交互：animation与js的交互不是很紧密，tranistion和js的结合更强大</li>
+</ul>
+<p>#三、transform—-“改变”</p>
+<p>属性值：</p>
+<ul>
+<li>translate—-“平移”<br>  例：transform: translate( 100px, 200px );   //向右向下</li>
+<li>scale—-“缩放”<br>  例：transform: scale( 0.5, 2 );   //变窄变高</li>
+<li>skew—-“扭曲”<br>  例：transform: skew( 30deg, 60deg );   </li>
+<li>rotate—-“旋转”<br>  例：transform: rotate( 90deg );   //顺时针90度</li>
+</ul>
+<p>补充：</p>
+<p>###transform-origin—-“中心点”<br>例：transform-origin: right bottom;</p>
+<p>属性值：left、right、center、length、%</p>
+<p>#四、transition—-“过渡”<br>注意：除了两个时间外，顺序可以打乱</p>
+<p>属性值：</p>
+<ul>
+<li>transition-property —-“参与属性”</li>
+<li>transition-duration —-“持续时间”</li>
+<li>transition-delay —-“延迟时间”</li>
+<li>transition-timing-function—-“动画节奏”<ul>
+<li>Linear—-“线性过渡”</li>
+<li>ease —-“越来越慢”</li>
+<li>ease-in —-“先慢后快”</li>
+<li>ease-out —-“先快后慢”</li>
+<li>ease-in-out —-“先慢后快再慢”</li>
+</ul>
+</li>
+</ul>
+<p>#五、animation—-“动画”<br>注意：除了两个时间外，顺序可以打乱</p>
+<p>属性值：</p>
+<ul>
+<li>animation-name —-“动画名称”</li>
+<li>animation-duration —-“持续的时间”<ul>
+<li>s或ms为单位，没有单位值无效</li>
+</ul>
+</li>
+<li>animation-delay —-“延迟的时间”</li>
+<li>animation-timing-function —-“动画节奏”<ul>
+<li>和transition-timing-function一样的，此处省略</li>
+</ul>
+</li>
+<li>animation-direction —-“播放方向”<ul>
+<li>normal —-“次数为2，ease-in加快： 左到右–起点慢，左到右–起点慢”</li>
+<li>alternate—-“次数为2，ease-in加快： 左到右–起点慢，右到左–起点慢”</li>
+<li>reverse —-“次数为2，ease-in加快： 右到左–起点慢，右到左–起点慢”</li>
+<li>alternate-reverse—“次数为2，ease-in加快： 右到左–起点慢，左到右–起点慢”</li>
+</ul>
+</li>
+<li>animation-iteration-count —-“播放次数”<ul>
+<li>number：默认是1；可以是小数，如0.5，表示播放动画到关键帧的一半（0 ~ 50%）</li>
+<li>infinite—-“无限次播放”</li>
+</ul>
+</li>
+<li>animation-fill-mode —-“动画执行之前和之后如何给动画的目标应用样式”<ul>
+<li>none —- “动画前后样式不变”</li>
+<li>forwards —-“停留在最后一帧”</li>
+<li>backwards —-“停留在第一帧”</li>
+<li>both —-“动画将会执行 forwards 和 backwards 执行的动作。”</li>
+</ul>
+</li>
+<li>animation-play-state —-“控制动画运行或暂停”<ul>
+<li>running—-“当前动画正在运行”</li>
+<li>paused—-“当前动画已被停止”</li>
+<li>恢复一个已暂停的动画，将从它开始暂停的时候，而不是从动画序列的起点开始在动画。</li>
+</ul>
+</li>
+</ul>
+<p>###@keyframes —-“关键帧”<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; </span><br><span class="line">    <span class="attribute">animation</span>: name  <span class="number">10s</span>;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> name</span><br><span class="line">&#123;</span><br><span class="line">    0% &#123; <span class="attribute">opacity</span>: <span class="number">0</span> &#125; 		<span class="comment">/*to*/</span></span><br><span class="line">    30%&#123; <span class="attribute">opacity</span>: <span class="number">0.5</span> &#125;</span><br><span class="line">    100%&#123; <span class="attribute">opacity</span>: <span class="number">1</span> &#125;		<span class="comment">/*from*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-动画/" data-id="cjothuzrx0003m8qr71w19wlo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局经验" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局经验/" class="article-date">
+  <time datetime="2018-11-22T04:40:43.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局经验/">CSS-布局经验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：<a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">learnlayout网站</a></p>
+<p>#一、响应式布局：</p>
+<p>###1.特点：<br>（元素）位置变化、（元素）尺寸变化、字体（大小）变化</p>
+<p>###2.方法：<br>诸多技术的综合：自适应+弹性布局</p>
+<p>###3.优点：<br>一套代码通用所用设备，所有设备上完美显示！</p>
+<p>###4.缺点：<br>代码量大，考虑的问题多</p>
+<p>#二、自适应布局</p>
+<p>###1.特点：<br>（元素）位置变化、（元素）尺寸固定、字体（大小）固定</p>
+<p>###2.方法：<br>@media查询，每个尺寸范围内，对应一套css样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*css文件样式表里的媒体查询技术*/</span></span><br><span class="line">@<span class="keyword">media</span> (min-width: <span class="number">426px</span>) and (max-width: <span class="number">768px</span>)</span><br><span class="line"></span><br><span class="line">/*css样式文件引入时的媒体查询技术*/</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"./376-768.css"</span> media=<span class="string">"only screen and (min-width: 376px) and (max-width: 768px)"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>###3.优点：<br>屏幕改变到临界点时，元素位置改变，做出最佳显示效果</p>
+<p>###4.缺点：</p>
+<ul>
+<li>元素和屏幕之间不能等比例缩放；</li>
+<li>元素本身宽高之间不能等比例缩放；</li>
+<li>为适应多种规格屏幕，需要做多套css样式；</li>
+</ul>
+<p>#三、弹性布局：（动态rem布局、vw布局）</p>
+<p>###1.特点：<br>（元素）位置固定，（元素）尺寸变化，字体（大小）不变/变化    </p>
+<p>###2.方法：</p>
+<ol>
+<li>思路：</li>
+</ol>
+<ul>
+<li>手机尺寸不同，说得是宽度不同，窄手机元素小，宽手机元素大，即让元素尺寸跟随屏幕宽度变化，</li>
+<li>px、em和rem等固定单位都是不行的，vw单位可以，因为vw和手机尺寸直接关联！</li>
+<li>rem和html的font-size有关系，如果让html的font-size和屏幕宽度建立联系，那么rem和屏幕宽度也就关联上了！</li>
+</ul>
+<ol start="2">
+<li>rem布局：</li>
+</ol>
+<ul>
+<li><p>核心：屏幕宽度 = 10rem</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1rem = html的font-size = 0.1屏幕宽度*/</span></span><br><span class="line"><span class="comment">/*除以10而不是100是因为：方便计算、浏览器font-size最小是12px*/</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123; font-size:<span class="subst">$&#123;<span class="built_in">window</span>.innerWidth<span class="regexp">/10&#125;px &#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实战：屏幕宽度为500px，元素1宽度为100px，元素2宽度为300px，如何用rem表示？</p>
+<ul>
+<li>元素1：<br>  px单位：100/500 <em> 500px<br>  rem单位：100/500 </em> 10rem</li>
+<li>元素2：<br>  px单位：300/500 <em> 500px<br>  rem单位：300/500 </em> 10rem</li>
+</ul>
+</li>
+<li>注意：太小的地方就不要用rem了，比如border的宽度，还有，body的font-size设置成16px就好了。</li>
+</ul>
+<ol start="3">
+<li>vw布局：</li>
+</ol>
+<ul>
+<li>核心：屏幕宽度 = 100vw</li>
+<li>实战：屏幕宽度为500px，元素1宽度为100px，元素2宽度为300px，如何用rem表示？<ul>
+<li>元素1：<br>  px单位：100/500 <em> 500px<br>  rem单位：100/500 </em> 100vw</li>
+<li>元素2：<br>  px单位：300/500 <em> 500px<br>  rem单位：300/500 </em> 100vw</li>
+</ul>
+</li>
+</ul>
+<p>###3.优点：<br>元素和屏幕之间等比例缩放，元素本身宽高之间等比例缩放</p>
+<p>###4.缺点：</p>
+<ul>
+<li>动态rem布局每次加载需要刷新才起作用，电脑不行，手机可以，手机是一次性加载！</li>
+<li>rem在电脑端的兼容性还不是太好，不过现在已经得到了很大的改善，查看兼容情况：<br><a href="https://caniuse.com/#" target="_blank" rel="noopener">兼容性查询</a></li>
+</ul>
+<p>#四、流式布局：（百分比布局）</p>
+<p>###1.特点：<br>（元素）位置固定、（元素）尺寸变化、字体（大小）固定</p>
+<p>###2.方法：</p>
+<ol>
+<li>使用百分比宽度（%）、绝对高度（px）</li>
+<li>设置max-width、min-width<br>（设置网页主体宽度为80%，min-width为960px）</li>
+</ol>
+<p>###3.优点：<br>元素和屏幕之间等比例缩放</p>
+<p>###4.缺点：</p>
+<ul>
+<li>元素本身宽高不能等比例缩放，因为宽度无法确定，高度没法跟着宽度走，</li>
+<li>当元素宽度被过度拉长或挤压时高度固定，会设计失真</li>
+</ul>
+<p>#五、固定布局：</p>
+<p>###1.特点：<br>（元素）位置固定、（元素）尺寸固定、字体（大小）固定</p>
+<p>###2.方法：</p>
+<ol>
+<li>使用绝对宽度（px）、绝对高度（px）</li>
+<li>设置max-width、min-width</li>
+</ol>
+<p>###3.优点：<br>简单、没兼容性问题</p>
+<p>###4.缺点：<br>屏幕尺寸改变，网页不能自动缩放</p>
+<p>#六、手机端布局：</p>
+<ul>
+<li>mobile-first（先做手机版：推荐） &amp;&amp; desktop-first（先做电脑版）</li>
+<li>某个元素在同一屏幕显示不同状态，由JavaScript去做，即JS控制元素的类/样式；</li>
+<li>某个元素在不同屏幕显示不同状态，由媒体查询去做，即符合条件时样式起作用，否则不起作用；</li>
+</ul>
+<p>###方案1：响应式：一套样式表，样式表下载，符合查询结果的样式生效！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*禁止手机对页面的缩放：宽度为设备宽度，缩放倍数为1.0*/</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> max-width: <span class="number">320px</span></span><br><span class="line">@media (min-width: <span class="number">321px</span>) and (max-width: <span class="number">375px</span>)</span><br><span class="line">@media (min-width: <span class="number">376px</span>) and (max-width: <span class="number">420px</span>)</span><br></pre></td></tr></table></figure>
+<p>###方案2：响应式：多套样式表，样式表全部下载，符合查询结果的样式表生效！<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*禁止手机对页面的缩放：宽度为设备宽度，缩放倍数为1.0*/</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./0-375.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (max-width: 375px)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./376-768.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (min-width: 376px) and (max-width: 768px)"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###方案3：非响应式：后端判断显示设备是什么，userAgent？<br>是手机就下载手机页面，是电脑就下载电脑页面，这些资源在同一服务器上。</p>
+<p>###方案4：非响应式：后端判断显示设备是什么，userAgent？<br>是手机就从xx服务器下载xx资源，是电脑就从yy服务器下载yy资源。<br>例子：（淘宝手机/电脑版，京东手机/电脑版）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局经验/" data-id="cjothuzrx0009m8qrzlgnqoa3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之定位布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之定位布局/" class="article-date">
+  <time datetime="2018-11-22T04:27:08.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之定位布局/">CSS-布局之定位布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：307页</p>
+<p>#一、绝对定位：</p>
+<ul>
+<li>相对于包含块移动，偏移属性确定移动的距离；</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框；（形成BFC）</li>
+<li>包含块：body元素或position不为static的祖先元素</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#二、相对定位：</p>
+<ul>
+<li>相对于原位置移动，原位置保留，偏移属性确定移动的距离；</li>
+<li>块级元素生成块级框，行内元素生成行内框</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#三、固定定位：</p>
+<ul>
+<li>相对于视窗移动，偏移属性确定移动的距离；（与absolute相似）</li>
+<li>原位置删除，新位置不会嵌入其他元素的内容；（脱离文档流）</li>
+<li>块级元素生成块级框，行内元素也是生成块级框（形成BFC）</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>top—-“下移”</li>
+<li>bottom—-“上移”</li>
+<li>left—-“右移”</li>
+<li>right—-“左移”</li>
+</ul>
+<p>#四、其他知识：</p>
+<ul>
+<li>根元素html的包含块是视窗大小的矩形</li>
+<li>position样式值是relative或static时，包含块由最近的块级框、表单元格或行内块祖先框的内容边界构成</li>
+<li>position样式值是absolute时，包含块由最近的position值不是static的祖先元素构成，<br>  当祖先元素是块级元素时，包含块是元素的内边距边界，<br>  当祖先元素是行内元素时，包含块是元素的内容边界。</li>
+<li>如果没有祖先元素，元素的包含块定义为初始包含块</li>
+<li>元素绝对定位后，会为其后代元素建立一个包含块<br>  （position不为static的都可做包含块）</li>
+<li>绝对定位元素相对于包含块移动，包含块是正常流的一部分，<br>  当文档流滚动时，包含块随之滚动，定位元素也随之滚动</li>
+<li>非替换元素的绝对定位时<ul>
+<li>left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right<br>= 包含块的width<ul>
+<li>top + margin-top + border-top + padding-top +height + padding-bottom + border-bottom + margin-bottom<br>= 包含块的height</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之定位布局/" data-id="cjothuzrx0008m8qry61mytwp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之float布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之float布局/" class="article-date">
+  <time datetime="2018-11-22T04:19:57.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之float布局/">CSS-布局之float布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《CSS权威指南》page：288页</p>
+<h1 id="我的一点总结："><a href="#我的一点总结：" class="headerlink" title="我的一点总结："></a>我的一点总结：</h1><ul>
+<li>浮动元素：使元素脱离文档流，元素自动生成一个块级框（BFC）。</li>
+<li>脱离文档流的意思就是，正常的文档流中丢失了它的位置。</li>
+<li>浮动的框可以向左或向右（left、right）移动，直到他的外边缘碰到包含框或另一个浮动框为止。</li>
+<li>三步走：浮动元素抬起来，下面元素顶上去，浮动元素落下来</li>
+<li>父元素在高度自适应的情况下，由于浮动丢失了子元素的高度，父元素就无法被撑开（塌陷），所以    导致父元素的背景、边框等属性无法生效，也会使后面的元素顶上来。</li>
+<li>我们使用浮动一般是为了让块级元素实现行级元素的特性（类似inline-block），但也不希望浮动元素影响后面的元素位置</li>
+<li>当浮动失去文档流，使后面的元素顶上来以后，一般有三种方法可以处理：<ul>
+<li>1、为父元素增加height属性，这样父元素就会显示边框、背景等，但这种情况是确定浮动元素    的高度时才这么做，但是实际中，可能不清楚高度哦</li>
+<li>2、为浮动元素后面的元素增加clear:both（clearfix清浮动），清除浮动效果，如果没有后面    元素的话，增加一个元素。</li>
+<li>3、为父元素设置overflow:hidden属性（BFC—–块格式化上下文）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*清除浮动，添加这个类即可*/</span></span><br><span class="line">.clearfix::after&#123; </span><br><span class="line">	content: <span class="string">""</span>;  </span><br><span class="line">	display: bolock;  </span><br><span class="line">	clear: both; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>float属性：</p>
+<ul>
+<li>left—-“左浮动”</li>
+<li>right—-“右浮动”</li>
+<li>none—-“不浮动”</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之float布局/" data-id="cjothuzrx0006m8qrt4yl4r38" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS-布局之flex布局" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-布局之flex布局/" class="article-date">
+  <time datetime="2018-11-22T03:32:59.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-布局之flex布局/">CSS-布局之flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档，阮一峰的文章<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰：Flex 布局教程：语法篇</a></p>
+<p><a href="https://www.cnblogs.com/beek/p/A_Complete_Guide_to_Flexbox.html" target="_blank" rel="noopener">随心追梦：Flexbox完整指南- A Complete Guide to Flexbox</a></p>
+<p><a href="http://flexboxfroggy.com/#zh-cn%EF%BC%88flex%E3%80%81grid%EF%BC%89" target="_blank" rel="noopener">巩固flex知识的小游戏1</a></p>
+<p><a href="http://www.flexboxdefense.com/" target="_blank" rel="noopener">巩固flex知识的小游戏2</a></p>
+<p>#1、预备知识：<br><img src="http://piks830x0.bkt.clouddn.com/flex.png" alt=""></p>
+<ul>
+<li>flex容器中默认存在两条轴，主轴（main axis）和交叉轴（cross axis）；</li>
+<li>flex容器是flex container，每个项目称为flex item；</li>
+<li>主轴是水平方向时，每个flex item占据的主轴空间为main size，占据的交叉空间为cross size；</li>
+<li>主轴起点是main start，终点是main end；</li>
+<li>交叉轴起点是cross start，终点cross end ；</li>
+<li>制作flex盒子：.container{display: flex/inline-flex}<br>  块状元素用flex，行内元素    用inline-flex；</li>
+<li>设成了flex盒子后，子元素的float、clear、vertical-align属性都会失效！</li>
+</ul>
+<p>#2、flex容器（flex container）的属性</p>
+<ol>
+<li><p>flex-direction —-“主轴的方向”</p>
+<p> 属性：</p>
+<ul>
+<li>row—-“水平方向，起点在左” 默认值</li>
+<li>row-reverse —-“水平方向，起点在右”</li>
+<li>column—-“垂直方向，起点在上”</li>
+<li>column-reverse —-“垂直方向，起点在下”</li>
+</ul>
+</li>
+<li><p>flex-wrap —-“是否换行”</p>
+<p> 属性：</p>
+<ul>
+<li>nowrap—-“不换行” 默认值</li>
+<li>wrap—-“换行”</li>
+<li>wrap-reverse —-“换行，首行在下”</li>
+</ul>
+</li>
+<li><p>justify-content —-“容器里项目 主轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>flex-start —-“靠向起点” 默认值</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>space-between —-“两端对齐”</li>
+<li>space-around —-“等间隔对齐”</li>
+</ul>
+</li>
+<li><p>align-items —-“容器里项目 交叉轴对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>strentch —-“延伸”  默认值</li>
+<li>flex-start —-“靠向起点”</li>
+<li>flex-end —-“靠向终点”</li>
+<li>center —-“居中”</li>
+<li>baseline —-“项目第一行文字的基线对齐” 不常用</li>
+</ul>
+</li>
+<li><p>align-content —-“项目在多根轴线对齐方式”</p>
+<p> 属性：</p>
+<ul>
+<li>stretch—-“延伸” 默认值</li>
+<li>flex-start —-“靠向交叉轴起点”</li>
+<li>flex-end —-“靠向交叉轴终点”</li>
+<li>center—-“居中”</li>
+<li>space-between —-“交叉轴两端对齐”</li>
+<li>space-around —-“交叉轴等间隔对齐”</li>
+</ul>
+</li>
+<li><p>flex-flow —-“方向 换行” 简写</p>
+</li>
+</ol>
+<p>#3. flex项目（flex item）的属性：</p>
+<ol>
+<li><p>order —-“排列顺序，值小靠前”</p>
+</li>
+<li><p>align-self —-“单个项目在交叉轴方向上的对齐方式”</p>
+</li>
+</ol>
+<ul>
+<li>默认值auto，表示继承父元素的align-items属性</li>
+</ul>
+<ol start="3">
+<li>flex-basis —-“main-size值”</li>
+</ol>
+<ul>
+<li>flext-size未设定值：默认值为auto</li>
+</ul>
+<ol start="4">
+<li>flex-grow —-“增长比例（空间过多时）”</li>
+</ol>
+<ul>
+<li>默认值为0，空间有多余时，项目也不放大；设置为1，项目可能放大</li>
+</ul>
+<ol start="5">
+<li>flex-shrink —-“收缩比例（空间不够时）”</li>
+</ol>
+<ul>
+<li>默认值为1，空间不够时，项目自动缩小；设置为0，项目不会缩小</li>
+</ul>
+<ol start="6">
+<li>flex —-“增长比例 收缩比例 默认值”简写</li>
+</ol>
+<p>#4. 图片补充：</p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-direction.png" target="_blank" rel="noopener">flex-direction</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-wrap.png" target="_blank" rel="noopener">flex-wrap</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/justify-content.png" target="_blank" rel="noopener">justify-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-items.png" target="_blank" rel="noopener">align-items</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-content.png" target="_blank" rel="noopener">align-content</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/order.png" target="_blank" rel="noopener">order</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/align-self.png" target="_blank" rel="noopener">align-self</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-basic.png" target="_blank" rel="noopener">flex-basis</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-grow.png" target="_blank" rel="noopener">flex-grow</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/flex-shrink.png" target="_blank" rel="noopener">flex-shrink</a></p>
+<p><a href="http://piks830x0.bkt.clouddn.com/%E5%BC%A0%E9%91%AB%E6%97%AD%20flex%E5%B1%9E%E6%80%A7.png" target="_blank" rel="noopener">flex</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之flex布局/" data-id="cjothuzrx0005m8qrj601fkd8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-位置层叠" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-位置层叠/" class="article-date">
@@ -136,7 +681,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjotdehtz000pbsqrlvpvpuj5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-位置层叠/" data-id="cjothuzrx0002m8qrwlk0dypo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +802,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjotdehtj0005bsqrjuka6oh2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-布局之grid布局/" data-id="cjothuzrx0007m8qr76gq5ep5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +878,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjotdeht40000bsqrywvpvsh0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-BFC/" data-id="cjothuzrx0000m8qrm1hwfble" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +945,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjotdeht40001bsqr5e5rkn2y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjothuzrx0004m8qrxmp7t50e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,52 +991,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjotdehtj0007bsqr8g4ub1nt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/hello-world/" class="article-date">
-  <time datetime="2018-11-22T01:43:27.315Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjotdehtz000kbsqrseu09im4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjothuzrx000am8qrpu68qi96" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,7 +1005,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -537,23 +1037,23 @@
       <ul>
         
           <li>
-            <a href="/2018/11/23/JS-DOM模型/">JS-DOM模型</a>
+            <a href="/2018/11/23/数据结构和算法/">数据结构和算法</a>
           </li>
         
           <li>
-            <a href="/2018/11/23/JS-事件/">JS-事件</a>
+            <a href="/2018/11/23/JS-Canvas/">JS-Canvas</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
+            <a href="/2018/11/23/网络安全/">网络安全</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
+            <a href="/2018/11/23/前后端交互/">前后端交互</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/JS-变量/">JS-变量</a>
+            <a href="/2018/11/23/HTTP-基础/">HTTP-基础</a>
           </li>
         
       </ul>
