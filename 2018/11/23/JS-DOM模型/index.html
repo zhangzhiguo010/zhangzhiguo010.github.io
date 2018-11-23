@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS-DOM模型 | 张治国的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#参考资料：《JS高程》page286页、《JS权威指南》page361页 #一、DOM实战 ##1.元素 ####1. 增加：  createElement() —-“创建一个给定标签的新元素”  ####2. 删除：  removeChild() —-“从DOM树中删除该对象”  ####3. 查找：  querySelector() —-“返回文档中与指定选择器匹配的节点列表中的第一个节点”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-DOM模型">
+<meta property="og:url" content="http://yoursite.com/2018/11/23/JS-DOM模型/index.html">
+<meta property="og:site_name" content="张治国的博客">
+<meta property="og:description" content="#参考资料：《JS高程》page286页、《JS权威指南》page361页 #一、DOM实战 ##1.元素 ####1. 增加：  createElement() —-“创建一个给定标签的新元素”  ####2. 删除：  removeChild() —-“从DOM树中删除该对象”  ####3. 查找：  querySelector() —-“返回文档中与指定选择器匹配的节点列表中的第一个节点”">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-23T01:51:35.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-DOM模型">
+<meta name="twitter:description" content="#参考资料：《JS高程》page286页、《JS权威指南》page361页 #一、DOM实战 ##1.元素 ####1. 增加：  createElement() —-“创建一个给定标签的新元素”  ####2. 删除：  removeChild() —-“从DOM树中删除该对象”  ####3. 查找：  querySelector() —-“返回文档中与指定选择器匹配的节点列表中的第一个节点”">
+  
+    <link rel="alternate" href="/atom.xml" title="张治国的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张治国的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS-DOM模型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/JS-DOM模型/" class="article-date">
+  <time datetime="2018-11-23T01:13:58.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS-DOM模型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《JS高程》page286页、《JS权威指南》page361页</p>
+<p>#一、DOM实战</p>
+<p>##1.元素</p>
+<p>####1. 增加：</p>
+<ul>
+<li>createElement() —-“创建一个给定标签的新元素”</li>
+</ul>
+<p>####2. 删除：</p>
+<ul>
+<li>removeChild() —-“从DOM树中删除该对象”</li>
+</ul>
+<p>####3. 查找：</p>
+<ul>
+<li>querySelector() —-“返回文档中与指定选择器匹配的节点列表中的第一个节点”</li>
+<li>querySelectorAll() —-“返回文档中与指定选择器匹配的节点列表”</li>
+<li>getElementById() —-“返回给定id名的那个元素”</li>
+<li>getElementsByClassName() —-“返回具有给定类名的元素列表”</li>
+<li>getElementByName() —-“返回具有给定名称的元素列表”</li>
+<li><p>getElementByTagName() —-“返回具有给定标记名称的元素列表”</p>
+</li>
+<li><p>parentNode—-“父节点”</p>
+<ul>
+<li>parentNode属性返回当前节点的父节点，没有父节点就返回null；</li>
+<li>父节点只有三种类型：element节点、document节点、documentfragment文档片段节点；</li>
+<li>文档节点（document）和文档片段节点（documentfragment）的父节点都是null；</li>
+<li>另外，对于那些生成后还没插入 DOM 树的节点，父节点也是null；</li>
+</ul>
+</li>
+<li>parentElement—-“父元素节点”<ul>
+<li>parentElement属性返回当前节点的父元素节点，没有父元素节点就返回null；</li>
+<li>父元素节点只可能是一种类型：element元素节点；</li>
+</ul>
+</li>
+<li>ParentNode.children—-“返回所有子元素为Element的对象”</li>
+<li>ParentNode.firstElementChild—-“返回第一个为element的子节点”</li>
+<li>ParentNode.lastElementChild—-“返回最后一个为element的子节点”</li>
+<li>ParentNode.childElementCount—-“返回ParentNode元素的子元素数量”</li>
+<li>nextSibling—-“弟弟节点”</li>
+<li>previousSibling—-“哥哥节点”</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*所有兄弟元素*/</span></span><br><span class="line"><span class="keyword">let</span> ele = <span class="built_in">document</span>.querySelector(<span class="string">'xx'</span>)</span><br><span class="line"><span class="keyword">let</span> array = []</span><br><span class="line"><span class="keyword">let</span> children = ele.parentElement.children</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;children.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(children[i].nodetype === <span class="number">1</span> &amp;&amp; children[i] !== ele)&#123;</span><br><span class="line">    array.push(children[i])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###4. 插入DOM树：</p>
+<ul>
+<li>appendChild() —-“插入子节点”<ul>
+<li>appendChild方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点</li>
+<li>如果参数节点是DOM已经存在的节点，appendChild方法会将其从原来的位置，移动到新位置</li>
+<li>该方法的返回值就是插入文档的子节点</li>
+</ul>
+</li>
+<li>insertBefore() —-“插入节点”<ul>
+<li>insertBefore方法用于将某个节点插入父节点内部的指定位置；</li>
+<li>insertBefore方法接受两个参数：<pre><code>* 第一个参数是所要插入的节点newNode，
+* 第二个参数是父节点parentNode内部的一个子节点referenceNode，newNode将插在该子节点的前面。
+</code></pre></li>
+<li>返回值是插入的新节点newNode；</li>
+<li>如果第二个参数为null，则新节点将插在当前节点内部的最后位置，即变成最后一个子节点。</li>
+<li>如果所要插入的节点是当前 DOM 现有的节点，则该节点将从原有的位置移除，插入新的位置。</li>
+<li>由于不存在insertAfter方法，如果新节点要插在父节点的某个子节点后面，可用insertBefore方法结合nextSibling属性模拟。</li>
+</ul>
+</li>
+<li>replaceChild() —-“替换节点”<ul>
+<li>replaceChild方法用于将一个新的节点，替换当前节点的某一个子节点。</li>
+<li><code>var replacedNode = parentNode.replaceChild(newChild, oldChild);</code><pre><code>* 第一个参数newChild是用来替换的新节点，
+* 第二个参数oldChild是将要替换走的子节点。
+</code></pre></li>
+<li>返回值是替换走的那个节点oldChild。</li>
+</ul>
+</li>
+</ul>
+<p>##2. 属性</p>
+<p>####1. 增加：</p>
+<ul>
+<li>setAttribute() —-“增/改属性”</li>
+</ul>
+<p>####2. 删除：</p>
+<ul>
+<li>removeAttribute() —-“删除属性，删除指定的属性”</li>
+</ul>
+<p>####3. 查值：</p>
+<ul>
+<li>getAttribute() —-“查找属性，返回指定的属性值”</li>
+<li>getAttributeNames()—-“返回所有属性名组成的数组”</li>
+</ul>
+<p>####4. 测有无：</p>
+<ul>
+<li>hasAttribute() —-“测属性有无”</li>
+<li>hasAttributes() —-“测一个或多个属性有无”</li>
+</ul>
+<p>##3. 元素内容</p>
+<p>####1. 增加、删除、改值、查值</p>
+<ul>
+<li>innerText—-“当前节点和其所有后代节点的文本内容”<ul>
+<li>和textContent作用相同，MDN上有他两之间的差异讲解</li>
+</ul>
+</li>
+<li>textContent—-“当前节点和其所有后代节点的文本内容”<ul>
+<li>将每个子节点的内容连接在一起返回，但是不包括注释节点，</li>
+<li>如果一个节点没有子节点，则返回空字符串</li>
+<li>document节点和documentType节点，两者的textContent属性为null</li>
+</ul>
+</li>
+<li>innerHTML—-“返回某个元素的后代元素的html内容”</li>
+<li>outerHTML—-“返回某个元素及其后代元素的html内容”</li>
+</ul>
+<p>##4. 类的操作</p>
+<ul>
+<li>classList—-“返回class属性值组成的对象”</li>
+<li>ele.classList.add(xxx)———-添加指定的类值</li>
+<li>ele.classList.remove(xxx)—–删除指定的类值</li>
+<li>ele.classList.toggle(xxx)——类值开关，有则删，无则加</li>
+<li>ele.classList.contains(xxx)—-检查是否含有指定的类值</li>
+<li>ele.classList.replace()——–新类整体替换旧类</li>
+</ul>
+<p>##5. 样式</p>
+<p>####1. 增加</p>
+<ul>
+<li>ele.style.color = “red” —-“添加内联样式”</li>
+<li>ele.style.cssText = “width: 50px; height:50px“ —-“添加内联样式”<br>####1. 查找</li>
+<li>getComputedStyle(ele, null)—-“查询计算样式”</li>
+</ul>
+<p>#二、DOM基础知识</p>
+<p>##1. DOM定义及节点的原型链</p>
+<ul>
+<li>DOM是Document Object Model，即文档对象模型，通俗的说就是将文档转化成对象的模型；</li>
+<li>DOM的最小组成单位是节点node，每个节点都是包含着属性和方法的对象，这些节点按照所在的层级排    列成树形结构；</li>
+<li>页面中的节点通过Element、Text、Document、Commet构造函数，构造出相应的对象，这就是DOM的主要功能。</li>
+<li>接口提供了一种用以说明一个对象应该具有哪些方法的手段，尽管他可以表明这些方法的含义，但是却不包含具体实现。</li>
+</ul>
+<p>##2. Node接口</p>
+<ul>
+<li>一共有7种类型节点，这些节点都继承了原生的节点对象Node：<ul>
+<li>1、Document: 整个文档树的顶层节点；</li>
+<li>2、DocumentType: doctype标签，比如<code>&lt;!Doctype html&gt;</code></li>
+<li>3、Element: 网页的各种HTML标签（比如<code>&lt;head&gt;、&lt;body&gt;、&lt;a&gt;、&lt;p&gt;</code>等） </li>
+<li>4、Attribute: 网页元素的属性（比如<code>class=&quot;wrap&quot;</code>） </li>
+<li>5、Text: 标签之间或标签包含的文本</li>
+<li>6、Comment: 注释</li>
+<li>7、DocumentFragment: 文档的片段</li>
+</ul>
+</li>
+</ul>
+<p>##3. NodeList接口</p>
+<ul>
+<li>节点都是单个对象，有时需要一种数据结构，能够容纳多个节点；</li>
+<li>DOM 提供两种节点集合，用于容纳多个节点：NodeList和HTMLCollection。</li>
+<li>许多 DOM 属性和方法，返回的结果是NodeList实例或HTMLCollection实例。</li>
+<li>NodeList实例是一个类/伪数组（对象），它的元素是节点（对象）。</li>
+<li>注意，NodeList 实例可能是动态集合，也可能是静态集合，</li>
+<li>目前，只有Node.childNodes返回的是一个动态集合，其他的 NodeList 都是静态集合。</li>
+</ul>
+<p>##4. HTMLCollection接口</p>
+<ul>
+<li>和NodeList接口相近，</li>
+<li>HTMLCollection是一个元素节点的集合，只包含元素节点（element），不包含其他类型的节点。</li>
+<li>它的返回值是一个类数组的对象，但是与NodeList接口不同，HTMLCollection没有forEach方法，只能使用for循环遍历。</li>
+<li>返回HTMLCollection实例的，主要是一些Document对象的集合属性，如document.links、document.images等。</li>
+<li>注意，children属性只包括元素子节点，不包括其他类型的子节点（比如文本子节点）。</li>
+<li>如果没有元素类型的子节点，返回值HTMLCollection实例的length属性为0。</li>
+<li>另外，HTMLCollection是动态集合，会实时反映 DOM 的任何变化。</li>
+</ul>
+<p>##5. ParentNode接口</p>
+<ul>
+<li>节点对象除了继承 Node接口以外，还会继承其他接口。</li>
+<li>ParentNode接口表示当前节点是一个父节点，提供一些处理子节点的方法。</li>
+<li>ChildNode接口表示当前节点是一个子节点，提供一些相关方法。</li>
+<li>如果当前节点是父节点，就会继承ParentNode接口。</li>
+<li>由于只有元素节点element、文档节点document和文档片段节点documentFragment拥有子节点，<br>  因此只有这三类节点会继承ParentNode接口。</li>
+</ul>
+<p>##6.ChildNode接口</p>
+<ul>
+<li>如果一个节点有父节点，那么该节点就继承了ChildNode接口。 </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/JS-DOM模型/" data-id="cjotdehtj0008bsqr24lojh0m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/23/JS-事件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS-事件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/23/JS-DOM模型/">JS-DOM模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/23/JS-事件/">JS-事件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-相等和全等的区别/">JS-相等和全等的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/JS-变量/">JS-变量</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张治国<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

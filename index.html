@@ -62,6 +62,214 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS-DOM模型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/JS-DOM模型/" class="article-date">
+  <time datetime="2018-11-23T01:13:58.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/JS-DOM模型/">JS-DOM模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：《JS高程》page286页、《JS权威指南》page361页</p>
+<p>#一、DOM实战</p>
+<p>##1.元素</p>
+<p>####1. 增加：</p>
+<ul>
+<li>createElement() —-“创建一个给定标签的新元素”</li>
+</ul>
+<p>####2. 删除：</p>
+<ul>
+<li>removeChild() —-“从DOM树中删除该对象”</li>
+</ul>
+<p>####3. 查找：</p>
+<ul>
+<li>querySelector() —-“返回文档中与指定选择器匹配的节点列表中的第一个节点”</li>
+<li>querySelectorAll() —-“返回文档中与指定选择器匹配的节点列表”</li>
+<li>getElementById() —-“返回给定id名的那个元素”</li>
+<li>getElementsByClassName() —-“返回具有给定类名的元素列表”</li>
+<li>getElementByName() —-“返回具有给定名称的元素列表”</li>
+<li><p>getElementByTagName() —-“返回具有给定标记名称的元素列表”</p>
+</li>
+<li><p>parentNode—-“父节点”</p>
+<ul>
+<li>parentNode属性返回当前节点的父节点，没有父节点就返回null；</li>
+<li>父节点只有三种类型：element节点、document节点、documentfragment文档片段节点；</li>
+<li>文档节点（document）和文档片段节点（documentfragment）的父节点都是null；</li>
+<li>另外，对于那些生成后还没插入 DOM 树的节点，父节点也是null；</li>
+</ul>
+</li>
+<li>parentElement—-“父元素节点”<ul>
+<li>parentElement属性返回当前节点的父元素节点，没有父元素节点就返回null；</li>
+<li>父元素节点只可能是一种类型：element元素节点；</li>
+</ul>
+</li>
+<li>ParentNode.children—-“返回所有子元素为Element的对象”</li>
+<li>ParentNode.firstElementChild—-“返回第一个为element的子节点”</li>
+<li>ParentNode.lastElementChild—-“返回最后一个为element的子节点”</li>
+<li>ParentNode.childElementCount—-“返回ParentNode元素的子元素数量”</li>
+<li>nextSibling—-“弟弟节点”</li>
+<li>previousSibling—-“哥哥节点”</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*所有兄弟元素*/</span></span><br><span class="line"><span class="keyword">let</span> ele = <span class="built_in">document</span>.querySelector(<span class="string">'xx'</span>)</span><br><span class="line"><span class="keyword">let</span> array = []</span><br><span class="line"><span class="keyword">let</span> children = ele.parentElement.children</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;children.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(children[i].nodetype === <span class="number">1</span> &amp;&amp; children[i] !== ele)&#123;</span><br><span class="line">    array.push(children[i])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###4. 插入DOM树：</p>
+<ul>
+<li>appendChild() —-“插入子节点”<ul>
+<li>appendChild方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点</li>
+<li>如果参数节点是DOM已经存在的节点，appendChild方法会将其从原来的位置，移动到新位置</li>
+<li>该方法的返回值就是插入文档的子节点</li>
+</ul>
+</li>
+<li>insertBefore() —-“插入节点”<ul>
+<li>insertBefore方法用于将某个节点插入父节点内部的指定位置；</li>
+<li>insertBefore方法接受两个参数：<pre><code>* 第一个参数是所要插入的节点newNode，
+* 第二个参数是父节点parentNode内部的一个子节点referenceNode，newNode将插在该子节点的前面。
+</code></pre></li>
+<li>返回值是插入的新节点newNode；</li>
+<li>如果第二个参数为null，则新节点将插在当前节点内部的最后位置，即变成最后一个子节点。</li>
+<li>如果所要插入的节点是当前 DOM 现有的节点，则该节点将从原有的位置移除，插入新的位置。</li>
+<li>由于不存在insertAfter方法，如果新节点要插在父节点的某个子节点后面，可用insertBefore方法结合nextSibling属性模拟。</li>
+</ul>
+</li>
+<li>replaceChild() —-“替换节点”<ul>
+<li>replaceChild方法用于将一个新的节点，替换当前节点的某一个子节点。</li>
+<li><code>var replacedNode = parentNode.replaceChild(newChild, oldChild);</code><pre><code>* 第一个参数newChild是用来替换的新节点，
+* 第二个参数oldChild是将要替换走的子节点。
+</code></pre></li>
+<li>返回值是替换走的那个节点oldChild。</li>
+</ul>
+</li>
+</ul>
+<p>##2. 属性</p>
+<p>####1. 增加：</p>
+<ul>
+<li>setAttribute() —-“增/改属性”</li>
+</ul>
+<p>####2. 删除：</p>
+<ul>
+<li>removeAttribute() —-“删除属性，删除指定的属性”</li>
+</ul>
+<p>####3. 查值：</p>
+<ul>
+<li>getAttribute() —-“查找属性，返回指定的属性值”</li>
+<li>getAttributeNames()—-“返回所有属性名组成的数组”</li>
+</ul>
+<p>####4. 测有无：</p>
+<ul>
+<li>hasAttribute() —-“测属性有无”</li>
+<li>hasAttributes() —-“测一个或多个属性有无”</li>
+</ul>
+<p>##3. 元素内容</p>
+<p>####1. 增加、删除、改值、查值</p>
+<ul>
+<li>innerText—-“当前节点和其所有后代节点的文本内容”<ul>
+<li>和textContent作用相同，MDN上有他两之间的差异讲解</li>
+</ul>
+</li>
+<li>textContent—-“当前节点和其所有后代节点的文本内容”<ul>
+<li>将每个子节点的内容连接在一起返回，但是不包括注释节点，</li>
+<li>如果一个节点没有子节点，则返回空字符串</li>
+<li>document节点和documentType节点，两者的textContent属性为null</li>
+</ul>
+</li>
+<li>innerHTML—-“返回某个元素的后代元素的html内容”</li>
+<li>outerHTML—-“返回某个元素及其后代元素的html内容”</li>
+</ul>
+<p>##4. 类的操作</p>
+<ul>
+<li>classList—-“返回class属性值组成的对象”</li>
+<li>ele.classList.add(xxx)———-添加指定的类值</li>
+<li>ele.classList.remove(xxx)—–删除指定的类值</li>
+<li>ele.classList.toggle(xxx)——类值开关，有则删，无则加</li>
+<li>ele.classList.contains(xxx)—-检查是否含有指定的类值</li>
+<li>ele.classList.replace()——–新类整体替换旧类</li>
+</ul>
+<p>##5. 样式</p>
+<p>####1. 增加</p>
+<ul>
+<li>ele.style.color = “red” —-“添加内联样式”</li>
+<li>ele.style.cssText = “width: 50px; height:50px“ —-“添加内联样式”<br>####1. 查找</li>
+<li>getComputedStyle(ele, null)—-“查询计算样式”</li>
+</ul>
+<p>#二、DOM基础知识</p>
+<p>##1. DOM定义及节点的原型链</p>
+<ul>
+<li>DOM是Document Object Model，即文档对象模型，通俗的说就是将文档转化成对象的模型；</li>
+<li>DOM的最小组成单位是节点node，每个节点都是包含着属性和方法的对象，这些节点按照所在的层级排    列成树形结构；</li>
+<li>页面中的节点通过Element、Text、Document、Commet构造函数，构造出相应的对象，这就是DOM的主要功能。</li>
+<li>接口提供了一种用以说明一个对象应该具有哪些方法的手段，尽管他可以表明这些方法的含义，但是却不包含具体实现。</li>
+</ul>
+<p>##2. Node接口</p>
+<ul>
+<li>一共有7种类型节点，这些节点都继承了原生的节点对象Node：<ul>
+<li>1、Document: 整个文档树的顶层节点；</li>
+<li>2、DocumentType: doctype标签，比如<code>&lt;!Doctype html&gt;</code></li>
+<li>3、Element: 网页的各种HTML标签（比如<code>&lt;head&gt;、&lt;body&gt;、&lt;a&gt;、&lt;p&gt;</code>等） </li>
+<li>4、Attribute: 网页元素的属性（比如<code>class=&quot;wrap&quot;</code>） </li>
+<li>5、Text: 标签之间或标签包含的文本</li>
+<li>6、Comment: 注释</li>
+<li>7、DocumentFragment: 文档的片段</li>
+</ul>
+</li>
+</ul>
+<p>##3. NodeList接口</p>
+<ul>
+<li>节点都是单个对象，有时需要一种数据结构，能够容纳多个节点；</li>
+<li>DOM 提供两种节点集合，用于容纳多个节点：NodeList和HTMLCollection。</li>
+<li>许多 DOM 属性和方法，返回的结果是NodeList实例或HTMLCollection实例。</li>
+<li>NodeList实例是一个类/伪数组（对象），它的元素是节点（对象）。</li>
+<li>注意，NodeList 实例可能是动态集合，也可能是静态集合，</li>
+<li>目前，只有Node.childNodes返回的是一个动态集合，其他的 NodeList 都是静态集合。</li>
+</ul>
+<p>##4. HTMLCollection接口</p>
+<ul>
+<li>和NodeList接口相近，</li>
+<li>HTMLCollection是一个元素节点的集合，只包含元素节点（element），不包含其他类型的节点。</li>
+<li>它的返回值是一个类数组的对象，但是与NodeList接口不同，HTMLCollection没有forEach方法，只能使用for循环遍历。</li>
+<li>返回HTMLCollection实例的，主要是一些Document对象的集合属性，如document.links、document.images等。</li>
+<li>注意，children属性只包括元素子节点，不包括其他类型的子节点（比如文本子节点）。</li>
+<li>如果没有元素类型的子节点，返回值HTMLCollection实例的length属性为0。</li>
+<li>另外，HTMLCollection是动态集合，会实时反映 DOM 的任何变化。</li>
+</ul>
+<p>##5. ParentNode接口</p>
+<ul>
+<li>节点对象除了继承 Node接口以外，还会继承其他接口。</li>
+<li>ParentNode接口表示当前节点是一个父节点，提供一些处理子节点的方法。</li>
+<li>ChildNode接口表示当前节点是一个子节点，提供一些相关方法。</li>
+<li>如果当前节点是父节点，就会继承ParentNode接口。</li>
+<li>由于只有元素节点element、文档节点document和文档片段节点documentFragment拥有子节点，<br>  因此只有这三类节点会继承ParentNode接口。</li>
+</ul>
+<p>##6.ChildNode接口</p>
+<ul>
+<li>如果一个节点有父节点，那么该节点就继承了ChildNode接口。 </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/JS-DOM模型/" data-id="cjotdehtj0008bsqr24lojh0m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS-事件" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/JS-事件/" class="article-date">
@@ -233,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjotbyz9o0009pkqrqbpyhwuu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjotdehtj000dbsqragd64dq0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-相等和全等的区别/" data-id="cjotbyza4000ipkqrdaj7wt7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-相等和全等的区别/" data-id="cjotdehtz000lbsqr7tr0faye" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +583,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数据类型及类型转换/" data-id="cjotbyza4000kpkqryx7aae59" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数据类型及类型转换/" data-id="cjotdehtz000ibsqrtst4dipy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjotbyza4000hpkqr9ir4c31x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjotdehtj000ebsqr6u2ff3cr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,7 +702,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-null和undefined/" data-id="cjotbyza4000epkqra4nux9jk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-null和undefined/" data-id="cjotdehtj000cbsqrowjturj4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -598,7 +806,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-Promist对象/" data-id="cjotbyza4000gpkqrfwwjqhys" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-Promist对象/" data-id="cjotdehtz000mbsqrv0ncfvv7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -634,7 +842,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-JSON对象/" data-id="cjotbyza4000npkqr20ve2i4r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-JSON对象/" data-id="cjotdehtj000absqr4w7ipczz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -718,7 +926,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjotbyza4000opkqrkcd7q2d5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjotdehtz000obsqrknnc05dx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -806,161 +1014,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（升级）/" data-id="cjotbyza4000mpkqrqdsmmgfj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS-函数（升级）" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-函数（升级）/" class="article-date">
-  <time datetime="2018-11-22T08:48:51.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-函数（升级）/">JS-函数（升级）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN、《JS高程》、《JS权威指南》</p>
-<p>#一、函数内this是什么？<br><img src="http://piks830x0.bkt.clouddn.com/this%E7%9A%84%E6%9C%AC%E8%B4%A8.png" alt="this的辅助理解"></p>
-<p>定义：this是参数，连接JavaScript中的函数和对象</p>
-<p>口诀：有call看call，没call看点，没call没点就是window（严格模式特殊考虑），<br>    此口诀对箭头函数均不适用</p>
-<p>判断：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*this指的是call方法的第一个参数，apply和bind方法也一样*/</span></span><br><span class="line">fn.call()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*this指的是obj对象*/</span></span><br><span class="line">obj.fn()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*this指的是window，如果是严格模式下，就是undefined*/</span></span><br><span class="line">fn()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*箭头函数内外this一样*/</span></span><br><span class="line">()=&gt;&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*this指的是类的实例xx*/</span></span><br><span class="line"><span class="keyword">let</span> xx = <span class="keyword">new</span> ClassName()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*this指的是事件源btn*/</span></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line"><span class="comment">/*this就是btn被调用的那个环境里的this*/</span></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>,()=&gt;&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*this就是window*/</span></span><br><span class="line">myPromise.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line"><span class="comment">/*this就是resolve被调用时的环境里的this*/</span></span><br><span class="line">myPromise.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<p>#二、异步和回调<br><img src="http://piks830x0.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E5%BC%82%E6%AD%A5%E7%9A%84%E5%A4%84%E7%90%86.png" alt="图片描述"></p>
-<p>##1. 异步和同步？</p>
-<ul>
-<li>同步：等待结果<ul>
-<li>例：让黄牛去买票，然后站着等（同步）</li>
-</ul>
-</li>
-<li>异步：不等待结果<ul>
-<li>例：让黄牛去买票（告诉黄牛，你买到票就call我），然后去做别的</li>
-</ul>
-</li>
-</ul>
-<p>##2. 异步任务执行机制</p>
-<p>同步任务在JS引擎中执行，异步任务交给浏览器监听，<br>碰到同步任务，直接从上到下依次执行，碰到异步任务，扔给浏览器监听是否被激活，<br>JS引擎等到当前任务执行完毕，就把激活的异步任务拿过来执行，<br>如果没有被激活的异步任务，JS引擎继续执行下面的任务。</p>
-<p>##3. 异步任务的常见类型</p>
-<ul>
-<li>事件监听：如click、submit等等</li>
-<li>前端请求：如ajax，资源加载等等（如图片，脚本）</li>
-<li>定时器：setTimeout( )、setInterval( )</li>
-</ul>
-<p>##4. 处理异步任务：</p>
-<p>####(1) 回调函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">callback</span>)</span>&#123; </span><br><span class="line">    。。。。。（异步任务：事件监听、前端请求、定时器）</span><br><span class="line">    callback( )</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>)</span>&#123; 。。。。。（任务）&#125;</span><br><span class="line">A(B)</span><br></pre></td></tr></table></figure></p>
-<p>####(2) Promise大法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(</span><br><span class="line">    (resolve,reject)=&gt;&#123;</span><br><span class="line">      	。。。。。（异步任务：事件监听、前端请求、定时器）</span><br><span class="line">    	resolve( )</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">myPromise().then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;, ()=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>####(3) async/await</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*async函数*/</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'进入fn函数'</span>)</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'时间到了'</span>)</span><br><span class="line">            resolve(<span class="string">'这里异步返回的结果'</span>)</span><br><span class="line">        &#125;, <span class="number">2000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'fn函数的结果'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*async函数的调用*/</span></span><br><span class="line">fn().then(<span class="function">(<span class="params">xx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xx)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fn函数之后的同步函数'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*输出结果*/</span></span><br><span class="line">输出：进入fn函数</span><br><span class="line">输出：fn函数之后的同步函数</span><br><span class="line">输出：时间到了</span><br><span class="line">输出：这里异步返回的结果</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*async函数*/</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'进入fn函数'</span>)</span><br><span class="line">       setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'时间到了'</span>)</span><br><span class="line">       &#125;, <span class="number">2000</span>)</span><br><span class="line">       <span class="keyword">return</span> <span class="string">'fn函数的结果'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*async函数的调用*/</span></span><br><span class="line">fn().then(<span class="function">(<span class="params">xx</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(xx)</span><br><span class="line">   &#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fn函数之后的同步函数'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*输出结果*/</span></span><br><span class="line">输出：进入fn函数</span><br><span class="line">输出：fn函数之后的同步函数</span><br><span class="line">输出：fn函数的结果</span><br><span class="line">输出：时间到了</span><br></pre></td></tr></table></figure>
-<p>#三、什么是闭包：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*创建闭包*/</span></span><br><span class="line"><span class="keyword">let</span> xx = <span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> date = <span class="number">100</span></span><br><span class="line"> 	<span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line"> 		<span class="keyword">return</span> date++</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">/*使用闭包*/</span></span><br><span class="line">xx()</span><br></pre></td></tr></table></figure></p>
-<p>##1. 定义：<br>如果一个函数使用了它范围之外的变量，那么这个函数和这个变量就组成了闭包。</p>
-<p>##2. 目的：</p>
-<ul>
-<li>让一个局部变量拥有全局变量的随处可以访问到的优点</li>
-<li>而又不拥有全局变量污染全局环境的缺点。</li>
-</ul>
-<p>##3. 如何使用：</p>
-<ul>
-<li>定义外层函数，封装被保护的局部变量； </li>
-<li>定义内层函数，执行对外部函数变量的操作；</li>
-<li>外层函数返回内层函数的地址，此步骤方法有很多！ </li>
-</ul>
-<p>##4. 何时使用：</p>
-<ul>
-<li>需要一个全局变量，但又不想定义成全局的，就可以用闭包，<br>  即在函数内定义局部变量，在函数外照用不误！</li>
-<li>局部变量：无法共享（函数外无法使用），无法长久保存</li>
-<li>全局变量：可能造成变量污染</li>
-</ul>
-<p>##5. 闭包缺点：<br>占用更多内存，不容易被释放 </p>
-<p>#四、自调用函数（IIFE）：</p>
-<p>##1. 函数创建之后，立即调用该函数： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">方式<span class="number">1</span>：!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;()</span><br><span class="line">方式<span class="number">2</span>：;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;())</span><br><span class="line">方式<span class="number">3</span>：;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)()</span><br></pre></td></tr></table></figure>
-<p>##2. 存在目的：<br>造出一个全局作用域，防止污染全局变量</p>
-<p>##3. 何时使用：</p>
-<ul>
-<li>1、我们不想要全局变量，所以我们要使用局部变量</li>
-<li>2、ES5里面，只有函数有局部变量</li>
-<li>3、于是我们声明一个函数function xxx，然后xxx.call( )</li>
-<li>4、这个时候，xxx是全局变量（全局函数）</li>
-<li>5、所以我们不能给这个函数名字</li>
-<li>6、于是写成 !funtion( ){ }.call( ) ，即自调用函数，注意结果被取反了</li>
-</ul>
-<p>#五、作用域和调用堆栈</p>
-<p>##1. 作用域：</p>
-<ul>
-<li>JS作用域是指变量存在的范围，分为全局作用域、函数作用域、块级作用域。</li>
-<li>函数作用域：函数本身作用域是其定义时所处的作用域，而不是其调用时所处的作用域。</li>
-<li>作用域链：通过链式查找，可确定哪些数据能被函数访问。</li>
-</ul>
-<p>##2. 函数声明提升：<br>函数声明可以提升至其所处作用域顶部，函数表达式不可以</p>
-<p>##3. 调用堆栈：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*函数A内部有函数B，函数B内部有函数C*/</span></span><br><span class="line">A()&#123;</span><br><span class="line">    。。。。</span><br><span class="line">    B()&#123;</span><br><span class="line">        。。。。</span><br><span class="line">        C()&#123;</span><br><span class="line">            。。。。</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        。。。。</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    。。。。</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">。。。</span><br><span class="line">A( )</span><br><span class="line">。。。</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">计算机在主程从上到下执行，</span><br><span class="line">碰到函数A，进入函数体，从上到下执行，</span><br><span class="line">碰到函数B，进入函数体，从上到下执行，</span><br><span class="line">碰到函数C，进入函数体，从上到下执行，</span><br><span class="line">在函数C内<span class="keyword">return</span>时跳出函数体，回到函数B</span><br><span class="line">在函数B内<span class="keyword">return</span>时跳出函数体，回到函数A</span><br><span class="line">在函数A内<span class="keyword">return</span>时跳出函数体，回到主程</span><br></pre></td></tr></table></figure></p>
-<p>#六、高阶函数和柯里化<br><img src="http://piks830x0.bkt.clouddn.com/%E5%87%BD%E6%95%B0%E5%B5%8C%E5%A5%97.png" alt=""></p>
-<p><a href="http://piks830x0.bkt.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.png" target="_blank" rel="noopener">辅助理解</a></p>
-<p>##1. 什么是高阶函数？</p>
-<ul>
-<li>输入一个或多个函数</li>
-<li>输出一个函数</li>
-<li>满足上面条件之一就是高阶函数，但通常同时满足两个</li>
-</ul>
-<p>##2. 什么是柯里化？<br>用单参数的函数模拟多参数的函数，调用某函数并传入部分参数，让它返回一个函数去接受剩下的参数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将f(x, y)变成f(x=<span class="number">1</span>)(y) 或 f(y=<span class="number">1</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>##3. 柯里化应用：</p>
-<ul>
-<li>分批传值：<ul>
-<li>假设函数需要传入多个值，可以一个值一个值的传递，</li>
-<li>也可以固定某些参数，让余下的参数在已有的参数上运算。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> outerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> innerArgs  = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">        <span class="keyword">let</span> finalArgs = outerArgs.concat(innerArgs)</span><br><span class="line">        <span class="keyword">return</span> fn.apply(<span class="literal">undefined</span>, finalArgs)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x,y</span>)</span>&#123;<span class="keyword">return</span> x+y&#125;</span><br><span class="line"><span class="keyword">let</span> curried = curry(add,<span class="number">10</span>)</span><br><span class="line">curried(<span class="number">2</span>)  <span class="comment">//12</span></span><br><span class="line">curried(<span class="number">3</span>)  <span class="comment">//13</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>早期模板引擎：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">templatebar</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.replace(<span class="string">'&#123;&#123;name&#125;&#125;'</span>,y.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> curried = templatebar(<span class="string">'&lt;h1&gt;你好，我叫&#123;&#123;name&#125;&#125;&lt;/h1&gt;'</span>)</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">curried(&#123;<span class="attr">name</span>:<span class="string">'张治国'</span>&#125;)</span><br><span class="line"><span class="string">"&lt;h1&gt;你好，我叫张治国&lt;/h1&gt;"</span></span><br><span class="line">curried(&#123;<span class="attr">name</span>:<span class="string">'邢晓栋'</span>&#125;)</span><br><span class="line"><span class="string">"&lt;h1&gt;你好，我叫邢晓栋&lt;/h1&gt;"</span></span><br></pre></td></tr></table></figure>
-<p>#七、什么是惰性载入？</p>
-<p>##1. 目的<br>提高性能，避免代码重复执行，即让函数的分支仅发生一次</p>
-<p>##2. 特点：</p>
-<ul>
-<li><p>非惰性载入，每次调用fn时都会做判断，降低性能</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> kk</span><br><span class="line">    <span class="keyword">if</span>(xx)&#123;</span><br><span class="line">        kk = ABC</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        kk = DEF</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>惰性载入，只在首次调用fn时做判断，以后调用直接使用被分配的东东</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(xx)&#123;</span><br><span class="line">        fn = ABC</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        fn = DEF</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>惰性载入，声明的同时调用fn，只在首次调用fn时做判断，以后调用直接使用分配的东东</p>
-<pre><code class="js"><span class="keyword">let</span> fn = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="keyword">if</span>(xx){
-        fn = ABC
-    }<span class="keyword">else</span>{
-        fn = DEF
-    }
-})()
-</code></pre>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-函数（升级）/" data-id="cjotbyza4000cpkqrqw652qst" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数组（升级）/" data-id="cjotdehtz000nbsqrei72nypa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1006,6 +1060,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/23/JS-DOM模型/">JS-DOM模型</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/23/JS-事件/">JS-事件</a>
           </li>
         
@@ -1019,10 +1077,6 @@
         
           <li>
             <a href="/2018/11/22/JS-变量/">JS-变量</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/JS-null和undefined/">JS-null和undefined</a>
           </li>
         
       </ul>
