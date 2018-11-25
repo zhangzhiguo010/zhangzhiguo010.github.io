@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E7%A4%BA%E4%BE%8B%E5%9B%BE.png">
 <meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97.png">
 <meta property="og:image" content="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E6%B5%81%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-11-23T01:11:38.513Z">
+<meta property="og:updated_time" content="2018-11-25T03:09:01.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-事件">
 <meta name="twitter:description" content="#参考资料：《JS高程》page345页、《JS权威指南》page440页 #一、基础概念： ###1. 事件定义：文档或浏览器中发生的一些特定的交互瞬间 ###2. 事件构成：  事件源：指定事件发生在哪个元素上 事件类型：发生了哪种事件 事件处理程序：事件发生时执行的函数   ###3. 事件流定义：  定义：接收事件的顺序 事件流三阶段： 捕获阶段：从最不具体的元素到最具体的元素  处于目标">
@@ -198,6 +198,18 @@
 <li>select：当文本框（input或texterea）字符被选中时在对象上触发</li>
 </ul>
 <p>###2. 焦点事件<br><img src="http://piks830x0.bkt.clouddn.com/%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6.png" alt=""></p>
+<p>补充：</p>
+<ol>
+<li>mouseover和mouseenter的区别：</li>
+</ol>
+<ul>
+<li>mouseover：存在事件的冒泡传播机制，而mouseenter：浏览器把它的事件冒泡传播机制阻止了</li>
+<li>鼠标从父元素进入到子元素：<ul>
+<li>mouseover：先触发父元素的mouseout，再触发子元素的mouseover，因为冒泡，最后触发父元素的mouseover</li>
+<li>mouseenter：先触发父元素的mouseleave，再触发子元素的mouseenter，因为不冒泡，所以父元素的mouseenter不被触发</li>
+</ul>
+</li>
+</ul>
 <p>###3. 键盘及文本事件<br>还有个input事件，用到过但还没深挖</p>
 <p><img src="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6.png" alt=""></p>
 <p><img src="http://piks830x0.bkt.clouddn.com/%E9%94%AE%E7%9B%98%E5%8F%8A%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6%E4%B8%93%E6%9C%89%E5%B1%9E%E6%80%A7.png" alt=""></p>
@@ -230,7 +242,49 @@
 <li>我们还可以监听暂时不存在的li元素，页面结构: <code>ul&gt;li&gt;div</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyAddEventListener</span>(<span class="params">element, eleType, selector, fn</span>)</span>&#123;</span><br><span class="line">	element.addEventListener(eleType, (ev)=&gt;&#123;</span><br><span class="line">		<span class="keyword">let</span> target = ev.target</span><br><span class="line">		<span class="keyword">while</span>(target !== element)&#123;</span><br><span class="line">			<span class="keyword">if</span>(target.tagName.toLowerCase() === selector)&#123;</span><br><span class="line">               	fn.call(<span class="literal">null</span>, ev)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">			target = target.parentNode</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>#四、辅助理解：</p>
+<p>#四、移动端手指事件：</p>
+<p>###1. 事件类型：</p>
+<ul>
+<li>touchstart、touchmove、touchend、gesture</li>
+</ul>
+<p>###2. 事件对象：</p>
+<ul>
+<li>changedTouches：记录手指在屏幕上的时候的信息；记录手指离开屏幕的一瞬间的信息</li>
+<li>touches：只能记录手指在屏幕上的时候的信息</li>
+</ul>
+<p>###3. 用户动作类型：</p>
+<ol>
+<li>单手指操作: touchstart、touchmove、touchend模拟出来</li>
+</ol>
+<ul>
+<li>点击：手指按下+手指离开（存在问题）</li>
+<li>长按：手指按下+按住屏幕的时间超过750ms+手指离开</li>
+<li>滑动：手指按下+滑动距离超过10px+手指离开</li>
+</ul>
+<ol start="2">
+<li>多手指操作：gesture模拟出来</li>
+</ol>
+<ul>
+<li>缩放</li>
+<li>旋转</li>
+</ul>
+<p>###4. 判断用户单手指动作：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.querySelector(<span class="string">'#box'</span>)</span><br><span class="line"><span class="keyword">let</span> isMove = <span class="literal">false</span></span><br><span class="line"><span class="keyword">let</span> dir = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> start_x, start_y</span><br><span class="line"><span class="keyword">let</span> change_x, change_y</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 手指按下时触发 */</span></span><br><span class="line">box.addEventListener(<span class="string">'touchstart'</span>, (e)=&gt;&#123;</span><br><span class="line">  <span class="keyword">let</span> point = e.changedTouches[<span class="number">0</span>]</span><br><span class="line">  start_x = point.pageX</span><br><span class="line">  start_y = point.pageY</span><br><span class="line">  isMove = <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/* 手指滑动时触发 */</span></span><br><span class="line">box.addEventListener(<span class="string">'touchmove'</span>, (e)=&gt;&#123;</span><br><span class="line">  <span class="keyword">let</span> point = e.changedTouches[<span class="number">0</span>]</span><br><span class="line">  change_x = point.pageX - start_x</span><br><span class="line">  change_y = point.pageY - start_y</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(change_x)&gt;<span class="number">10</span> || <span class="built_in">Math</span>.abs(change_y)&gt;<span class="number">10</span>)&#123;</span><br><span class="line">    isMove = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/* 手指松开时触发 */</span></span><br><span class="line">box.addEventListener(<span class="string">'touchend'</span>, (e)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isMove)&#123;</span><br><span class="line">    	<span class="comment">// 代表：点击操作</span></span><br><span class="line">  		<span class="keyword">return</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   		<span class="keyword">if</span>(<span class="built_in">Math</span>.abs(change_x) &gt; <span class="built_in">Math</span>.abs(change_y))&#123;</span><br><span class="line">      		<span class="comment">// 代表：水平滑动</span></span><br><span class="line">       		dir = change_x &gt; <span class="number">0</span> ? <span class="string">'右滑'</span> : <span class="string">'左滑'</span></span><br><span class="line">      	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      		<span class="comment">// 代表：垂直滑动</span></span><br><span class="line">       		dir = change_y &gt; <span class="number">0</span> ? <span class="string">'下滑'</span> : <span class="string">'上滑'</span></span><br><span class="line">      	&#125;</span><br><span class="line">      	<span class="built_in">console</span>.log(dir)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>###5.已有的库：</p>
+<ol>
+<li>fastclick.js：<br>目的就是为了解决移动端click事件300ms延迟的问题</li>
+<li>百度云touch手势事件库</li>
+<li>hammer.js</li>
+<li>zepto.js：提供移动端事件操作的板块，目前市场上使用率最高的（小型JQ）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#box'</span>).tap(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;);				<span class="comment">// 点击</span></span><br><span class="line">$(<span class="string">'#box'</span>).singleTap(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;);		<span class="comment">// 单击</span></span><br><span class="line">$(<span class="string">'#box'</span>).doubleTap(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;);		<span class="comment">// 双击</span></span><br><span class="line">$(<span class="string">'#box'</span>).longTap(<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;);			<span class="comment">// 长按</span></span><br><span class="line">$(<span class="string">'#box'</span>).swipe(<span class="function"><span class="params">()</span>=&gt;</span>&#123; 				<span class="comment">// 滑动 </span></span><br><span class="line">	.swipeLeft/.swipeRight/.swipeUp/.swipeDown</span><br><span class="line">&#125;); </span><br><span class="line">$(<span class="string">'#box'</span>).pinchIn(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) 	<span class="comment">// 缩小  </span></span><br><span class="line">$(<span class="string">'#box'</span>).pinchOut(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) 	<span class="comment">// 放大</span></span><br></pre></td></tr></table></figure>
+<p>#五、其他</p>
+<ol>
+<li><p>取消事件的默认行为：<code>ev.preventDefault</code></p>
+</li>
+<li><p>阻止事件的传播：<code>ev.stopPropagation()</code></p>
+</li>
+</ol>
+<p>#六、辅助理解：</p>
 <ul>
 <li><p><img src="http://piks830x0.bkt.clouddn.com/%E4%BA%8B%E4%BB%B6%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt=""></p>
 </li>
@@ -243,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjothuzsd000fm8qrwghemge3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/JS-事件/" data-id="cjowb1ymf000ausqryspuzdc1" class="article-share-link">Share</a>
       
       
     </footer>
