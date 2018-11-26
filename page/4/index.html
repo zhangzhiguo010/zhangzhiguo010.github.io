@@ -62,6 +62,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-元素居中" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/CSS-元素居中/" class="article-date">
+  <time datetime="2018-11-22T01:52:16.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/CSS-元素居中/">CSS-元素居中</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、水平居中：</p>
+<ol>
+<li>flex</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>text-align</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是行内/行内块元素时，使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>左右margin为auto</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*子元素是块状元素且定宽时，使用*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	margin-left: auto;</span><br><span class="line">	margin-right: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、absolute绝对定位</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       left: <span class="number">50</span>%;</span><br><span class="line">       transform: translateX(<span class="number">-50</span>%);</span><br></pre></td></tr></table></figure>
+<p>#二、垂直居中：</p>
+<ol>
+<li>flex</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*普遍性最强，也最简单，博主最常使用*/</span></span><br><span class="line">.containner&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>line-height</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*文字的垂直居中*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	heigth: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.child&#123;</span><br><span class="line">	line-height: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>absolute绝对定位</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line">.container&#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line">.child&#123;</span><br><span class="line">      	position: absolute;</span><br><span class="line">       top: <span class="number">50</span>%;</span><br><span class="line">       transform: translateY(<span class="number">-50</span>%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用padding</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**/</span></span><br><span class="line">.child&#123;</span><br><span class="line">	padding: <span class="comment">/*（父子元素高度差的一半*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/CSS-元素居中/" data-id="cjoyjfjk80002dgqr9ce2r334" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS-选择器优先级" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/CSS-选择器优先级/" class="article-date">
@@ -98,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjoyiph9i000aj4qrumlmn982" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/CSS-选择器优先级/" data-id="cjoyjfjke000adgqrag004gdb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjoyiph9w000rj4qrzovr6nck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/hello-world/" data-id="cjoyjfjkt000rdgqrxwmvydoo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,6 +256,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/27/webpack配置过程/">webpack配置过程</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/25/resume/">resume</a>
           </li>
         
@@ -202,10 +273,6 @@
         
           <li>
             <a href="/2018/11/23/网络安全/">网络安全</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/23/前后端交互/">前后端交互</a>
           </li>
         
       </ul>
