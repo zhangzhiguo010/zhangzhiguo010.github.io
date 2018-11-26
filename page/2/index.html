@@ -62,94 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-JS-数据类型及类型转换" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/JS-数据类型及类型转换/" class="article-date">
-  <time datetime="2018-11-22T14:12:09.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/JS-数据类型及类型转换/">JS-数据类型及类型转换</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#参考资料：MDN文档、《JS高程》、《JS权威指南》page32页</p>
-<p>#一、JS中七大数据类型：</p>
-<ul>
-<li>数字—-Number</li>
-<li>字符串—-String</li>
-<li>布尔值—-Boolean</li>
-<li>符号—-Symble</li>
-<li>空—-Null</li>
-<li>未定义—-Undefined</li>
-<li>对象—-Object（包括对象、函数、数组）</li>
-</ul>
-<p>#二、类型判断：</p>
-<p>###1. typeof 操作符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">123</span> →→→ <span class="built_in">Number</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span> →→→ <span class="built_in">Number</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"ab"</span> →→→ <span class="built_in">String</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"123"</span> →→→ <span class="built_in">String</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>/<span class="literal">false</span> →→→ <span class="built_in">Boolean</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> →→→ <span class="built_in">Object</span>;      <span class="comment">//空的对象引用</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> →→→ Undefined;</span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; →→→ <span class="built_in">Object</span>;</span><br><span class="line"><span class="keyword">typeof</span> [] →→→ <span class="built_in">Object</span>;</span><br><span class="line"><span class="keyword">typeof</span> fun()&#123;&#125; →→→ <span class="built_in">Function</span>;</span><br></pre></td></tr></table></figure></p>
-<p>###2. instanceof运算符</p>
-<p>#三、类型转换</p>
-<p>###1. 转成数字：</p>
-<ol>
-<li><p>Number(xxx)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">''</span>);   <span class="comment">//0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'555'</span>);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'abc'</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>);   <span class="comment">//1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">false</span>);   <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空*/</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>);   <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*未定义*/</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="built_in">Number</span>(&#123;&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">Number</span>([]);   <span class="comment">//0</span></span><br><span class="line"><span class="built_in">Number</span>(&#123;<span class="attr">a</span>:<span class="number">555</span>&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">Number</span>([<span class="number">555</span>]);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">Number</span>([<span class="number">55</span>,<span class="number">22</span>]);   <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>xxx-0  常用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line"><span class="string">''</span> <span class="number">-0</span>;   <span class="comment">//0</span></span><br><span class="line"><span class="string">'555'</span> <span class="number">-0</span>;   <span class="comment">//555</span></span><br><span class="line"><span class="string">'abc'</span><span class="number">-0</span>;   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="literal">true</span><span class="number">-0</span>;   <span class="comment">//1</span></span><br><span class="line"><span class="literal">false</span><span class="number">-0</span>;   <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空*/</span></span><br><span class="line"><span class="literal">null</span><span class="number">-0</span>;   <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*未定义*/</span></span><br><span class="line"><span class="literal">undefined</span><span class="number">-0</span>;   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line">&#123;&#125;<span class="number">-0</span>;   <span class="comment">//NaN</span></span><br><span class="line">&#123;<span class="attr">a</span>:<span class="number">555</span>&#125;<span class="number">-0</span>;   <span class="comment">//NaN</span></span><br><span class="line">[]<span class="number">-0</span>;   <span class="comment">//0</span></span><br><span class="line">[<span class="number">555</span>]<span class="number">-0</span>;   <span class="comment">//555</span></span><br><span class="line">[<span class="number">55</span>,<span class="number">22</span>]<span class="number">-0</span>;   <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>+xxx</p>
-</li>
-<li><p>parseInt(xxx)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">''</span>);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'555'</span>);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'abc'</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="literal">true</span>);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="literal">false</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空*/</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="literal">null</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*未定义*/</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="literal">undefined</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="built_in">parseInt</span>(&#123;&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>([]);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(&#123;<span class="attr">a</span>:<span class="number">555</span>&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>([<span class="number">555</span>]);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">parseInt</span>([<span class="number">11</span>,<span class="number">22</span>]);   <span class="comment">//11</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>parseFloat(xxx)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">''</span>);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">'555'</span>);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">'abc'</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="literal">true</span>);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="literal">false</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空*/</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="literal">null</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*未定义*/</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="literal">undefined</span>);   <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="built_in">parseFloat</span>(&#123;&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>([]);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>(&#123;<span class="attr">a</span>:<span class="number">555</span>&#125;);   <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>([<span class="number">555</span>]);   <span class="comment">//555</span></span><br><span class="line"><span class="built_in">parseFloat</span>([<span class="number">11</span>,<span class="number">22</span>]);   <span class="comment">//11</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>###2. 转成字符串：</p>
-<ol>
-<li><p>String(xxx)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*数字*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="number">2</span>; </span><br><span class="line"><span class="built_in">String</span>(n)  <span class="comment">//'2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="literal">true</span>/<span class="literal">false</span></span><br><span class="line"><span class="built_in">String</span>(n)  <span class="comment">//'true/false'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空和未定义*/</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>)  <span class="comment">//'null'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">undefined</span>)  <span class="comment">//'undefined'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; &#125;</span><br><span class="line">obj.toString( )  <span class="comment">//'[object object]'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>xxx+’’  常用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*数字*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="number">2</span>; </span><br><span class="line">n+<span class="string">''</span>  <span class="comment">//'2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="literal">true</span>/<span class="literal">false</span></span><br><span class="line">n+<span class="string">''</span>  <span class="comment">//'true/false'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空和未定义*/</span></span><br><span class="line"><span class="literal">null</span>+<span class="string">''</span>  <span class="comment">//'null'</span></span><br><span class="line"><span class="literal">undefined</span>+<span class="string">''</span>  <span class="comment">//'undefined'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; &#125;</span><br><span class="line">obj1+<span class="string">''</span>  <span class="comment">//'[object object]' </span></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">a</span>:<span class="number">123</span>, <span class="attr">b</span>:<span class="string">'fff'</span>&#125;</span><br><span class="line">obj2+<span class="string">''</span>   <span class="comment">//'[object object]'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [ ]</span><br><span class="line">arr1+<span class="string">''</span>   <span class="comment">//' '</span></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">45</span>]</span><br><span class="line">arr2+<span class="string">''</span>   <span class="comment">//'12,23,45'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>xxx.toString()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*数字*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="number">2</span>; </span><br><span class="line">n.toString( )  <span class="comment">//'2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*布尔*/</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="literal">true</span>/<span class="literal">false</span></span><br><span class="line">n.toString( )  <span class="comment">//'true/false'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空和未定义*/</span></span><br><span class="line"><span class="literal">null</span>.toString( )  <span class="comment">//报错</span></span><br><span class="line"><span class="literal">undefined</span>.toString( )  <span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*对象*/</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; &#125;</span><br><span class="line">obj.toString( )  <span class="comment">//'[object object]'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>###3. 转成布尔值：</p>
-<ol>
-<li><p>Boolean(xxx)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*只有下面5种情况是false，其他都是true，包括空对象*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*数字*/</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>);   <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">NaN</span>);   <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line"><span class="built_in">Boolean</span>(‘’)   <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空和未定义*/</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>);   <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">undefined</span>);   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>!!xxx  推荐</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*只有下面5种情况是false，其他都是true，包括空对象*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*数字*/</span></span><br><span class="line">!! <span class="number">0</span>;   <span class="comment">//false</span></span><br><span class="line">!! <span class="literal">NaN</span>;   <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*字符串*/</span></span><br><span class="line">!! <span class="string">''</span>   <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*空和未定义*/</span></span><br><span class="line">!! <span class="literal">null</span>;   <span class="comment">//false</span></span><br><span class="line">!! <span class="literal">undefined</span>;   <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数据类型及类型转换/" data-id="cjoyjfjkp000mdgqraxttth6j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-JS-变量" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/JS-变量/" class="article-date">
@@ -209,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjoyjfjkm000idgqrwj300xmp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-变量/" data-id="cjoyjhjv3000kdgqrsh1lscik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-null和undefined/" data-id="cjoyjfjkj000fdgqryq3j6lgo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-null和undefined/" data-id="cjoyjhjv2000idgqrb8d5rihj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-Promist对象/" data-id="cjoyjfjkj000edgqrq6o6mvqg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-Promist对象/" data-id="cjoyjhjuz000fdgqr7s8wzsuo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-JSON对象/" data-id="cjoyjfjkh000cdgqrt96nnxh4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-JSON对象/" data-id="cjoyjhjuy000edgqrantpx543" class="article-share-link">Share</a>
       
       
     </footer>
@@ -483,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjoyjfjkr000pdgqrm5ffgmp6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数组（基础）/" data-id="cjoyjhjv7000odgqrb9ltrjqj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -571,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-数组（升级）/" data-id="cjoyjfjkq000ndgqri2cu051w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-数组（升级）/" data-id="cjoyjhjv5000mdgqrk2srbwm8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -725,7 +637,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-函数（升级）/" data-id="cjoyjfjkr000odgqr4e0ionho" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-函数（升级）/" data-id="cjoyjhjv1000hdgqrp7u9cqjo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -836,7 +748,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-函数（基础）/" data-id="cjoyjfjkn000jdgqrbtfaveai" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-函数（基础）/" data-id="cjoyjhjv8000qdgqrthm81srs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -923,7 +835,164 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjoyjfjkn000kdgqrbtu1ylfa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（升级）/" data-id="cjoyjhjv2000jdgqrz924u039" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS-对象（基础）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/JS-对象（基础）/" class="article-date">
+  <time datetime="2018-11-22T07:22:06.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/JS-对象（基础）/">JS-对象（基础）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#参考资料：MDN文档；《JS高级程序设计》page83页、page138页；《JS权威指南》page118页</p>
+<p>#一、对象创建和调用</p>
+<p>##1、对象定义： </p>
+<ul>
+<li>属性的无序集合，每个属性都是一个名/值对；</li>
+<li>对象是哈希结构，属性名就是哈希的键名，属性值就是哈希的键值。</li>
+<li>除了数字、字符串、布尔值、null和undefined外，JS中的值都是对象</li>
+</ul>
+<p>##2、对象使用：</p>
+<ul>
+<li>将对象赋给变量，实际上是将对象在堆内存区中的内存地址赋值给该变量；</li>
+<li><p>将对象赋给不同变量，当某个变量修改了对象时，比如属性值，也会影响到其他所有变量；</p>
+<ul>
+<li>当取消某个变量对该对象的引用时，不会影响其他变量，</li>
+<li>取消方法包括将基本类型值赋值给它，或是新建一个对象后赋值给它；</li>
+</ul>
+</li>
+</ul>
+<p>##3、对象的创建</p>
+<ol>
+<li>对象直接量、Object.create(）</li>
+<li>工厂模式：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = &#123; &#125;</span><br><span class="line">    obj.name = name</span><br><span class="line">    obj.age = age</span><br><span class="line">    obj.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = createPerson( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = createPerson( <span class="string">'张小凡'</span>, <span class="number">20</span> )</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>构造函数模式：</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>不用显示的创建对象</li>
+<li>自动绑定到原型对象</li>
+<li>直接将属性和方法赋值给了this对象</li>
+<li>没有return语句</li>
+<li>所有实例对象，不共用构造函数内的属性和方法，每次调用，都是在实例对象上重新创建属性和方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">    <span class="keyword">this</span>.friends = [<span class="string">'xxx'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> );</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">/*true: 所有实例对象的constructor属性指向同一个构造函数*/</span></span><br><span class="line">alert(person1.constructor === person2.constructor);   </span><br><span class="line"><span class="comment">/*false: 所有实例对象从构造函数继承的属性和方法不是同一个*/</span></span><br><span class="line">alert(person1.sayName === person2.sayName);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>原型模式</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>原型对象自带constructor属性，实例对象继承该属性及属性值</li>
+<li>所有实例对象，都共用原型对象内的属性和方法</li>
+<li>不能在创建实例之后重写原型，因为会切断实例与新原型之间的联系</li>
+<li>修改实例上从原型继承而来的引用类型数据时，其他实例该属性值也会改变，最大缺点！</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.country = <span class="string">"china"</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>)</span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment">/*true: 原型和实例的constructor指向同一个构造函数*/</span></span><br><span class="line">alert(person1.constructor === Person.prototype.constructor)</span><br><span class="line"><span class="comment">/*true: 所有实例对象从原型对象继承的属性和方法都是同一个*/</span></span><br><span class="line">alert(person1.sayName === person2.sayName)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>构造函数模式+原型模式</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>实例对象自有的属性，在构造函数内创建，自有可以理解为通过传参赋值的那些属性</li>
+<li>实例对象共有的属性和方法，在原型对象内创建，共有可以理解为不需要传参赋值的那些属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    country: 'china',</span><br><span class="line">    sayName: function( )&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person( <span class="string">'张治国'</span>, <span class="number">18</span> )</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person( <span class="string">'张小凡'</span>, <span class="number">28</span> )</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>ES6的class创建</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Country</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(options)&#123;</span><br><span class="line">		<span class="keyword">this</span>.countryName = options.name</span><br><span class="line">	&#125;</span><br><span class="line">	sayCountryName()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.countryName)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> contry = <span class="keyword">new</span> Country(&#123;<span class="attr">name</span>: <span class="string">'中国'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>#二、对象的属性和方法（偏概念）：</p>
+<p>##1. 属性名相关问题：</p>
+<ul>
+<li>对象的属性名都是字符串，不是字符串的也转成了字符串；</li>
+<li>属性名符合标识符规范或是纯数字时，创建时加不加引号都无所谓；<br>  {name:’张’, ‘age’:18, 0: ‘张’, ‘1’:18}</li>
+<li>属性名不符合标识符时，必须加引号；<br>  {‘2b’:250, ‘a b’:’空格’, ‘c+d’:’加号’}</li>
+<li>标识符规范：以字母、下划线__或美元符$开头，由字母、下划线、美元符或数字组成；</li>
+<li>属性值可以是任意类型，如基本类型的数字、字符串等，引用类型的对象、数组、函数等，<br>  当属性值是函数时，属性名又称为方法；</li>
+</ul>
+<p>##2. 属性查找相关问题：</p>
+<ul>
+<li>读取属性时，可以使用点运算符，也可以使用方括号运算符；</li>
+<li>使用点运算符：属性名必须符合标识符规范，<br>  如person.name、person.age，person.20报错、person.a+b报错；</li>
+<li>使用方括号：除了纯数字外，属性名必须放在引号里面，否则会被当做变量处理，<br>  如obj[1]、obj[‘1’]、obj[‘name’]；</li>
+</ul>
+<p>##3. 属性增改相关问题：</p>
+<ul>
+<li>点运算符或是方括号除了可以读取属性外，还可以创建属性和修改属性；</li>
+</ul>
+<p>##4. 属性删除相关问题：</p>
+<ul>
+<li>使用delete删除对象的属性，删除成功后返回true；</li>
+<li>delete本质是断开属性和对象之间的联系，最终表现的就像是删除一样；</li>
+<li>delete只能删除对象的自有属性，不能删除继承属性，否则会报错，继承属性要在原型上才能删除；</li>
+<li>读取已经删除的属性和读取不存在的属性一样，都返回undefined；</li>
+</ul>
+<p>##5. 种类和特性相关问题</p>
+<ul>
+<li><p>对象种类：</p>
+<ul>
+<li>内置对象：ECMAScript规范定义的对象，如数组、函数、日期和正则表达式；</li>
+<li>宿主对象：JS解释器所嵌入的宿主环境（比如Web浏览器）定义的对象；</li>
+<li>自定义对象：运行中的JS代码创建的对象；</li>
+</ul>
+</li>
+<li><p>对象特性：</p>
+<ul>
+<li>对象的原型：指向另外一个对象，对象的属性从他的原型继承；</li>
+<li>对象的类：对象所属类型；</li>
+<li>对象的扩展标记：是否可以向该对象添加新属性；</li>
+</ul>
+</li>
+<li><p>属性种类：</p>
+<ul>
+<li>自有属性：直接在对象中定义的属性；</li>
+<li>继承属性：在对象的原型对象中定义的属性；</li>
+</ul>
+</li>
+<li><p>属性特性：</p>
+<ul>
+<li>可写：表明是否可以设置该属性的值；</li>
+<li>可枚举：表明是否可以通过for/in循环返回该属性；</li>
+<li>可配置:表明是否可以删除或修改该属性</li>
+</ul>
+</li>
+</ul>
+<p>#三、补充：</p>
+<ol>
+<li>new Function()和Function()，new Array()和Array()，new Object()和Object()<br> 都是两两等价的，创造的都是引用类型，</li>
+<li>new String()和String()，new Number()和Number()<br> 是不一样的，前面创造的是引用类型，后面创造的是基本类型；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/JS-对象（基础）/" data-id="cjoyjhjv4000ldgqrh5jkfau6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -973,10 +1042,6 @@
           </li>
         
           <li>
-            <a href="/2018/11/25/resume/">resume</a>
-          </li>
-        
-          <li>
             <a href="/2018/11/23/数据结构和算法/">数据结构和算法</a>
           </li>
         
@@ -986,6 +1051,10 @@
         
           <li>
             <a href="/2018/11/23/网络安全/">网络安全</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/23/前后端交互/">前后端交互</a>
           </li>
         
       </ul>
